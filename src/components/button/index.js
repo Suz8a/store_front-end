@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 
 function New(props) {
   return (
-    <div class>
+    <div>
       <Button
         style={{ width: props.buttonSize }}
         variant={props.variantType}
