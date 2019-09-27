@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
+import { Button } from "@material-ui/core";
 
-function Button(props) {
-    return (
-        <div class="button">
-            <button>{props.nombre}</button>
-        </div>
-    )
+function New(props) {
+  return (
+    <div class>
+      <Button
+        style={{ width: props.buttonSize }}
+        variant={props.variantType}
+        color={props.colorTheme}
+      >
+        {props.nombre}
+      </Button>
+    </div>
+  );
 }
 
-export default Button
+export default New;

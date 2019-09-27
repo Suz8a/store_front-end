@@ -1,13 +1,31 @@
-import React from 'react';
-import './App.css';
-import Button from './components/button';
-
+import React from "react";
+import { MuiThemeProvider, Grid } from "@material-ui/core";
+import "./App.css";
+import Nuevo from "./components/button";
+import theme from "./theme";
 
 function App() {
   return (
-    <div>
-        <Button nombre="hola"></Button>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <Grid container>
+        <div>
+          <Nuevo
+            variantType="outlined"
+            nombre="Cancelar"
+            colorTheme="secondary"
+            buttonSize="120px"
+          ></Nuevo>
+        </div>
+        <div style={{ paddingLeft: "30px" }}>
+          <Nuevo
+            variantType="contained"
+            nombre="Guardar"
+            colorTheme="primary"
+            buttonSize="168px"
+          ></Nuevo>
+        </div>
+      </Grid>
+    </MuiThemeProvider>
   );
 }
 
