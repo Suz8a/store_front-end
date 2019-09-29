@@ -21,7 +21,7 @@ function App() {
             variantType="contained"
             nombre="Guardar"
             colorTheme="primary"
-            buttonSize="168px"
+            buttonSize="170px"
           ></Nuevo>
         </div>
       </Grid>
