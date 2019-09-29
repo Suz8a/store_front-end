@@ -9,6 +9,7 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <Grid container>
         <div>
+          <img src="" />
           <Nuevo
             variantType="outlined"
             nombre="Cancelar"
