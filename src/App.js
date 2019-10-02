@@ -1,7 +1,7 @@
 import React from "react";
 import { MuiThemeProvider, Grid } from "@material-ui/core";
 import "./App.css";
-import Nuevo from "./components/button";
+import ButtonAppBar from "./components/appBar";
 import theme from "./theme";
 import SideBar from "./components/side-bar";
 
@@ -10,7 +10,7 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <Grid container>
         <div>
-          <SideBar />
+          <ButtonAppBar />
         </div>
       </Grid>
     </MuiThemeProvider>
