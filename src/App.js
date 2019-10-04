@@ -4,14 +4,14 @@ import "./App.css";
 import ButtonAppBar from "./components/appBar";
 import theme from "./theme";
 import SideBar from "./components/side-bar";
+import ClientInfo from "./components/client-info";
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <Grid container>
-        <div>
-          <ButtonAppBar />
-        </div>
+        <SideBar />
+        <ButtonAppBar />
       </Grid>
     </MuiThemeProvider>
   );
