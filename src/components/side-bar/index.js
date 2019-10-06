@@ -16,13 +16,15 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+//import people from './../../assets/people.svg'
 
 //Componente para el menú lateral izquierdo
 //Por alguna razón no logro hacer que se vea lo que hago, tendré que seguir investigando...
 
-const drawer = (
+function SideBar() {
+  return (
     <div>
-      <div className={classes.toolbar} />
+         <div>
       <Divider />
       <Typography>
             SERVICIOS
@@ -30,7 +32,7 @@ const drawer = (
       <List>
         {['Reparación', 'Cambio de Tamaño', 'Grabado', 'Pulido','Limpieza'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <MenuIcon/> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -47,5 +49,8 @@ const drawer = (
         ))}
       </List>
     </div>
-  );
+    </div>
+  )
+}
 
+export default SideBar
