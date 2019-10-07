@@ -3,15 +3,15 @@ import { MuiThemeProvider, Grid } from "@material-ui/core";
 import "./App.css";
 import ButtonAppBar from "./components/appBar";
 import theme from "./theme";
-import SideBar from "./components/side-bar";
-import ClientInfo from "./components/client-info";
+import SideBar from "./components/side-bar/index";
+import SimpleCard from "./components/side-bar/card";
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <Grid container>
         <SideBar />
-        <ButtonAppBar />
+        <SimpleCard />
       </Grid>
     </MuiThemeProvider>
   );
