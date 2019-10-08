@@ -11,7 +11,6 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <Grid container>
         <SideBar />
-        <SimpleCard />
       </Grid>
     </MuiThemeProvider>
   );
