@@ -5,13 +5,12 @@ import ButtonAppBar from "./components/appBar";
 import theme from "./theme";
 import SideBar from "./components/side-bar/index";
 import SimpleCard from "./components/side-bar/card";
+import FileUploader from "./components/file-uploader";
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <Grid container>
-        <SideBar />
-      </Grid>
+      <FileUploader />
     </MuiThemeProvider>
   );
 }
