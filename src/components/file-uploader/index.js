@@ -2,28 +2,42 @@ import React from "react";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
 import cloud from "../../assets/upload-cloud.svg";
-import styled from "styled-components";
+import {
+  Cloud,
+  Description,
+  DropArea,
+  Item,
+  UploadButton,
+  CancelIconContainer
+} from "./styled";
+import CancelIcon from "@material-ui/icons/Cancel";
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
 
-const descriptionStyle = {
-  display: "block",
-  margin: "5px auto 0px auto",
-  width: "160px",
-  font: "Roboto",
-  fontSize: "14px",
-  letterSpacing: "1px",
-  color: "#9C9C9CDE",
-  opacity: 1
-};
-
-const cloudStyle = {
-  display: "block",
-  margin: "auto",
-  marginTop: "20px"
-};
+const useStyles = makeStyles({
+  cancelIcon: {
+    width: "14px",
+    height: "14px"
+  },
+  buttonDescription: {
+    margin: "0px auto 0px auto",
+    fontSize: "10px",
+    height: "15px",
+    width: "fit-content",
+    fontWeight: "bold"
+  }
+});
 
 function FileUploader() {
   const [lista, setLista] = useState([]);
-
+  const classes = useStyles();
+  function onDelete(index) {
+    return () => {
+      const newLista = [...lista];
+      newLista.splice(index, 1);
+      setLista(newLista);
+    };
+  }
   return (
     <Dropzone
       onDrop={files => {
@@ -40,37 +54,40 @@ function FileUploader() {
       {({ getRootProps, getInputProps }) => (
         <div
           {...getRootProps()}
+          onClick={() => {}}
           className=""
           style={{ width: "254px", height: "124px" }}
         >
           <input {...getInputProps()} />
-          <div
-            style={{
-              height: "124px",
-              width: "254px",
-              backgroundColor: "white",
-              borderRadius: "4px",
-              border: "1px dashed #00000058"
-            }}
-          >
+          <DropArea>
             {lista.length === 0 ? (
               <>
-                <img src={cloud} style={cloudStyle} />
-                <div style={descriptionStyle}>Arrastre imagen aqui</div>
+                <div style={{ marginTop: "33px" }}>
+                  <Cloud src={cloud} />
+                  <Description>Arrastre imagen aqui</Description>
+                </div>
               </>
             ) : null}
-            {lista.map(file => (
-              <div
-                style={{
-                  fontSize: "10px",
-                  padding: "2px 2px 0px 5px",
-                  float: "left"
-                }}
-              >
-                {file.path}
+
+            {lista.length > 0 ? (
+              <div style={{ width: "auto", height: "101px", overflow: "auto" }}>
+                {lista.map((file, index) => (
+                  <Item>
+                    {file.path}
+                    <CancelIconContainer onClick={onDelete(index)}>
+                      <CancelIcon className={classes.cancelIcon} />
+                    </CancelIconContainer>
+                  </Item>
+                ))}
               </div>
-            ))}
-          </div>
+            ) : null}
+
+            <UploadButton onClick={getRootProps().onClick}>
+              <Typography className={classes.buttonDescription}>
+                Seleccionar archivos
+              </Typography>
+            </UploadButton>
+          </DropArea>
         </div>
       )}
     </Dropzone>
