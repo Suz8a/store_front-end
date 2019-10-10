@@ -13,6 +13,7 @@ import {
 import CancelIcon from "@material-ui/icons/Cancel";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import * as mime from "mime-types";
 
 const useStyles = makeStyles({
   cancelIcon: {
@@ -31,6 +32,7 @@ const useStyles = makeStyles({
 function FileUploader() {
   const [lista, setLista] = useState([]);
   const classes = useStyles();
+  const imgExtension = [".jpg", ".png"];
   function onDelete(index) {
     return () => {
       const newLista = [...lista];
@@ -41,13 +43,17 @@ function FileUploader() {
   return (
     <Dropzone
       onDrop={files => {
-        let files_with_preview = [];
-        files.map(file => {
-          file["preview"] = URL.createObjectURL(file);
-          files_with_preview.push(file);
-        });
+        let files_with_preview = files
+          .filter(file =>
+            imgExtension.some(extension => mime.lookup(extension) == file.type)
+          )
+          .map(file => {
+            file["preview"] = URL.createObjectURL(file);
+            return file;
+          });
 
         const new_files = [...lista, ...files_with_preview];
+
         setLista(new_files);
       }}
     >
