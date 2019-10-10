@@ -1,6 +1,25 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
+import cloud from "../../assets/upload-cloud.svg";
+import styled from "styled-components";
+
+const descriptionStyle = {
+  display: "block",
+  margin: "5px auto 0px auto",
+  width: "160px",
+  font: "Roboto",
+  fontSize: "14px",
+  letterSpacing: "1px",
+  color: "#9C9C9CDE",
+  opacity: 1
+};
+
+const cloudStyle = {
+  display: "block",
+  margin: "auto",
+  marginTop: "20px"
+};
 
 function FileUploader() {
   const [lista, setLista] = useState([]);
@@ -22,7 +41,7 @@ function FileUploader() {
         <div
           {...getRootProps()}
           className=""
-          style={{ background: "red", width: "254px", height: "124px" }}
+          style={{ width: "254px", height: "124px" }}
         >
           <input {...getInputProps()} />
           <div
@@ -34,8 +53,20 @@ function FileUploader() {
               border: "1px dashed #00000058"
             }}
           >
+            {lista.length === 0 ? (
+              <>
+                <img src={cloud} style={cloudStyle} />
+                <div style={descriptionStyle}>Arrastre imagen aqui</div>
+              </>
+            ) : null}
             {lista.map(file => (
-              <div style={{ fontSize: "10px", padding: "2px 2px 0px 5px" }}>
+              <div
+                style={{
+                  fontSize: "10px",
+                  padding: "2px 2px 0px 5px",
+                  float: "left"
+                }}
+              >
                 {file.path}
               </div>
             ))}

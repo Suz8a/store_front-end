@@ -10,7 +10,9 @@ import FileUploader from "./components/file-uploader";
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <FileUploader />
+      <div style={{ marginLeft: "40%", marginTop: "15%" }}>
+        <FileUploader />
+      </div>
     </MuiThemeProvider>
   );
 }
