@@ -62,7 +62,7 @@ function FileUploader() {
           <DropArea>
             {lista.length === 0 ? (
               <>
-                <div style={{ marginTop: "33px" }}>
+                <div style={{ marginTop: "30px" }}>
                   <Cloud src={cloud} />
                   <Description>Arrastre imagen aqui</Description>
                 </div>
@@ -70,7 +70,7 @@ function FileUploader() {
             ) : null}
 
             {lista.length > 0 ? (
-              <div style={{ width: "auto", height: "101px", overflow: "auto" }}>
+              <div style={{ width: "auto", height: "92px", overflow: "auto" }}>
                 {lista.map((file, index) => (
                   <Item>
                     {file.path}

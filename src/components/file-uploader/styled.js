@@ -1,5 +1,26 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Typography } from "@material-ui/core";
+
+const showAnimation = keyframes`
+    from{
+        opacity:0;
+    }
+    to{
+
+        opacity:1;
+    }
+`;
+
+const showContainer = keyframes`
+    from{
+        transform:scaleY(0);
+        opacity:0;
+    }
+    to{
+        transform:scaleY(1);
+        opacity:1;
+    }
+`;
 
 export const Cloud = styled.img`
   display: block;
@@ -19,17 +40,26 @@ export const Description = styled(Typography)`
 `;
 
 export const DropArea = styled.div`
+  animation: ${showContainer} 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+
   height: 124px;
   width: 254px;
   background: white;
   border-radius: 4px;
   border: 1px dashed #00000058;
   position: relative;
+  & > * {
+    opacity: 0;
+    animation: ${showAnimation} 0.4s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+  }
 `;
 
 export const Item = styled.div`
+  animation: ${showAnimation} 0.2s;
   width: auto;
-  font-size: 10px;
+  font-size: 11px;
   margin: 4px 5px 0px 5px;
   padding: 5px;
   border: 1px solid #00000058;
@@ -37,19 +67,24 @@ export const Item = styled.div`
 `;
 
 export const UploadButton = styled.div`
-  width: auto;
+  width: 90%;
   height: 15px;
   background: black;
-  padding: 2px 5px 2px 5px;
+  padding: 3px 5px 3px 5px;
   color: white;
   margin: auto;
   left: 0px;
   right: 0px;
-  bottom: 0px;
+  bottom: 6px;
   position: absolute;
-  border-radius: 2px;
+  border-radius: 50px;
+  transition: 0.1s;
   &:hover {
-    background: #494949;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+  &:active {
+    transform: scale(0.95);
   }
 `;
 
