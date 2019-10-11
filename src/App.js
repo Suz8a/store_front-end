@@ -4,15 +4,12 @@ import "./App.css";
 import Nuevo from "./components/button";
 import theme from "./theme";
 import SideBar from "./components/side-bar/index";
-import SimpleCard from "./components/side-bar/card";
-
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <Grid container>
       <SideBar />
-      <SimpleCard />
       </Grid>
     </MuiThemeProvider>
   );
