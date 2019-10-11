@@ -3,6 +3,8 @@ import { MuiThemeProvider, Grid } from "@material-ui/core";
 import "./App.css";
 import Nuevo from "./components/button";
 import theme from "./theme";
+import ClientInfo from "./components/client-info";
+
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
           ></Nuevo>
         </div>
       </Grid>
-    </MuiThemeProvider>
+      <ClientInfo/>
+  </MuiThemeProvider>
+
   );
 }
 
