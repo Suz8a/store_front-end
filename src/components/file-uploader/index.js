@@ -8,30 +8,15 @@ import {
   DropArea,
   Item,
   UploadButton,
-  CancelIconContainer
+  CancelIconContainer,
+  CancelIcon,
+  ButtonDescription
 } from "./styled";
-import CancelIcon from "@material-ui/icons/Cancel";
-import { makeStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
-import * as mime from "mime-types";
 
-const useStyles = makeStyles({
-  cancelIcon: {
-    width: "14px",
-    height: "14px"
-  },
-  buttonDescription: {
-    margin: "0px auto 0px auto",
-    fontSize: "10px",
-    height: "15px",
-    width: "fit-content",
-    fontWeight: "bold"
-  }
-});
+import * as mime from "mime-types";
 
 function FileUploader() {
   const [lista, setLista] = useState([]);
-  const classes = useStyles();
   const imgExtension = [".jpg", ".png"];
   function onDelete(index) {
     return () => {
@@ -81,7 +66,7 @@ function FileUploader() {
                   <Item>
                     {file.path}
                     <CancelIconContainer onClick={onDelete(index)}>
-                      <CancelIcon className={classes.cancelIcon} />
+                      <CancelIcon />
                     </CancelIconContainer>
                   </Item>
                 ))}
@@ -89,9 +74,7 @@ function FileUploader() {
             ) : null}
 
             <UploadButton onClick={getRootProps().onClick}>
-              <Typography className={classes.buttonDescription}>
-                Seleccionar archivos
-              </Typography>
+              <ButtonDescription>Seleccionar archivos</ButtonDescription>
             </UploadButton>
           </DropArea>
         </div>
