@@ -8,7 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import prueba from './prueba.png';
+import FileUploader from "../file-uploader";
 
 
 
@@ -36,8 +36,7 @@ export default function ProductInfo() {
 
   return (
     <Grid
-    container direction = "row"
->
+    container direction = "row">
     <Grid
     item xs={4} sm={2}
    container direction="column"
@@ -71,10 +70,13 @@ export default function ProductInfo() {
 
 
       <Grid item xs={12} sm>
-              <img src={prueba}/></Grid>
-
+       <div style={{ marginLeft: "40%", marginTop: "15%" }}>
+          <FileUploader />
+        </div>
 
 
             </Grid>
+
+          </Grid>
   );
 }
