@@ -2,6 +2,8 @@ import React from "react";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
 import cloud from "../../assets/upload-cloud.svg";
+import Grid from '@material-ui/core/Grid';
+
 import {
   Cloud,
   Description,
@@ -55,7 +57,9 @@ function FileUploader() {
               <>
                 <div style={{ marginTop: "30px" }}>
                   <Cloud src={cloud} />
-                  <Description>Arrastre imagen aqui</Description>
+                  <Grid container direction="row" justify="center" alignItems="center"> <Description>
+                    Arrastre imagen aqui
+                  </Description></Grid>
                 </div>
               </>
             ) : null}
@@ -74,7 +78,7 @@ function FileUploader() {
             ) : null}
 
             <UploadButton onClick={getRootProps().onClick}>
-              <ButtonDescription>Seleccionar archivos</ButtonDescription>
+              <Grid container direction="row" justify="center" alignItems="center"> Seleccionar archivos</Grid>
             </UploadButton>
           </DropArea>
         </div>
