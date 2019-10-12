@@ -2,6 +2,7 @@ import React from "react";
 import { MuiThemeProvider, Grid } from "@material-ui/core";
 import "./App.css";
 import Nuevo from "./components/button";
+import SizeInfo from "./components/size-info";
 import theme from "./theme";
 
 function App() {
@@ -24,7 +25,12 @@ function App() {
             buttonSize="168px"
           ></Nuevo>
         </div>
+
+
       </Grid>
+
+
+      <SizeInfo/>
     </MuiThemeProvider>
   );
 }
