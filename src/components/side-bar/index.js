@@ -1,51 +1,30 @@
 import React from "react";
 import Divider from "@material-ui/core/Divider";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import MailIcon from "@material-ui/icons/Mail";
 import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/core/styles";
-
-import {} from "/";
-
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Limpieza from "../../assets/floor-brush.svg";
+import cambioTamaño from "../../assets/scissors.svg";
+import Reparacion from "../../assets/heal.svg";
+import Grabado from "../../assets/spell.svg";
+import Pulido from "../../assets/clean.svg";
+import EnProceso from "../../assets/tools-cross.svg";
+import Terminados from "../../assets/Check.svg";
+import { CardEffects, Titles, Circles, StoreIcon } from "./styled";
 //Componente para el menú lateral izquierdo
 //Por alguna razón no logro hacer que se vea lo que hago, tendré que seguir investigando...
 
-//Trata de seguir la estructura siguiente, se crea la funcion que retorna JSX, se exporta con "export default <nombre de
-//la funcion>"
-
-//utilizaste la libreria @material-ui/icons, por lo tanto debes instalarla con el comando "npm install @material-ui/icons"
-//tenias un "classess" innecesario en el primer <div>, esto te causaba errores
-//despues de corregir todo esto, importas la funcion en App y lo utilizas como si fuera una etiqueta html
-
-const useStyles = makeStyles({
-  card: {
-    minWidth: 275,
-    height: 750
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "3 6px",
-    transform: "scale(2)"
-  },
-  pos: {
-    marginBottom: 0
-  }
-});
-
 function SideBar() {
-  const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  const bull = <span>•</span>;
   return (
-    <Card className={classes.card}>
+    <CardEffects>
+      <Circles></Circles>
       <div>
-        <div />
         <Divider />
-        <Typography>SERVICIOS</Typography>
+        <Titles>SERVICIOS</Titles>
         <List>
           {[
             "Reparación",
@@ -56,26 +35,30 @@ function SideBar() {
           ].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index === 0 && <img src={Reparacion} />}
+                {index === 1 && <img src={cambioTamaño} />}
+                {index === 2 && <img src={Grabado} />}
+                {index === 3 && <img src={Pulido} />}
+                {index === 4 && <img src={Limpieza} />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
-        <Typography>PEDIDOS</Typography>
+        <Titles>PEDIDOS</Titles>
         <List>
           {["En proceso", "Terminados"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index === 0 && <img src={EnProceso} />}
+                {index === 1 && <img src={Terminados} />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
       </div>
-    </Card>
+    </CardEffects>
   );
 }
-
 export default SideBar;

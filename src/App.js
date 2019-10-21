@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 import { Grid } from "@material-ui/core";
-import TopLayout from "./components/top-layout";
+import SideBar from "./components/side-bar";
 
 function App() {
   return (
     <Grid container>
-      <TopLayout />
+      <SideBar />
     </Grid>
   );
 }
