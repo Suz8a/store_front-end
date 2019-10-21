@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { Typography } from "@material-ui/core";
+import { Typography, FormControl } from "@material-ui/core";
 import Cancel from "@material-ui/icons/Cancel";
 
 const showAnimation = keyframes`
@@ -31,6 +31,10 @@ export const Cloud = styled.img`
 export const CancelIcon = styled(Cancel)`
   width: 14px;
   height: 14px;
+`;
+
+export const ControlForm = styled(FormControl)`
+  width: 200px;
 `;
 
 export const ButtonDescription = styled(Typography)`

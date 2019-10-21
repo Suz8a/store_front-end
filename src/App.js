@@ -1,6 +1,7 @@
 import React from "react";
 import { MuiThemeProvider, Grid } from "@material-ui/core";
 import "./App.css";
+<<<<<<< HEAD
 import Nuevo from "./components/button";
 import SizeInfo from "./components/size-info";
 import ExpansionPanel from "./components/expansion-panel";
@@ -55,6 +56,24 @@ function App() {
       </MuiThemeProvider>
 
 >>>>>>> c1d8bfa9d4bf3442c5a1bb431369c1c3912a5ec4
+=======
+import ButtonAppBar from "./components/appBar";
+import theme from "./theme";
+import SideBar from "./components/side-bar/index";
+import SimpleCard from "./components/side-bar/card";
+import FileUploader from "./components/file-uploader";
+import { StylesProvider } from "@material-ui/styles";
+
+function App() {
+  return (
+    <StylesProvider injectFirst>
+      <MuiThemeProvider theme={theme}>
+        <div style={{ marginLeft: "40%", marginTop: "15%" }}>
+          <FileUploader />
+        </div>
+      </MuiThemeProvider>
+    </StylesProvider>
+>>>>>>> 2267712de4b124721e377f3c2b4bcd779f047c18
   );
 }
 
