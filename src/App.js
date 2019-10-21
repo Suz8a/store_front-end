@@ -9,10 +9,12 @@ import ClientDetails from "./components/client-details";
 import ServiceDetails from "./components/service-details";
 
 import theme from "./theme";
+import TopLayout from './components/top-layout';
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
+<<<<<<< HEAD
       <DetailsTitle folio="1309131" />
       <ClientDetails
         client="Suzclem Adriana Ochoa Casillas"
@@ -21,6 +23,27 @@ function App() {
       />
       <ServiceDetails service="Reparación" product="Pulsera" weight="100" />
       <ExpansionPanel cantidad="5000" />
+=======
+      <Grid container>
+        <div>
+          <Nuevo
+            variantType="outlined"
+            nombre="Cancelar"
+            colorTheme="secondary"
+            buttonSize="120px"
+          ></Nuevo>
+        </div>
+        <div style={{ paddingLeft: "30px" }}>
+          <Nuevo
+            variantType="contained"
+            nombre="Guardar"
+            colorTheme="primary"
+            buttonSize="168px"
+          ></Nuevo>
+        </div>
+      </Grid>
+      <TopLayout/>
+>>>>>>> 24ca8a59a96702ccce69835018244c2af1a3803e
     </MuiThemeProvider>
   );
 }
