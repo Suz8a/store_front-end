@@ -33,10 +33,6 @@ export const CancelIcon = styled(Cancel)`
   height: 14px;
 `;
 
-export const ControlForm = styled(FormControl)`
-  width: 200px;
-`;
-
 export const ButtonDescription = styled(Typography)`
   margin: 0px auto 0px auto;
   font-size: 10px;
