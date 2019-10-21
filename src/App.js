@@ -13,9 +13,14 @@ import theme from "./theme";
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <DetailsTitle folio="1309131"/>
-      <ClientDetails client="Suzclem Adriana Ochoa Casillas" tel="6673823990" email="suadocca@gmail.com" />
-      <ServiceDetails service="Reparación" product="Pulsera" weight="100"/>
+      <DetailsTitle folio="1309131" />
+      <ClientDetails
+        client="Suzclem Adriana Ochoa Casillas"
+        tel="6673823990"
+        email="suadocca@gmail.com"
+      />
+      <ServiceDetails service="Reparación" product="Pulsera" weight="100" />
+      <ExpansionPanel cantidad="5000" />
     </MuiThemeProvider>
   );
 }
