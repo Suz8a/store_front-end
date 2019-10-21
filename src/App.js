@@ -9,7 +9,11 @@ import ClientDetails from "./components/client-details";
 import ServiceDetails from "./components/service-details";
 
 import theme from "./theme";
+<<<<<<< HEAD
 import TopLayout from './components/top-layout';
+=======
+import ProductInfo from "./components/product-info";
+>>>>>>> c1d8bfa9d4bf3442c5a1bb431369c1c3912a5ec4
 
 function App() {
   return (
@@ -42,9 +46,15 @@ function App() {
           ></Nuevo>
         </div>
       </Grid>
+<<<<<<< HEAD
       <TopLayout/>
 >>>>>>> 24ca8a59a96702ccce69835018244c2af1a3803e
     </MuiThemeProvider>
+=======
+      <ProductInfo/>
+      </MuiThemeProvider>
+
+>>>>>>> c1d8bfa9d4bf3442c5a1bb431369c1c3912a5ec4
   );
 }
 
