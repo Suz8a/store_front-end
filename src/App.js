@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
 import { Grid } from "@material-ui/core";
-import SideBar from "./components/side-bar";
+import MaterialInfo from "./components/material-info";
+import Text from "./components/textFieldPrueba";
 
 function App() {
   return (
     <Grid container>
-      <SideBar />
+      <MaterialInfo />
+      <Text />
     </Grid>
   );
 }
