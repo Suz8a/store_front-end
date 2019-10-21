@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 import { Grid } from "@material-ui/core";
-import BudgetInfo from "./components/budget-info";
+import TopLayout from "./components/top-layout";
 
 function App() {
   return (
     <Grid container>
-      <BudgetInfo />
+      <TopLayout />
     </Grid>
   );
 }
