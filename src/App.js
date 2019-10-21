@@ -10,7 +10,11 @@ import ServiceDetails from "./components/service-details";
 import TopLayout from "./components/top-layout";
 import ProductInfo from "./components/product-info";
 import theme from "./theme";
+<<<<<<< HEAD
 import BudgetInfo from "./components/budget-info";
+=======
+import MaterialUsado from "./components/material-used-info";
+>>>>>>> 2286888d3f67a0296be21cd46d7ed3ba9a268d92
 
 function App() {
   return (
@@ -19,7 +23,11 @@ function App() {
         <div></div>
         <div style={{ paddingLeft: "30px" }}></div>
       </Grid>
+<<<<<<< HEAD
       <BudgetInfo />
+=======
+      <MaterialUsado/>
+>>>>>>> 2286888d3f67a0296be21cd46d7ed3ba9a268d92
     </MuiThemeProvider>
   );
 }
