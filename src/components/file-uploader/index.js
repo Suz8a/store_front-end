@@ -12,8 +12,7 @@ import {
   UploadButton,
   CancelIconContainer,
   CancelIcon,
-  ButtonDescription,
-  ControlForm
+  ButtonDescription
 } from "./styled";
 
 import * as mime from "mime-types";

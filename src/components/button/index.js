@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
-function New(props) {
+function Button(props) {
   return (
     <div>
       <Button
@@ -15,4 +15,4 @@ function New(props) {
   );
 }
 
-export default New;
+export default Button;
