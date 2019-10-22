@@ -7,15 +7,16 @@ import SideBar from "./components/side-bar/index";
 import SimpleCard from "./components/side-bar/card";
 import FileUploader from "./components/file-uploader";
 import { StylesProvider } from "@material-ui/styles";
+import New from "./components/button";
 
 function App() {
   return (
-    <StylesProvider injectFirst>
-      <MuiThemeProvider theme={theme}>
-        <div style={{ marginLeft: "40%", marginTop: "15%" }}>
-          <FileUploader />
-        </div>
-      </MuiThemeProvider>
+    <StylesProvider injectFirst={true}>
+      <MuiThemeProvider theme={theme}></MuiThemeProvider>
+      <div style={{ marginLeft: "40%", marginTop: "15%" }}>
+        <FileUploader />
+        <New size="100px" variantType="contained" colorTheme="primary" />
+      </div>
     </StylesProvider>
   );
 }
