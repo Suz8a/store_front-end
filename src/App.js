@@ -3,14 +3,15 @@ import "./App.css";
 import { Grid } from "@material-ui/core";
 import MaterialInfo from "./components/material-info";
 import FileUploader from "./components/file-uploader";
+import { MuiThemeProvider } from "@material-ui/core";
 
 function App() {
   return (
-    <Grid container>
-      <div style={{ margin: "300px auto 100px auto" }}>
+    <MuiThemeProvider>
+      <Grid container>
         <FileUploader />
-      </div>
-    </Grid>
+      </Grid>
+    </MuiThemeProvider>
   );
 }
 
