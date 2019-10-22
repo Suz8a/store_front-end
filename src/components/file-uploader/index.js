@@ -2,7 +2,7 @@ import React from "react";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
 import cloud from "../../assets/upload-cloud.svg";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 
 import {
   Cloud,
@@ -57,9 +57,15 @@ function FileUploader() {
               <>
                 <div style={{ marginTop: "30px" }}>
                   <Cloud src={cloud} />
-                  <Grid container direction="row" justify="center" alignItems="center"> <Description>
-                    Arrastre imagen aqui
-                  </Description></Grid>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                  >
+                    {" "}
+                    <Description>Arrastre imagen aqui</Description>
+                  </Grid>
                 </div>
               </>
             ) : null}
@@ -67,9 +73,9 @@ function FileUploader() {
             {lista.length > 0 ? (
               <div style={{ width: "auto", height: "92px", overflow: "auto" }}>
                 {lista.map((file, index) => (
-                  <Item>
+                  <Item key={index}>
                     {file.path}
-                    <CancelIconContainer key={index} onClick={onDelete(index)}>
+                    <CancelIconContainer onClick={onDelete(index)}>
                       <CancelIcon />
                     </CancelIconContainer>
                   </Item>
@@ -78,7 +84,15 @@ function FileUploader() {
             ) : null}
 
             <UploadButton onClick={getRootProps().onClick}>
-              <Grid container direction="row" justify="center" alignItems="center"> Seleccionar archivos</Grid>
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+              >
+                {" "}
+                Seleccionar archivos
+              </Grid>
             </UploadButton>
           </DropArea>
         </div>
