@@ -15,4 +15,4 @@ function ThemedButton(props) {
   );
 }
 
-export default Button;
+export default ThemedButton;
