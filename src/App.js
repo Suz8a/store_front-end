@@ -7,21 +7,20 @@ import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
 import ThemedButton from "./components/button";
-import Login from "./components/login";
+import DynamicTable from "./components/dynamic-table";
+
+const data = {
+  Folio: "12345",
+  Cliente: "Suzclem Adriana Ochoa Casillas",
+  Servicio: "Reparación",
+  Estado: "Procesando"
+};
 
 function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <div style={{ marginLeft: "40%", marginTop: "15%" }}>
-          <FileUploader />
-          <ThemedButton
-            size="100px"
-            variantType="contained"
-            colorTheme="primary"
-          />
-          <Login />
-        </div>
+        <DynamicTable data={data} />
       </MuiThemeProvider>
     </StylesProvider>
   );
