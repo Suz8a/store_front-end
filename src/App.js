@@ -9,12 +9,14 @@ import theme from "./theme";
 import ThemedButton from "./components/button";
 import DynamicTable from "./components/dynamic-table";
 
-const data = {
-  Folio: "12345",
-  Cliente: "Suzclem Adriana Ochoa Casillas",
-  Servicio: "Reparación",
-  Estado: "Procesando"
-};
+const data = [
+  {
+    Folio: "12345",
+    Cliente: "Suzclem Adriana Ochoa Casillas",
+    Servicio: "Reparación",
+    Estado: "Procesando"
+  }
+];
 
 function App() {
   return (
