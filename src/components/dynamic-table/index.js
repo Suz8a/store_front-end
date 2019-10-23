@@ -7,42 +7,43 @@ import TableRow from "@material-ui/core/TableRow";
 
 function DynamicTable(props) {
   const getKeys = function() {
-    return Object.keys(this.props.data[0]);
+    return Object.keys(props.data[0]);
   };
 
   console.log(getKeys());
 
   const getHeader = function() {
-    var keys = this.getKeys();
+    const keys = getKeys();
     return keys.map((key, index) => {
-      return <TableHead key={key}>{key.toUpperCase()}</TableHead>;
+      return <TableCell key={key}>{key}</TableCell>;
     });
   };
 
   const RenderRow = props => {
     return props.keys.map((key, index) => {
-      return <TableRow key={props.data[key]}>{props.data[key]}</TableRow>;
+      return <TableCell key={props.data[key]}>{props.data[key]}</TableCell>;
     });
   };
 
   const getRowsData = function() {
-    var items = this.props.data;
-    var keys = this.getKeys();
+    const items = props.data;
+    const keys = getKeys();
+    console.log(items);
     return items.map((row, index) => {
       return (
-        <TableCell key={index}>
+        <TableRow key={index}>
           <RenderRow key={index} data={row} keys={keys} />
-        </TableCell>
+        </TableRow>
       );
     });
   };
 
   return (
-    <Table style={{ width: "650" }} aria-label="simple table">
+    <Table style={{ width: "600px" }} aria-label="simple table">
       <TableHead>
-        <TableRow>{getHeader}</TableRow>
+        <TableRow>{getHeader()}</TableRow>
       </TableHead>
-      <TableBody>{getRowsData}</TableBody>
+      <TableBody>{getRowsData()}</TableBody>
     </Table>
   );
 }

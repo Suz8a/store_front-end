@@ -15,6 +15,12 @@ const data = [
     Cliente: "Suzclem Adriana Ochoa Casillas",
     Servicio: "Reparación",
     Estado: "Procesando"
+  },
+  {
+    Folio: "22222",
+    Cliente: "Jesus Abraham Zavala Quintero",
+    Servicio: "Pulido",
+    Estado: "En Taller"
   }
 ];
 
