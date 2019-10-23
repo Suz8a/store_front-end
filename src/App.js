@@ -7,6 +7,7 @@ import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
 import ThemedButton from "./components/button";
+import Login from "./components/login";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           variantType="contained"
           colorTheme="primary"
         />
+        <Login />
       </div>
     </StylesProvider>
   );
