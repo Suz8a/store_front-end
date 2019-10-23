@@ -4,13 +4,13 @@ import { Button } from "@material-ui/core";
 function ThemedButton(props) {
   return (
     <div>
-      <ThemedButton
+      <Button
         style={{ width: props.buttonSize }}
         variant={props.variantType}
         color={props.colorTheme}
       >
         {props.nombre}
-      </ThemedButton>
+      </Button>
     </div>
   );
 }

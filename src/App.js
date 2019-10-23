@@ -12,16 +12,17 @@ import Login from "./components/login";
 function App() {
   return (
     <StylesProvider injectFirst={true}>
-      <MuiThemeProvider theme={theme}></MuiThemeProvider>
-      <div style={{ marginLeft: "40%", marginTop: "15%" }}>
-        <FileUploader />
-        <ThemedButton
-          size="100px"
-          variantType="contained"
-          colorTheme="primary"
-        />
-        <Login />
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div style={{ marginLeft: "40%", marginTop: "15%" }}>
+          <FileUploader />
+          <ThemedButton
+            size="100px"
+            variantType="contained"
+            colorTheme="primary"
+          />
+          <Login />
+        </div>
+      </MuiThemeProvider>
     </StylesProvider>
   );
 }
