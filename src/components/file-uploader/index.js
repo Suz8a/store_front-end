@@ -91,7 +91,7 @@ function FileUploader() {
                 alignItems="center"
               >
                 {" "}
-                Seleccionar archivos
+                <ButtonDescription>Seleccionar archivos</ButtonDescription>
               </Grid>
             </UploadButton>
           </DropArea>
