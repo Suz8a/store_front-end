@@ -15,7 +15,11 @@ function DynamicTable(props) {
   const getHeader = function() {
     const keys = getKeys();
     return keys.map((key, index) => {
-      return <TableCell key={key}>{key}</TableCell>;
+      return (
+        <TableCell key={key}>
+          <span style={{ color: "#546E7ADE" }}>{key}</span>
+        </TableCell>
+      );
     });
   };
 
@@ -31,7 +35,13 @@ function DynamicTable(props) {
     console.log(items);
     return items.map((row, index) => {
       return (
-        <TableRow key={index}>
+        <TableRow
+          hover
+          key={index}
+          onClick={() => {
+            props.onRowClick(row);
+          }}
+        >
           <RenderRow key={index} data={row} keys={keys} />
         </TableRow>
       );
