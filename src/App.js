@@ -5,9 +5,11 @@ import PedidosTopBar from "./components/pedidos-top-bar";
 
 function App() {
   return (
-    <Grid container>
-      <PedidosTopBar />
-    </Grid>
+    <StylesProvider injectFirst={true}>
+      <MuiThemeProvider theme={theme}>
+        <PedidosTopBar />
+      </MuiThemeProvider>
+    </StylesProvider>
   );
 }
 
