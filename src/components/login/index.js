@@ -47,19 +47,15 @@ export default function Login() {
             <img src={Logo} alt="El Troquel" height="100" width="410" />
           </div>
         </CardDark>
-        <div style={{ marginLeft: "45%", marginTop: "25%", position:"absolute" }}>
-        <StylesProvider injectFirst={true}>
-      <MuiThemeProvider theme={theme}>
+        <div
+          style={{ marginLeft: "45%", marginTop: "25%", position: "absolute" }}
+        >
           <ThemedButton
-            height="800"
-            width="300"
+            size="100px"
             variantType="contained"
             colorTheme="primary"
-            value="hola bb"
-            text-align="center"
+            nombre="hola bb"
           />
-      </MuiThemeProvider>
-    </StylesProvider>
         </div>
       </CardLogIn>
     </div>
