@@ -30,7 +30,11 @@ export default function Login() {
               <EmailIcon style={{ color: "#9C9C9CDE" }} fontSize="small" />
             </Grid>
             <Grid item>
-              <TextField id="input-with-icon-grid" label="Correo" />
+              <TextField
+                style={{ width: "266px" }}
+                id="input-with-icon-grid"
+                label="Correo"
+              />
             </Grid>
           </Grid>
           <Grid container spacing={1} alignItems="flex-end">
@@ -39,6 +43,7 @@ export default function Login() {
             </Grid>
             <Grid item>
               <TextField
+                style={{ width: "266px" }}
                 id="input-with-icon-grid"
                 label="Constraseña"
                 type="Password"
@@ -52,7 +57,7 @@ export default function Login() {
           </div>
         </CardDark>
         <div
-          style={{ marginLeft: "38%", marginTop: "25%", position: "absolute" }}
+          style={{ marginLeft: "38%", marginTop: "24%", position: "absolute" }}
         >
           <ThemedButton
             buttonSize="283px"
