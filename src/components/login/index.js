@@ -38,7 +38,11 @@ export default function Login() {
               <LockIcon style={{ color: "#9C9C9CDE" }} fontSize="small" />
             </Grid>
             <Grid item>
-              <TextField id="input-with-icon-grid" label="Constraseña" />
+              <TextField
+                id="input-with-icon-grid"
+                label="Constraseña"
+                type="Password"
+              />
             </Grid>
           </Grid>
         </InputData>
