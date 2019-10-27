@@ -5,7 +5,10 @@ import Grid from "@material-ui/core/Grid";
 import EmailIcon from "@material-ui/icons/Email";
 import LockIcon from "@material-ui/icons/Lock";
 import Logo from "./../../assets/logo.png";
-import New from "./../button/index";
+import { MuiThemeProvider } from "@material-ui/core";
+import { StylesProvider } from "@material-ui/styles";
+import theme from "./../../theme";
+import ThemedButton from "./../button";
 
 export default function Login() {
   return (
@@ -44,6 +47,20 @@ export default function Login() {
             <img src={Logo} alt="El Troquel" height="100" width="410" />
           </div>
         </CardDark>
+        <div style={{ marginLeft: "45%", marginTop: "25%", position:"absolute" }}>
+        <StylesProvider injectFirst={true}>
+      <MuiThemeProvider theme={theme}>
+          <ThemedButton
+            height="800"
+            width="300"
+            variantType="contained"
+            colorTheme="primary"
+            value="hola bb"
+            text-align="center"
+          />
+      </MuiThemeProvider>
+    </StylesProvider>
+        </div>
       </CardLogIn>
     </div>
   );
