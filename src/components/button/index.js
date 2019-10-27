@@ -5,6 +5,7 @@ function ThemedButton(props) {
   return (
     <div>
       <Button
+        style={{ width: props.buttonSize }}
         variant={props.variantType}
         color={props.colorTheme}
       >
