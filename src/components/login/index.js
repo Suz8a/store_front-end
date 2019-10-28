@@ -5,7 +5,10 @@ import Grid from "@material-ui/core/Grid";
 import EmailIcon from "@material-ui/icons/Email";
 import LockIcon from "@material-ui/icons/Lock";
 import Logo from "./../../assets/logo.png";
-import New from "./../button/index";
+import { MuiThemeProvider } from "@material-ui/core";
+import { StylesProvider } from "@material-ui/styles";
+import theme from "./../../theme";
+import ThemedButton from "./../button";
 
 export default function Login() {
   return (
@@ -27,7 +30,11 @@ export default function Login() {
               <EmailIcon style={{ color: "#9C9C9CDE" }} fontSize="small" />
             </Grid>
             <Grid item>
-              <TextField id="input-with-icon-grid" label="Correo" />
+              <TextField
+                style={{ width: "266px" }}
+                id="input-with-icon-grid"
+                label="Correo"
+              />
             </Grid>
           </Grid>
           <Grid container spacing={1} alignItems="flex-end">
@@ -35,7 +42,12 @@ export default function Login() {
               <LockIcon style={{ color: "#9C9C9CDE" }} fontSize="small" />
             </Grid>
             <Grid item>
-              <TextField id="input-with-icon-grid" label="Constraseña" />
+              <TextField
+                style={{ width: "266px" }}
+                id="input-with-icon-grid"
+                label="Constraseña"
+                type="Password"
+              />
             </Grid>
           </Grid>
         </InputData>
@@ -44,6 +56,16 @@ export default function Login() {
             <img src={Logo} alt="El Troquel" height="100" width="410" />
           </div>
         </CardDark>
+        <div
+          style={{ marginLeft: "38%", marginTop: "24%", position: "absolute" }}
+        >
+          <ThemedButton
+            buttonSize="283px"
+            variantType="contained"
+            colorTheme="primary"
+            nombre="Entrar"
+          />
+        </div>
       </CardLogIn>
     </div>
   );

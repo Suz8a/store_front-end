@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Grid } from "@material-ui/core";
-import MaterialInfo from "./components/material-info";
-import FileUploader from "./components/file-uploader";
+import Login from "./components/login";
 import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
@@ -10,7 +9,6 @@ import ThemedButton from "./components/button";
 import DynamicTable from "./components/dynamic-table";
 import Build from "@material-ui/icons/Build";
 import SideBar from "./components/side-bar";
-import Login from "./components/login";
 
 const data = [
   {
@@ -55,7 +53,6 @@ function App() {
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
         <SideBar />
-        <Login />
       </MuiThemeProvider>
     </StylesProvider>
   );
