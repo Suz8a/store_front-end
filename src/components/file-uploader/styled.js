@@ -57,7 +57,7 @@ export const DropArea = styled.div`
   animation: ${showContainer} 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 
   height: 124px;
-  width: 254px;
+  width: ${props => props.width};
   background: white;
   border-radius: 4px;
   border: 1px dashed #00000058;
@@ -81,7 +81,7 @@ export const Item = styled.div`
 `;
 
 export const UploadButton = styled.div`
-  width: 90%;
+  width: 230px;
   height: 15px;
   background: black;
   padding: 3px 5px 3px 5px;
@@ -89,7 +89,7 @@ export const UploadButton = styled.div`
   margin: auto;
   left: 0px;
   right: 0px;
-  bottom: 6px;
+  bottom: 10px;
   position: absolute;
   border-radius: 50px;
   transition: 0.1s;

@@ -10,6 +10,7 @@ import DynamicTable from "./components/dynamic-table";
 import Build from "@material-ui/icons/Build";
 import MainPedidos from "./containers/main-pedidos";
 import SideBarWorkShop from "./components/side-bar-workshop";
+import FileUploader from "./components/file-uploader";
 
 const data = [
   {
@@ -53,7 +54,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <SideBarWorkShop />
+        <FileUploader width="600px" />
       </MuiThemeProvider>
     </StylesProvider>
   );
