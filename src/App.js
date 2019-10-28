@@ -10,6 +10,7 @@ import DynamicTable from "./components/dynamic-table";
 import Build from "@material-ui/icons/Build";
 import SideBar from "./components/side-bar";
 import TopLayout from "./components/top-layout";
+import MainPedidos from "./containers/main-pedidos";
 
 const data = [
   {
@@ -53,10 +54,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <div style={{ width: "100%", height: "65px" }}>
-          <TopLayout />
-        </div>
-        <SideBar />
+        <MainPedidos />
       </MuiThemeProvider>
     </StylesProvider>
   );
