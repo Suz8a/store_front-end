@@ -21,42 +21,51 @@ function SideBar() {
   const bull = <span>•</span>;
   return (
     <CardEffects>
-      <Circles></Circles>
-      <div>
-        <Divider />
-        <Titles>SERVICIOS</Titles>
-        <List>
-          {[
-            "Reparación",
-            "Cambio de Tamaño",
-            "Grabado",
-            "Pulido",
-            "Limpieza"
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index === 0 && <img src={Reparacion} />}
-                {index === 1 && <img src={cambioTamaño} />}
-                {index === 2 && <img src={Grabado} />}
-                {index === 3 && <img src={Pulido} />}
-                {index === 4 && <img src={Limpieza} />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Titles>PEDIDOS</Titles>
-        <List>
-          {["En proceso", "Terminados"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index === 0 && <img src={EnProceso} />}
-                {index === 1 && <img src={Terminados} />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+      <div
+        style={{
+          height: "100%",
+          widht: "302px",
+          padding: "19px 23px 0px 23px"
+        }}
+      >
+        <Circles />
+
+        <div>
+          <Divider />
+          <Titles>SERVICIOS</Titles>
+          <List>
+            {[
+              "Reparación",
+              "Cambio de Tamaño",
+              "Grabado",
+              "Pulido",
+              "Limpieza"
+            ].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index === 0 && <img src={Reparacion} />}
+                  {index === 1 && <img src={cambioTamaño} />}
+                  {index === 2 && <img src={Grabado} />}
+                  {index === 3 && <img src={Pulido} />}
+                  {index === 4 && <img src={Limpieza} />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          <Titles>PEDIDOS</Titles>
+          <List>
+            {["En proceso", "Terminados"].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index === 0 && <img src={EnProceso} />}
+                  {index === 1 && <img src={Terminados} />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </div>
       </div>
     </CardEffects>
   );

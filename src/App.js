@@ -9,6 +9,8 @@ import theme from "./theme";
 import ThemedButton from "./components/button";
 import DynamicTable from "./components/dynamic-table";
 import Build from "@material-ui/icons/Build";
+import SideBar from "./components/side-bar";
+import Login from "./components/login";
 
 const data = [
   {
@@ -52,13 +54,8 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <DynamicTable
-          width="100%"
-          onRowClick={item => {
-            console.log(item);
-          }}
-          data={tableData}
-        />
+        <SideBar />
+        <Login />
       </MuiThemeProvider>
     </StylesProvider>
   );
