@@ -8,8 +8,6 @@ import theme from "./theme";
 import ThemedButton from "./components/button";
 import DynamicTable from "./components/dynamic-table";
 import Build from "@material-ui/icons/Build";
-import SideBar from "./components/side-bar";
-import TopLayout from "./components/top-layout";
 import MainPedidos from "./containers/main-pedidos";
 
 const data = [
