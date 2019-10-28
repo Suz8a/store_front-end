@@ -10,7 +10,7 @@ function ClientInfo() {
         Cliente{" "}
       </Typography>
 
-      <TextField label="Nombre" />
+      <TextField label="Nombre" style={{ width: "256px" }} />
 
       <Grid
         container
