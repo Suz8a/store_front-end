@@ -49,7 +49,7 @@ function DynamicTable(props) {
   };
 
   return (
-    <Table style={{ width: "600px" }} aria-label="simple table">
+    <Table style={{ width: props.width }} aria-label="simple table">
       <TableHead>
         <TableRow>{getHeader()}</TableRow>
       </TableHead>

@@ -53,6 +53,7 @@ function App() {
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
         <DynamicTable
+          width="100%"
           onRowClick={item => {
             console.log(item);
           }}
