@@ -18,7 +18,7 @@ import { callExpression } from "@babel/types";
 //Componente para el menú lateral izquierdo
 //Por alguna razón no logro hacer que se vea lo que hago, tendré que seguir investigando...
 
-function SideBar() {
+function SideBarStore() {
   return (
     <CardEffects style={{ height: "calc(100vh - 70px)" }}>
       <div
@@ -75,4 +75,4 @@ function SideBar() {
     </CardEffects>
   );
 }
-export default SideBar;
+export default SideBarStore;

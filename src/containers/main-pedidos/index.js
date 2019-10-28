@@ -1,5 +1,5 @@
 import React from "react";
-import SideBar from "../../components/side-bar";
+import SideBarStore from "../../components/side-bar-store";
 import TopLayout from "../../components/top-layout";
 
 function MainPedidos() {
@@ -8,7 +8,7 @@ function MainPedidos() {
       <div style={{ width: "100%" }}>
         <TopLayout />
       </div>
-      <SideBar />
+      <SideBarStore />
     </div>
   );
 }
