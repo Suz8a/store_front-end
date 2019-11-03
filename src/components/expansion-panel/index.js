@@ -6,6 +6,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
+import DynamicTable from "../dynamic-table";
 
 const useStyles = makeStyles(theme => ({
   root: { width: "20%" },
@@ -43,11 +44,13 @@ function ExpancionPanel(props) {
             direction="row"
             justify="space-between"
             alignItems="center"
-          ></Grid>
+          >
+              <DynamicTable/>
+          </Grid>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
   );
 }
 
-export default ExpancionPanel;
+export default ExpansionPanel;
