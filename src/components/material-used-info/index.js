@@ -33,7 +33,7 @@ function MaterialUsado() {
             <TextField
               label="Oro (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
               placeholder="$1000"
@@ -51,7 +51,7 @@ function MaterialUsado() {
             <TextField
               label="Bronce (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
               placeholder="$1000"
@@ -76,7 +76,7 @@ function MaterialUsado() {
             <TextField
               label="Plata (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
               placeholder="$1000"
@@ -94,7 +94,7 @@ function MaterialUsado() {
             <TextField
               label="Acero Inoxidable (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
               placeholder="$1000"

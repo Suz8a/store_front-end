@@ -9,18 +9,25 @@ function ClientInfo() {
       <Typography variant="h6" component="h2">
         Cliente{" "}
       </Typography>
-
-      <TextField label="Nombre" />
-
+      <TextField
+        label="Nombre"
+        style={{ width: "256px", margin: "0px 5px 0px 5px" }}
+      />
       <Grid
         container
         direction="row"
         justify="flex-start"
         alignItems="flex-start"
       >
-        <TextField label="Apellido Paterno" style={{ paddingRight: "30px" }} />
-
-        <TextField id="lastname2" label="Apellido Materno" />
+        <TextField
+          label="Apellido Paterno"
+          style={{ width: "256px", margin: "0px 5px 0px 5px" }}
+        />
+        <TextField
+          id="lastname2"
+          label="Apellido Materno"
+          style={{ width: "256px", margin: "0px 5px 0px 25px" }}
+        />
       </Grid>
       <Grid
         container
@@ -28,9 +35,16 @@ function ClientInfo() {
         justify="flex-start"
         alignItems="flex-start"
       >
-        <TextField label="Telefono" style={{ paddingRight: "30px" }} />
-
-        <TextField label="Correo" type="email" autoComplete="email" />
+        <TextField
+          label="Telefono"
+          style={{ width: "256px", margin: "0px 5px 0px 5px" }}
+        />
+        <TextField
+          label="Correo"
+          type="email"
+          autoComplete="email"
+          style={{ width: "256px", margin: "0px 5px 0px 25px" }}
+        />
       </Grid>
     </Grid>
   );

@@ -11,6 +11,7 @@ import Build from "@material-ui/icons/Build";
 import MainPedidos from "./containers/main-pedidos";
 import SideBarWorkShop from "./components/side-bar-workshop";
 import FileUploader from "./components/file-uploader";
+import SizeInfo from "./components/size-info";
 
 const data = [
   {
@@ -54,7 +55,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <FileUploader width="600px" />
+        <SizeInfo />
       </MuiThemeProvider>
     </StylesProvider>
   );

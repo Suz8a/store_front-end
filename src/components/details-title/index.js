@@ -11,11 +11,17 @@ function DetailsTitle(props) {
         justify="space-between"
         alignItems="center"
       >
-        <Typography variant="h6" component="h2">
-          {" "}
+        <Typography
+          variant="h6"
+          component="h2"
+          style={{ width: "253px", height: "33px" }}
+        >
           Detalles del Pedido{" "}
         </Typography>
-        <Typography variant="subtitle1"> Folio: {props.folio} </Typography>
+        <Typography variant="subtitle1" style={{ width: "130px" }}>
+          {" "}
+          Folio: {props.folio}{" "}
+        </Typography>
       </Grid>
     </div>
   );

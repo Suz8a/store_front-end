@@ -29,6 +29,7 @@ function ProductInfo(props) {
   };
   return (
     <div>
+<<<<<<< HEAD
       <Grid container direction="row">
         <Grid
           item
@@ -50,21 +51,33 @@ function ProductInfo(props) {
                 id: "Selectlist"
               }}
             >
+=======
+      <Grid container direction = "row">
+        <Grid item xs={4} sm={2} container direction="column" justify = "flex-start" alignItems = "flex-start">
+          <Typography variant="h6" style={{width:"70px"}}>Producto </Typography>
+          <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="Selectlist" style={{width:"256px"}}>Seleccionar</InputLabel>
+          <Select value={values.Seleccionar} onChange={handleChange} inputProps={{name: 'Seleccionar', id: 'Selectlist',}}>
+>>>>>>> 9e29d615dd136e64c6318475e73846e354395871
               <MenuItem value={1}>Anillo</MenuItem>
               <MenuItem value={2}>Collar</MenuItem>
               <MenuItem value={3}>Pulsera</MenuItem>
               <MenuItem value={4}>Reloj</MenuItem>
-            </Select>
+          </Select>
           </FormControl>
+<<<<<<< HEAD
           <TextField
             id="gramos"
             label="Peso (gr) "
             type="number"
             className={classes.formControl}
           />
+=======
+          <TextField label = "Peso (gr) " type = "number"  style={{width:"170px"}} className={classes.formControl}/>
+>>>>>>> 9e29d615dd136e64c6318475e73846e354395871
         </Grid>
         <Grid item xs={12} sm>
-          <FileUploader />
+          <FileUploader/>
         </Grid>
       </Grid>
     </div>
