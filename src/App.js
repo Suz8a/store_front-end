@@ -5,6 +5,8 @@ import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
 import Build from "@material-ui/icons/Build";
 import DynamicForm from "./components/dynamic-form";
+import MainPedidos from "./containers/main-pedidos";
+import SideBarStore from "./components/side-bar-store";
 
 const data = [
   {
@@ -48,7 +50,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <DynamicForm title="Cambio de Tamaño" />
+        <MainPedidos />
       </MuiThemeProvider>
     </StylesProvider>
   );
