@@ -4,7 +4,7 @@ import TopLayout from "../../components/top-layout";
 import DynamicForm from "../../components/dynamic-form";
 import DynamicTable from "../../components/dynamic-table";
 
-function MainPedidos() {
+function SizeChanger() {
   return (
     <div>
       <div>
@@ -34,11 +34,11 @@ function MainPedidos() {
             height: "fit-content"
           }}
         >
-          <DynamicForm />
+          <DynamicForm title="Cambio de Tamaño" />
         </div>
       </div>
     </div>
   );
 }
 
-export default MainPedidos;
+export default SizeChanger;
