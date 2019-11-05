@@ -15,12 +15,14 @@ import MaterialUsado from "./components/material-used-info";
 import ProductInfo from "./components/product-info";
 import ServiceDetails from './components/service-details';
 import SizeInfo from "./components/size-info";
+import SideBar from "./components/side-bar";
 
 function App() {
   return (
-    < StylesProvider injectFirst={true}>
+    <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <SizeInfo/>
+        <SideBar/>
+        <PedidosTopBar/>
       </MuiThemeProvider>
     </StylesProvider>
   );
