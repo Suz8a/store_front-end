@@ -21,7 +21,8 @@ function MainPedidos() {
           style={{
             display: "inline-block",
             width: "fit-content",
-            height: "fit-content"
+            height: "fit-content",
+            float: "left"
           }}
         >
           <SideBarStore />
