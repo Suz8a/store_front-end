@@ -10,18 +10,28 @@ function MainPedidos() {
       <div>
         <TopLayout />
       </div>
-      <div style={{ display: "inline", float: "left", width: "100%" }}>
-        <div style={{ display: "inline", float: "left" }}>
+      <div
+        style={{
+          width: "100%",
+          height: "fit-content",
+          backgroundColor: "#F4F6F8"
+        }}
+      >
+        <div
+          style={{
+            display: "inline-block",
+            width: "fit-content",
+            height: "fit-content"
+          }}
+        >
           <SideBarStore />
         </div>
         <div
           style={{
-            height: "calc(100vh - 70px)",
-            display: "inline",
-            float: "left",
-            width: "100%",
-            padding: "80px auto 60px auto",
-            backgroundColor: "#F4F6F8"
+            display: "inline-block",
+            width: "fit-content",
+            height: "fit-content",
+            padding: "30px auto 30px auto"
           }}
         >
           <DynamicForm />

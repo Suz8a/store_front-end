@@ -10,6 +10,5 @@ export const TextBox = styled.textarea`
   opacity: 1;
   font-family: "Roboto";
   font-size: 15px;
-  color: #9c9c9cde;
   padding: 5px;
 `;
