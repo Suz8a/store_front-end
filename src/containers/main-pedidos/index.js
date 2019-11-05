@@ -29,9 +29,8 @@ function MainPedidos() {
         <div
           style={{
             display: "inline-block",
-            width: "fit-content",
-            height: "fit-content",
-            padding: "30px auto 30px auto"
+            width: "calc(100vw - 304px)",
+            height: "fit-content"
           }}
         >
           <DynamicForm />
