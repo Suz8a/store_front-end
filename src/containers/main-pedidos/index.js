@@ -7,23 +7,24 @@ import DynamicTable from "../../components/dynamic-table";
 function MainPedidos() {
   return (
     <div>
-      <div style={{ width: "100%" }}>
+      <div>
         <TopLayout />
       </div>
-      <div style={{ width: "100%" }}>
-        <div>
+      <div style={{ display: "inline", float: "left", width: "100%" }}>
+        <div style={{ display: "inline", float: "left" }}>
           <SideBarStore />
-
-          <div
-            style={{
-              display: "inline-block",
-              padding: "80px auto 60px auto",
-              backgroundColor: "#F4F6F8",
-              width: "100%"
-            }}
-          >
-            <DynamicForm />
-          </div>
+        </div>
+        <div
+          style={{
+            height: "calc(100vh - 70px)",
+            display: "inline",
+            float: "left",
+            width: "100%",
+            padding: "80px auto 60px auto",
+            backgroundColor: "#F4F6F8"
+          }}
+        >
+          <DynamicForm />
         </div>
       </div>
     </div>

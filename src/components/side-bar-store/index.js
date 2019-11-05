@@ -20,7 +20,7 @@ import { callExpression } from "@babel/types";
 
 function SideBarStore() {
   return (
-    <CardEffects style={{}}>
+    <CardEffects style={{ height: "calc(100vh - 70px)" }}>
       <div
         style={{
           height: "100%",

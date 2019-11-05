@@ -19,7 +19,6 @@ export const Titles = styled(Typography)`
   letter-spacing: 0.12px;
   color: #546e7a99;
   opacity: 1;
-  margin-left: 23px;
   width: 90px;
   height: 24px;
 `;
