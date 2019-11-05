@@ -49,7 +49,7 @@ function FileUploader(props) {
           {...getRootProps()}
           onClick={() => {}}
           className=""
-          style={{ width: props.width, height: "124px" }}
+          style={{ width: props.width, height: "124px", margin: "auto" }}
         >
           <input {...getInputProps()} />
           <DropArea>

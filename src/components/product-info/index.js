@@ -32,14 +32,17 @@ function ProductInfo(props) {
       <Grid container direction="row">
         <Grid
           item
-          xs={4}
-          sm={2}
+          xs={12}
+          sm={6}
           container
           direction="column"
           justify="flex-start"
           alignItems="flex-start"
         >
-          <Typography variant="h6" style={{ width: "70px" }}>
+          <Typography
+            variant="h6"
+            style={{ color: "#546E7ADE", width: "70px" }}
+          >
             Producto{" "}
           </Typography>
           <FormControl className={classes.formControl}>
@@ -64,7 +67,7 @@ function ProductInfo(props) {
             className={classes.formControl}
           />
         </Grid>
-        <Grid item xs={12} sm>
+        <Grid item xs={12} sm={6}>
           <FileUploader width="254px" />
         </Grid>
       </Grid>

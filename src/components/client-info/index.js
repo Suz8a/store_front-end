@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 function ClientInfo() {
   return (
     <Grid container direction="column" justify="center" alignItems="flex-start">
-      <Typography variant="h6" component="h2">
+      <Typography variant="h6" component="h2" style={{ color: "#546E7ADE" }}>
         Cliente{" "}
       </Typography>
       <TextField

@@ -1,17 +1,10 @@
 import React from "react";
 import "./App.css";
-import { Grid } from "@material-ui/core";
-import Login from "./components/login";
 import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
-import ThemedButton from "./components/button";
-import DynamicTable from "./components/dynamic-table";
 import Build from "@material-ui/icons/Build";
-import MainPedidos from "./containers/main-pedidos";
-import SideBarWorkShop from "./components/side-bar-workshop";
-import FileUploader from "./components/file-uploader";
-import ProductInfo from "./components/product-info";
+import DynamicForm from "./components/dynamic-form";
 
 const data = [
   {
@@ -55,7 +48,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <ProductInfo />
+        <DynamicForm title="Cambio de Tamaño" />
       </MuiThemeProvider>
     </StylesProvider>
   );

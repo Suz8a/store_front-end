@@ -13,7 +13,7 @@ function MaterialUsado() {
         justify="center"
         alignItems="flex-start"
       >
-        <Typography variant="h6" component="h2">
+        <Typography variant="h6" component="h2" style={{ color: "#546E7ADE" }}>
           {" "}
           Material a Utilizar{" "}
         </Typography>
@@ -36,7 +36,7 @@ function MaterialUsado() {
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
@@ -54,7 +54,7 @@ function MaterialUsado() {
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
@@ -79,7 +79,7 @@ function MaterialUsado() {
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
@@ -97,7 +97,7 @@ function MaterialUsado() {
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
