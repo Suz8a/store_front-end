@@ -16,6 +16,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const data=[{
+  Motivo: "10gr de Oro", Costo: "$1000"
+}];
+
 function ExpancionPanel(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -45,7 +49,7 @@ function ExpancionPanel(props) {
             justify="space-between"
             alignItems="center"
           >
-              <DynamicTable/>
+              <DynamicTable data={data}/>
           </Grid>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -53,4 +57,4 @@ function ExpancionPanel(props) {
   );
 }
 
-export default ExpansionPanel;
+export default ExpancionPanel;
