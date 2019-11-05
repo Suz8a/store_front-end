@@ -11,7 +11,7 @@ function ClientInfo() {
       </Typography>
       <TextField
         label="Nombre"
-        style={{ width: "256px", margin: "0px 5px 0px 5px" }}
+        style={{ width: "256px", margin: "15px 5px 0px 5px" }}
       />
       <Grid
         container
@@ -21,12 +21,12 @@ function ClientInfo() {
       >
         <TextField
           label="Apellido Paterno"
-          style={{ width: "256px", margin: "0px 5px 0px 5px" }}
+          style={{ width: "256px", margin: "15px 5px 0px 5px" }}
         />
         <TextField
           id="lastname2"
           label="Apellido Materno"
-          style={{ width: "256px", margin: "0px 5px 0px 25px" }}
+          style={{ width: "256px", margin: "15px 5px 0px 25px" }}
         />
       </Grid>
       <Grid
@@ -37,13 +37,13 @@ function ClientInfo() {
       >
         <TextField
           label="Telefono"
-          style={{ width: "256px", margin: "0px 5px 0px 5px" }}
+          style={{ width: "256px", margin: "15px 5px 0px 5px" }}
         />
         <TextField
           label="Correo"
           type="email"
           autoComplete="email"
-          style={{ width: "256px", margin: "0px 5px 0px 25px" }}
+          style={{ width: "256px", margin: "15px 5px 0px 25px" }}
         />
       </Grid>
     </Grid>
