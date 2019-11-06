@@ -21,8 +21,9 @@ function SizeChanger() {
           style={{
             display: "inline-block",
             width: "fit-content",
-            height: "fit-content",
-            float: "left"
+            height: "100%",
+            float: "left",
+            position: "relative"
           }}
         >
           <SideBarStore />
@@ -34,7 +35,7 @@ function SizeChanger() {
             height: "fit-content"
           }}
         >
-          <DynamicForm title="Cambio de Tamaño" />
+          <DynamicForm title="Cambio de Tamaño" cliente="true" />
         </div>
       </div>
     </div>

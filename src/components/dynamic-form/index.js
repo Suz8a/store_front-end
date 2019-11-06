@@ -20,13 +20,18 @@ function DynamicForm(props) {
         >
           {props.title}
         </Typography>
-        <ClientInfo />
+        {props.cliente ? <ClientInfo /> : null}
         <div style={{ marginTop: "40px" }}>
           <ProductInfo />
         </div>
-        <div style={{ marginTop: "30px" }}>
-          <SizeInfo />
-        </div>
+        {props.producto ? (
+          <div style={{ marginTop: "30px" }}>
+            <SizeInfo />
+          </div>
+        ) : null}
+
+        {props.descripcion?()}
+
         <div style={{ marginTop: "40px" }}>
           <Description />
         </div>
@@ -39,7 +44,6 @@ function DynamicForm(props) {
         <div style={{ marginTop: "40px" }}>
           <BudgetInfo />
         </div>
-
         <div
           style={{ float: "right", marginTop: "45px", marginBottom: "50px" }}
         >
