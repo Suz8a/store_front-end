@@ -3,8 +3,9 @@ import SideBarStore from "../../components/side-bar-store";
 import TopLayout from "../../components/top-layout";
 import DynamicForm from "../../components/dynamic-form";
 import DynamicTable from "../../components/dynamic-table";
+import CambioForm from "../../containers/cambio-form";
 
-function SizeChanger() {
+function Recepcionista() {
   return (
     <div>
       <div>
@@ -35,20 +36,11 @@ function SizeChanger() {
             height: "fit-content"
           }}
         >
-          <DynamicForm
-            title="Cambio de Tamaño"
-            cliente="true"
-            producto="true"
-            medidas="true"
-            descripcion="true"
-            materialAdjunto="true"
-            materialUtilizar="true"
-            presupuesto="true"
-          />
+          <CambioForm />
         </div>
       </div>
     </div>
   );
 }
 
-export default SizeChanger;
+export default Recepcionista;

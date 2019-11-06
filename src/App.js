@@ -4,7 +4,7 @@ import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
 import Build from "@material-ui/icons/Build";
-import SizeChanger from "./containers/size-changer";
+import Recepcionista from "./layout/recepcionista";
 
 const data = [
   {
@@ -48,7 +48,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <SizeChanger />
+        <Recepcionista />
       </MuiThemeProvider>
     </StylesProvider>
   );
