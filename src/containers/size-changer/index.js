@@ -35,7 +35,16 @@ function SizeChanger() {
             height: "fit-content"
           }}
         >
-          <DynamicForm title="Cambio de Tamaño" cliente="true" />
+          <DynamicForm
+            title="Cambio de Tamaño"
+            cliente="true"
+            producto="true"
+            medidas="true"
+            descripcion="true"
+            materialAdjunto="true"
+            materialUtilizar="true"
+            presupuesto="true"
+          />
         </div>
       </div>
     </div>

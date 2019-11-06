@@ -24,26 +24,36 @@ function DynamicForm(props) {
         <div style={{ marginTop: "40px" }}>
           <ProductInfo />
         </div>
-        {props.producto ? (
+        {props.medidas ? (
           <div style={{ marginTop: "30px" }}>
             <SizeInfo />
           </div>
         ) : null}
 
-        {props.descripcion?()}
+        {props.descripcion ? (
+          <div style={{ marginTop: "40px" }}>
+            <Description />
+          </div>
+        ) : null}
 
-        <div style={{ marginTop: "40px" }}>
-          <Description />
-        </div>
-        <div style={{ marginTop: "40px" }}>
-          <MaterialInfo />
-        </div>
-        <div style={{ marginTop: "40px" }}>
-          <MaterialUsado />
-        </div>
-        <div style={{ marginTop: "40px" }}>
-          <BudgetInfo />
-        </div>
+        {props.materialAdjunto ? (
+          <div style={{ marginTop: "40px" }}>
+            <MaterialInfo />
+          </div>
+        ) : null}
+
+        {props.materialUtilizar ? (
+          <div style={{ marginTop: "40px" }}>
+            <MaterialUsado />
+          </div>
+        ) : null}
+
+        {props.presupuesto ? (
+          <div style={{ marginTop: "40px" }}>
+            <BudgetInfo />
+          </div>
+        ) : null}
+
         <div
           style={{ float: "right", marginTop: "45px", marginBottom: "50px" }}
         >
