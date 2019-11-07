@@ -7,7 +7,7 @@ import theme from "./theme";
 import {StylesProvider} from '@material-ui/core/styles';
 import ClientInfo from './components/client-info';
 import ClientDetails from './components/client-details';
-import ExpansionPanel from './components/expansion-panel';
+import ExpancionPanel from './components/expansion-panel';
 import BudgetInfo from './components/budget-info';
 import DetailsTitle from "./components/details-title";
 import MaterialInfo from "./components/material-info";
@@ -25,15 +25,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        
-        <Paper>
-  <Typography variant="h5" component="h3">
-    This is a sheet of paper.
-  </Typography>
-  <Typography component="p">
-    Paper can be used to build surface or other elements for your application.
-  </Typography>
-</Paper>
+        <ExpancionPanel cantidad="20000"/>
       </MuiThemeProvider>
     </StylesProvider>
   );
