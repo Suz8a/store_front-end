@@ -12,13 +12,12 @@ import {
   UploadButton,
   CancelIconContainer,
   CancelIcon,
-  ButtonDescription,
-  ControlForm
+  ButtonDescription
 } from "./styled";
 
 import * as mime from "mime-types";
 
-function FileUploader() {
+function FileUploader(props) {
   const [lista, setLista] = useState([]);
   const imgExtension = [".jpg", ".png"];
   function onDelete(index) {
@@ -50,7 +49,7 @@ function FileUploader() {
           {...getRootProps()}
           onClick={() => {}}
           className=""
-          style={{ width: "254px", height: "124px" }}
+          style={{ width: props.width, height: "124px", margin: "auto" }}
         >
           <input {...getInputProps()} />
           <DropArea>
@@ -74,7 +73,7 @@ function FileUploader() {
             {lista.length > 0 ? (
               <div style={{ width: "auto", height: "92px", overflow: "auto" }}>
                 {lista.map((file, index) => (
-                  <Item>
+                  <Item key={index}>
                     {file.path}
                     <CancelIconContainer onClick={onDelete(index)}>
                       <CancelIcon />
@@ -92,7 +91,7 @@ function FileUploader() {
                 alignItems="center"
               >
                 {" "}
-                Seleccionar archivos
+                <ButtonDescription>Seleccionar archivos</ButtonDescription>
               </Grid>
             </UploadButton>
           </DropArea>

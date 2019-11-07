@@ -27,13 +27,13 @@ function TopLayout() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Button color="inherit">
-            <img src={Logo} height="40" />
+          <Button color="inherit" style={{ marginLeft: "33px" }}>
+            <img src={Logo} width="229px" />
           </Button>
           <Grid container justify="flex-end">
-            <Button color="inherit">
-              <Exiticon />
-              Salir
+            <Button color="inherit" style={{ textTransform: "none" }}>
+              <Exiticon style={{ width: "36px", height: "32px" }} />
+              <Typography style={{ fontSize: "22px" }}>Salir</Typography>
             </Button>
           </Grid>
         </Toolbar>

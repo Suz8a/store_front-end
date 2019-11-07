@@ -1,18 +1,16 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
-function New(props) {
+function ThemedButton(props) {
   return (
-    <div>
-      <Button
-        style={{ width: props.buttonSize }}
-        variant={props.variantType}
-        color={props.colorTheme}
-      >
-        {props.nombre}
-      </Button>
-    </div>
+    <Button
+      style={{ width: props.buttonSize, marginRight: props.marginR }}
+      variant={props.variantType}
+      color={props.colorTheme}
+    >
+      {props.text}
+    </Button>
   );
 }
 
-export default New;
+export default ThemedButton;
