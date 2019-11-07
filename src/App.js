@@ -16,13 +16,24 @@ import ProductInfo from "./components/product-info";
 import ServiceDetails from './components/service-details';
 import SizeInfo from "./components/size-info";
 import SideBar from "./components/side-bar";
+import CleanService from "./components/clean-service";
+import Paper from "@material-ui/core/Paper";
+
+import Typography from "@material-ui/core/Typography";
 
 function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <SideBar/>
-        <PedidosTopBar/>
+        
+        <Paper>
+  <Typography variant="h5" component="h3">
+    This is a sheet of paper.
+  </Typography>
+  <Typography component="p">
+    Paper can be used to build surface or other elements for your application.
+  </Typography>
+</Paper>
       </MuiThemeProvider>
     </StylesProvider>
   );
