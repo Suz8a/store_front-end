@@ -26,7 +26,6 @@ export default function SimpleCard() {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.card}>
-    </Card>
+    <Card className={classes.card}></Card>
   );
 }

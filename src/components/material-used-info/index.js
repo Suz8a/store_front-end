@@ -12,7 +12,7 @@ function MaterialUsado() {
                 <Grid container direction = "row" justify = "flex-start" alignItems = "flex-start">
                     <Grid  item  direction="row"  justify="flex-start"  alignItems="center" style = {{paddingRight: "15px"}}>
                         <TextField label = "Oro (gr)" type= "number" style = {{width:"170px", paddingRight: "15px"}}/>
-                        <Input placeholder="$1000" type= "number" style = {{width: 70 ,paddingTop: "16px"}}/>
+                        <Input placeholder="$1000" type= "number" style = {{width: 70, paddingTop: "16px"}}/>
                     </Grid>
                     <Grid  item  direction="row"  justify="flex-start"  alignItems="center" style = {{paddingRight: "15px"}}>
                         <TextField label = "Bronce (gr)" type= "number"style = {{width:"170px", paddingRight: "15px"}}/>

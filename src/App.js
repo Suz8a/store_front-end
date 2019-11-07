@@ -1,31 +1,54 @@
 import React from "react";
 import "./App.css";
-import { MuiThemeProvider, Grid } from "@material-ui/core";
-import PedidosTopBar from "./components/pedidos-top-bar";
-import Text from "./components/textFieldPrueba";
+import { MuiThemeProvider } from "@material-ui/core";
+import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
-import {StylesProvider} from '@material-ui/core/styles';
-import ClientInfo from './components/client-info';
-import ClientDetails from './components/client-details';
-import ExpancionPanel from './components/expansion-panel';
-import BudgetInfo from './components/budget-info';
-import DetailsTitle from "./components/details-title";
-import MaterialInfo from "./components/material-info";
-import MaterialUsado from "./components/material-used-info";
-import ProductInfo from "./components/product-info";
-import ServiceDetails from './components/service-details';
-import SizeInfo from "./components/size-info";
-import SideBar from "./components/side-bar";
-import CleanService from "./components/clean-service";
-import Paper from "@material-ui/core/Paper";
+import Build from "@material-ui/icons/Build";
+import Recepcionista from "./layout/recepcionista";
 
-import Typography from "@material-ui/core/Typography";
+const data = [
+  {
+    folio: "12345",
+    cliente: "Suzclem Adriana Ochoa Casillas",
+    servicio: "Reparación",
+    estado: "Procesando"
+  },
+  {
+    folio: "22222",
+    cliente: "Jesus Abraham Zavala Quintero",
+    servicio: "Pulido",
+    estado: "En Taller"
+  }
+];
 
 function App() {
+  const tableData = data.map(({ folio, cliente, servicio, estado }) => {
+    let status = "";
+    if (estado === "En Taller") {
+      status = (
+        <div style={{ color: "blue" }}>
+          <Build></Build> En taller{" "}
+        </div>
+      );
+    }
+    if (estado === "Procesando") {
+      status = (
+        <div style={{ color: "gray" }}>
+          <Build></Build> Procesando{" "}
+        </div>
+      );
+    }
+    return {
+      Folio: folio,
+      Cliente: cliente,
+      Servicio: servicio,
+      Estado: status
+    };
+  });
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <ExpancionPanel cantidad="20000"/>
+        <Recepcionista />
       </MuiThemeProvider>
     </StylesProvider>
   );
