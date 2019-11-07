@@ -1,10 +1,10 @@
 import React from "react";
 import DynamicForm from "../../components/dynamic-form";
 
-function CambioForm() {
+function PulidoForm() {
   return (
     <DynamicForm
-      title="Grabado"
+      title="Pulido"
       cliente="true"
       producto="true"
       descripcion="true"
@@ -13,4 +13,4 @@ function CambioForm() {
   );
 }
 
-export default CambioForm;
+export default PulidoForm;

@@ -1,16 +1,18 @@
 import React from "react";
 import DynamicForm from "../../components/dynamic-form";
 
-function GrabadoForm() {
+function ReparacionForm() {
   return (
     <DynamicForm
-      title="Grabado"
+      title="Reparación"
       cliente="true"
       producto="true"
       descripcion="true"
+      materialAdjunto="true"
+      materialUtilizar="true"
       presupuesto="true"
     />
   );
 }
 
-export default GrabadoForm;
+export default ReparacionForm;

@@ -5,6 +5,10 @@ import DynamicForm from "../../components/dynamic-form";
 import DynamicTable from "../../components/dynamic-table";
 import CambioForm from "../../containers/cambio-form";
 import LimpiezaForm from "../../containers/limpieza-form";
+import GrabadoForm from "../../containers/grabado-form";
+import { Grid } from "@material-ui/core";
+import PulidoForm from "../../containers/pulido-form";
+import ReparacionForm from "../../containers/reparacion-form";
 
 function Recepcionista() {
   return (
@@ -37,7 +41,7 @@ function Recepcionista() {
             height: "fit-content"
           }}
         >
-          <LimpiezaForm/>
+          <ReparacionForm/>
         </div>
       </div>
     </div>
