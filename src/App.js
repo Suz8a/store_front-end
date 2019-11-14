@@ -1,18 +1,18 @@
 import React from "react";
 import "./App.css";
-import { Grid } from "@material-ui/core";
-import Login from "./components/login";
 import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
-
-//este es un cambio en comentario super genial para hacer un commit y push
+import Build from "@material-ui/icons/Build";
+import DynamicForm from "./components/dynamic-form";
+import GenerateReport from "./components/generate-report";
+import Pedidos from "./containers/pedidos/index";
 
 function App() {
-  return (
+  return(
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <Login />
+        <Pedidos />
       </MuiThemeProvider>
     </StylesProvider>
   );

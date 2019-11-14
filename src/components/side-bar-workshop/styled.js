@@ -29,16 +29,13 @@ export const Circles = styled.div`
   height: 130px;
   width: 130px;
   background: black;
-  top: 94px;
-  left: 86px;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 5px #00000033;
   opacity: 1;
-  position: static;
-  margin-bottom: 24.5px;
-  margin-top: 93.5;
-  margin-left: 85.5;
-  margin-right: 86.5;
+  margin: 19px auto 25px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const StoreIcon = styled(Tienda)`
   margin-top: 121px;

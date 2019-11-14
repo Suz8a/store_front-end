@@ -12,16 +12,24 @@ function BudgetInfo() {
         justify="center"
         alignItems="flex-start"
       >
-        <Typography variant="h6" component="h2">
+        <Typography
+          variant="h6"
+          component="h2"
+          style={{ color: "#546E7ADE", width: "98px", height: "20px" }}
+        >
           {" "}
           Presupuesto{" "}
         </Typography>
         <TextField
           label="Hechura"
           type="number"
-          style={{ paddingRight: "30px" }}
+          style={{ width: "256px", marginTop: "15px" }}
         />
-        <TextField label="Total" type="number" />
+        <TextField
+          label="Total"
+          type="number"
+          style={{ width: "256px", marginTop: "15px" }}
+        />
       </Grid>
     </div>
   );

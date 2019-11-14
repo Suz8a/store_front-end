@@ -13,7 +13,17 @@ function ServiceDetails(props) {
       >
         <Typography variant="subtitle1" component="h1">
           {" "}
-          Servicio: {props.service}{" "}
+          Servicio:
+          <div
+            style={{
+              color: "gray",
+              display: "inline-block",
+              margin: "0px 5px 0px 5px",
+              width: "307px"
+            }}
+          >
+            {props.serv}
+          </div>
         </Typography>
         <Grid
           container
@@ -21,17 +31,37 @@ function ServiceDetails(props) {
           justify="flex-start"
           alignItems="flex-start"
         >
-          <Typography variant="subtitle1" component="h2">
-            {" "}
-            Producto: {props.product}{" "}
-          </Typography>
           <Typography
             variant="subtitle1"
             component="h2"
-            style={{ paddingLeft: "30px" }}
+            style={{ width: "fit-content" }}
           >
             {" "}
-            Peso: {props.weight}gr{" "}
+            Producto:
+            <div
+              style={{
+                color: "gray",
+                display: "inline-block",
+                margin: "0px 5px 0px 5px",
+                width: "117px"
+              }}
+            >
+              {props.product}
+            </div>
+          </Typography>
+          <Typography variant="subtitle1" component="h2">
+            {" "}
+            Peso:
+            <div
+              style={{
+                color: "gray",
+                display: "inline-block",
+                margin: "0px 5px 0px 5px",
+                width: "207px"
+              }}
+            >
+              {props.weight}gr
+            </div>
           </Typography>
         </Grid>
       </Grid>

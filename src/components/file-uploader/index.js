@@ -17,7 +17,7 @@ import {
 
 import * as mime from "mime-types";
 
-function FileUploader() {
+function FileUploader(props) {
   const [lista, setLista] = useState([]);
   const imgExtension = [".jpg", ".png"];
   function onDelete(index) {
@@ -49,7 +49,7 @@ function FileUploader() {
           {...getRootProps()}
           onClick={() => {}}
           className=""
-          style={{ width: "254px", height: "124px" }}
+          style={{ width: props.width, height: "124px", margin: "auto" }}
         >
           <input {...getInputProps()} />
           <DropArea>

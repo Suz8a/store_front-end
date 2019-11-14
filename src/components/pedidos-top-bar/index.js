@@ -5,25 +5,26 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 
 function PedidosTopBar(props) {
   return (
-    <div>
-      <h2
+    <div style={{display:"inline-block", width:"100%"}}>
+        <h2
         style={{
+          width:"100px",
           fontFamily: "Roboto",
-          marginLeft: "447px",
-          marginTop: "206px",
-          position: "absolute",
           textAlign: "left",
-          color: "#000000DE"
+          color: "#000000DE",
+          marginTop:"25px",
+          marginLeft:"20px",
+          float:"left"
         }}
       >
         Pedidos
       </h2>
-      <Input
+      <div style={{width:"250px",float:"right", marginBottom:"40px"}} >
+        <Input
         style={{
-          marginLeft: "890px",
-          marginTop: "210px",
-          position: "absolute",
-          color: "#546E7ADE"
+          color: "#546E7ADE",
+          marginRight:"20px",
+          marginTop:"15px"
         }}
         placeholder="Buscar"
         id="input-with-icon-adornment"
@@ -33,6 +34,8 @@ function PedidosTopBar(props) {
           </InputAdornment>
         }
       />
+      </div>
+      
     </div>
   );
 }

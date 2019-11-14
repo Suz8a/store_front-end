@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Input from "@material-ui/core/Input";
 
 function MaterialUsado() {
+
   return (
     <div>
       <Grid
@@ -13,7 +14,7 @@ function MaterialUsado() {
         justify="center"
         alignItems="flex-start"
       >
-        <Typography variant="h6" component="h2">
+        <Typography variant="h6" component="h2" style={{ color: "#546E7ADE" }}>
           {" "}
           Material a Utilizar{" "}
         </Typography>
@@ -31,12 +32,13 @@ function MaterialUsado() {
             style={{ paddingRight: "15px" }}
           >
             <TextField
+             
               label="Oro (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
@@ -49,12 +51,13 @@ function MaterialUsado() {
             style={{ paddingRight: "15px" }}
           >
             <TextField
+          
               label="Bronce (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
@@ -74,12 +77,14 @@ function MaterialUsado() {
             style={{ paddingRight: "15px" }}
           >
             <TextField
+            
               label="Plata (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+             
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
@@ -94,10 +99,10 @@ function MaterialUsado() {
             <TextField
               label="Acero Inoxidable (gr)"
               type="number"
-              style={{ paddingRight: "15px" }}
+              style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              placeholder="$1000"
+              placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
             />
