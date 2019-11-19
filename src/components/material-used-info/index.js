@@ -5,11 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import Input from "@material-ui/core/Input";
 
 function MaterialUsado() {
-  function createOnChangeEvente(key) {
-    return event => {
-      props.onFormChange(key, event);
-    };
-  }
   return (
     <div>
       <Grid
@@ -36,7 +31,6 @@ function MaterialUsado() {
             style={{ paddingRight: "15px" }}
           >
             <TextField
-              onInput={onChange}
               label="Oro (gr)"
               type="number"
               style={{ width: "170px", paddingRight: "15px" }}
@@ -55,7 +49,6 @@ function MaterialUsado() {
             style={{ paddingRight: "15px" }}
           >
             <TextField
-              onInput={onChange}
               label="Bronce (gr)"
               type="number"
               style={{ width: "170px", paddingRight: "15px" }}
@@ -81,13 +74,11 @@ function MaterialUsado() {
             style={{ paddingRight: "15px" }}
           >
             <TextField
-              onInput={onChange}
               label="Plata (gr)"
               type="number"
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
-              onInput={onChange}
               placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
