@@ -39,6 +39,7 @@ function App() {
         </div>
       );
     }
+
     return {
       Folio: folio,
       Cliente: cliente,
@@ -49,7 +50,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <GenerateReport/>
+        <GenerateReport />
       </MuiThemeProvider>
     </StylesProvider>
   );
