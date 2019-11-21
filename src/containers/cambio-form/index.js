@@ -2,11 +2,36 @@ import React, { useState } from "react";
 import DynamicForm from "../../components/dynamic-form";
 
 function CambioForm() {
+  //cliente information
   const [nomCliente, setnomCliente] = useState("");
   const [aPaterno, setaPaterno] = useState("");
   const [aMaterno, setaMaterno] = useState("");
   const [telefono, settelefono] = useState("");
   const [correo, setcorreo] = useState("");
+  //Size information
+  const [medidaInicial, setmedidaInicial] = useState("");
+  const [medidaFinal, setmedidaFinal] = useState("");
+  //Description information
+  const [descripcion, setdescripcion] = useState("");
+  //Material attached
+  const [oro, setoro] = useState("");
+  const [bronce, setbronce] = useState("");
+  const [plata, setplata] = useState("");
+  const [acero, setacero] = useState("");
+  //Material used
+  const [oroUsado, setoroUsado] = useState("");
+  const [bronceUsado, setbronceUsado] = useState("");
+  const [plataUsado, setplataUsado] = useState("");
+  const [aceroUsado, setaceroUsado] = useState("");
+  //Material used price
+  const [oroUsadoPrecio, setoroUsadoPrecio] = useState("");
+  const [bronceUsadoPrecio, setbronceUsadoPrecio] = useState("");
+  const [plataUsadoPrecio, setplataUsadoPrecio] = useState("");
+  const [aceroUsadoPrecio, setaceroUsadoPrecio] = useState("");
+  //Budget information
+  const [hechura, sethechura] = useState("");
+  //Total
+  const [total, settotal] = useState("");
 
   //Client information
   function handleNombre(e) {
