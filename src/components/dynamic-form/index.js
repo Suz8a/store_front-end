@@ -35,6 +35,7 @@ function DynamicForm(props) {
               fileList={props.productFiles}
               onFileDelete={props.onProductFileDelete}
               onSetFile={props.onSetProductFile}
+              handlePrecio={props.handlePrecio}
             />
           </div>
         ) : null}

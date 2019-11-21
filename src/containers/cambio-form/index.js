@@ -8,6 +8,8 @@ function CambioForm() {
   const [aMaterno, setaMaterno] = useState("");
   const [telefono, settelefono] = useState("");
   const [correo, setcorreo] = useState("");
+  //Product information
+  const [precio, setprecio] = useState("");
   //Size information
   const [medidaInicial, setmedidaInicial] = useState("");
   const [medidaFinal, setmedidaFinal] = useState("");
@@ -53,6 +55,10 @@ function CambioForm() {
   function handleCorreo(e) {
     setcorreo(e.target.value);
   }
+
+  //Product information
+
+  function handlePeso(e) {}
 
   //Size information
 
@@ -148,6 +154,8 @@ function CambioForm() {
       handleAMaterno={handleAMaterno}
       handleTelefono={handleTelefono}
       handleCorreo={handleCorreo}
+      //Product information
+      handlePeso={handlePeso}
       //Size information
       handleMedidaInicial={handleMedidaInicial}
       hadleMedidaFinal={handleMedidaFinal}

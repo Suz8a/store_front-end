@@ -61,6 +61,7 @@ function ProductInfo({ fileList, onFileDelete, onSetFile }) {
             </Select>
           </FormControl>
           <TextField
+            onInput={props.handlePeso}
             label="Peso (gr) "
             type="number"
             style={{ width: "170px" }}
