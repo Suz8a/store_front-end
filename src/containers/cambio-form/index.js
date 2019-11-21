@@ -31,11 +31,15 @@ function CambioForm() {
 
   function onClickAceptar() {}
 
-  console.log(nomCliente);
-  console.log(aPaterno);
-  console.log(aMaterno);
-  console.log(telefono);
-  console.log(correo);
+  var data = {
+    nombre: nomCliente,
+    apellidoPaterno: aPaterno,
+    apellidoMaterno: aMaterno,
+    telefonoCliente: telefono,
+    correoCliente: correo
+  };
+
+  console.log(data);
 
   return (
     <DynamicForm
