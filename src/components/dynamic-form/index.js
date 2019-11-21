@@ -31,7 +31,11 @@ function DynamicForm(props) {
         ) : null}
         {props.producto ? (
           <div style={{ marginTop: "40px" }}>
-            <ProductInfo />
+            <ProductInfo
+              fileList={props.productFiles}
+              onFileDelete={props.onProductFileDelete}
+              onSetFile={props.onSetProductFile}
+            />
           </div>
         ) : null}
 

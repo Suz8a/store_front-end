@@ -117,8 +117,22 @@ function CambioForm() {
 
   console.log(data);
 
+  const [productFiles, setProductFiles] = useState([]);
+  function deleteProductFile(index) {
+    return () => {
+      const newLista = [...productFiles];
+      newLista.splice(index, 1);
+      setProductFiles(newLista);
+    };
+  }
+
+  console.log(productFiles);
+
   return (
     <DynamicForm
+      productFiles={productFiles}
+      onProductFileDelete={deleteProductFile}
+      onSetProductFile={setProductFiles}
       title="Cambio de Tamaño"
       //Campos requeridos en el formulario
       cliente="true"

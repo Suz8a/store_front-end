@@ -17,16 +17,16 @@ import {
 
 import * as mime from "mime-types";
 
-function FileUploader(props) {
-  const [lista, setLista] = useState([]);
-  const imgExtension = [".jpg", ".png"];
-  function onDelete(index) {
+function FileUploader({ width, lista, onSetLista, onDelete, fileExtensions }) {
+  //const [lista, setLista] = useState([]);
+  const imgExtension = fileExtensions; // [".jpg", ".png"];
+  /*function onDelete(index) {
     return () => {
       const newLista = [...lista];
       newLista.splice(index, 1);
       setLista(newLista);
     };
-  }
+  }*/
   return (
     <Dropzone
       onDrop={files => {
@@ -41,7 +41,7 @@ function FileUploader(props) {
 
         const new_files = [...lista, ...files_with_preview];
 
-        setLista(new_files);
+        onSetLista(new_files);
       }}
     >
       {({ getRootProps, getInputProps }) => (
@@ -49,7 +49,7 @@ function FileUploader(props) {
           {...getRootProps()}
           onClick={() => {}}
           className=""
-          style={{ width: props.width, height: "124px", margin: "auto" }}
+          style={{ width: width, height: "124px", margin: "auto" }}
         >
           <input {...getInputProps()} />
           <DropArea>

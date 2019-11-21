@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FileUploader from "../file-uploader";
 
-function ProductInfo(props) {
+function ProductInfo({ fileList, onFileDelete, onSetFile }) {
   const useStyles = makeStyles(theme => ({
     formControl: {
       minWidth: 200
@@ -68,7 +68,13 @@ function ProductInfo(props) {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FileUploader width="254px" />
+          <FileUploader
+            width="254px"
+            fileExtensions={[".jpg", ".png"]}
+            lista={fileList}
+            onDelete={onFileDelete}
+            onSetLista={onSetFile}
+          />
         </Grid>
       </Grid>
     </div>
