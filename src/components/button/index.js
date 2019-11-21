@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 function ThemedButton(props) {
   return (
     <Button
+      onClick={props.onClick}
       style={{ width: props.buttonSize, marginRight: props.marginR }}
       variant={props.variantType}
       color={props.colorTheme}

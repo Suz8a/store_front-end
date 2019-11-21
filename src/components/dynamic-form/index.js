@@ -20,10 +20,21 @@ function DynamicForm(props) {
         >
           {props.title}
         </Typography>
-        {props.cliente ? <ClientInfo /> : null}
-        <div style={{ marginTop: "40px" }}>
-          <ProductInfo />
-        </div>
+        {props.cliente ? (
+          <ClientInfo
+            handleNombre={props.handleNombre}
+            handleAPaterno={props.handleAPaterno}
+            handleAMaterno={props.handleAMaterno}
+            handleTelefono={props.handleTelefono}
+            handleCorreo={props.handleCorreo}
+          />
+        ) : null}
+        {props.producto ? (
+          <div style={{ marginTop: "40px" }}>
+            <ProductInfo />
+          </div>
+        ) : null}
+
         {props.medidas ? (
           <div style={{ marginTop: "30px" }}>
             <SizeInfo />
@@ -58,6 +69,7 @@ function DynamicForm(props) {
           style={{ float: "right", marginTop: "45px", marginBottom: "50px" }}
         >
           <ThemedButton
+            onClick={props.onClickCancelar}
             marginR="30px"
             buttonSize="120px"
             variantType="outlined"
@@ -65,6 +77,7 @@ function DynamicForm(props) {
             colorTheme="secondary"
           />
           <ThemedButton
+            onClick={props.onClickAceptar}
             buttonSize="168px"
             variantType="contained"
             text="Guardar"

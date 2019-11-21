@@ -7,6 +7,7 @@ import Build from "@material-ui/icons/Build";
 import Recepcionista from "./layout/recepcionista";
 import GenerateReport from "./components/generate-report";
 import DynamicForm from "./components/dynamic-form";
+import CambioForm from "./containers/cambio-form";
 
 const data = [
   {
@@ -51,7 +52,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <Recepcionista />
+        <CambioForm />
       </MuiThemeProvider>
     </StylesProvider>
   );
