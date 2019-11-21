@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
-function BudgetInfo() {
+function BudgetInfo(props) {
   return (
     <div>
       <Grid
@@ -21,11 +21,16 @@ function BudgetInfo() {
           Presupuesto{" "}
         </Typography>
         <TextField
+          onInput={props.handleHechura}
           label="Hechura"
           type="number"
           style={{ width: "256px", marginTop: "15px" }}
         />
         <TextField
+          inputProps={{
+            readOnly: true
+          }}
+          onInput={props.calcularTotal}
           label="Total"
           type="number"
           style={{ width: "256px", marginTop: "15px" }}

@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
-function MaterialInfo() {
+function MaterialInfo(props) {
   return (
     <div>
       <Grid
@@ -27,11 +27,13 @@ function MaterialInfo() {
           alignItems="flex-start"
         >
           <TextField
+            onInput={props.handleOro}
             label="Oro (gr)"
             type="number"
             style={{ width: "180px", marginRight: "50px", marginTop: "15px" }}
           />
           <TextField
+            onInput={props.handleBronce}
             label="Bronce (gr)"
             type="number"
             style={{ width: "180px", marginTop: "15px" }}
@@ -44,11 +46,13 @@ function MaterialInfo() {
           alignItems="flex-start"
         >
           <TextField
+            onInput={props.handlePlata}
             label="Plata (gr)"
             type="number"
             style={{ width: "180px", marginRight: "50px", marginTop: "15px" }}
           />
           <TextField
+            onInput={props.handleAcero}
             label="Acero Inoxidable (gr)"
             style={{ width: "180px", marginTop: "15px" }}
             type="number"

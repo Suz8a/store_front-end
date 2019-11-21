@@ -37,31 +37,51 @@ function DynamicForm(props) {
 
         {props.medidas ? (
           <div style={{ marginTop: "30px" }}>
-            <SizeInfo />
+            <SizeInfo
+              handleMedidaInicial={props.handleMedidaInicial}
+              handleMedidaFinal={props.handleMedidaFinal}
+            />
           </div>
         ) : null}
 
         {props.descripcion ? (
           <div style={{ marginTop: "40px" }}>
-            <Description />
+            <Description handleDescripcion={props.handleDescripcion} />
           </div>
         ) : null}
 
         {props.materialAdjunto ? (
           <div style={{ marginTop: "40px" }}>
-            <MaterialInfo />
+            <MaterialInfo
+              handleOro={props.handleOro}
+              handleBronce={props.handleBronce}
+              handlePlata={props.handlePlata}
+              handleAcero={props.handleAcero}
+            />
           </div>
         ) : null}
 
         {props.materialUtilizar ? (
           <div style={{ marginTop: "40px" }}>
-            <MaterialUsado />
+            <MaterialUsado
+              handleOroUsado={props.handleOroUsado}
+              handleOroUsadoPrecio={props.handleOroUsadoPrecio}
+              handleBronceUsado={props.handleBronce}
+              handleBronceUsadoPrecio={props.handleBronceUsadoPrecio}
+              handlePlataUsado={props.handlePlataUsado}
+              handlePlataUsadoPrecio={props.handlePlataUsadoPrecio}
+              handleAceroUsado={props.handleAceroUsado}
+              handleAceroUsadoPrecio={props.handleAceroUsadoPrecio}
+            />
           </div>
         ) : null}
 
         {props.presupuesto ? (
           <div style={{ marginTop: "40px" }}>
-            <BudgetInfo />
+            <BudgetInfo
+              handleHechura={props.handleHechura}
+              calcularTotal={props.calcularTotal}
+            />
           </div>
         ) : null}
 

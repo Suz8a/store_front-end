@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Input from "@material-ui/core/Input";
 
-function MaterialUsado() {
+function MaterialUsado(props) {
   return (
     <div>
       <Grid>
@@ -15,11 +15,13 @@ function MaterialUsado() {
         <Grid container>
           <Grid item style={{ paddingRight: "15px" }}>
             <TextField
+              onInput={props.handleOroUsado}
               label="Oro (gr)"
               type="number"
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
+              onInput={props.handleOroUsadoPrecio}
               placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
@@ -27,11 +29,13 @@ function MaterialUsado() {
           </Grid>
           <Grid item style={{ paddingRight: "15px" }}>
             <TextField
+              onInput={props.handleBronceUsado}
               label="Bronce (gr)"
               type="number"
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
+              onInput={props.handleBronceUsadoPrecio}
               placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
@@ -41,11 +45,13 @@ function MaterialUsado() {
         <Grid container direction="row">
           <Grid item style={{ paddingRight: "15px" }}>
             <TextField
+              onInput={props.handlePlataUsado}
               label="Plata (gr)"
               type="number"
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
+              onInput={props.handlePlataUsadoPrecio}
               placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}
@@ -53,11 +59,13 @@ function MaterialUsado() {
           </Grid>
           <Grid item style={{ paddingRight: "15px" }}>
             <TextField
+              onInput={props.handleAceroUsado}
               label="Acero Inoxidable (gr)"
               type="number"
               style={{ width: "170px", paddingRight: "15px" }}
             />
             <Input
+              onInput={props.handleAceroUsadoPrecio}
               placeholder="$"
               type="number"
               style={{ width: 70, paddingTop: "16px" }}

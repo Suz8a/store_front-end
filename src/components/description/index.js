@@ -1,10 +1,11 @@
 import React from "react";
 import { TextBox } from "./styled";
 
-export default function Description() {
+export default function Description(props) {
   return (
     <div>
       <TextBox
+        onInput={props.handleDescripcion}
         placeholder="Ingresar una descripción"
         maxLength="400"
         type="text"
