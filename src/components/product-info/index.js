@@ -10,23 +10,29 @@ import { makeStyles } from "@material-ui/core/styles";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FileUploader from "../file-uploader";
 
-function ProductInfo({ fileList, onFileDelete, onSetFile }) {
+function ProductInfo({
+  fileList,
+  onFileDelete,
+  onSetFile,
+  handlePeso,
+  onSeleccionarServicio,
+  servicioSeleccionado
+}) {
   const useStyles = makeStyles(theme => ({
     formControl: {
       minWidth: 200
     }
   }));
   const classes = useStyles();
-  const [values, setValues] = React.useState({ Seleccionar: "" });
+  /*const [values, setValues] = React.useState({ Seleccionar: "" });*/
 
-  const inputLabel = React.useRef(null);
-
-  const handleChange = event => {
+  /*const handleChange = event => {
     setValues(oldValues => ({
       ...oldValues,
       [event.target.name]: event.target.value
     }));
-  };
+  };*/
+
   return (
     <div>
       <Grid container direction="row">
@@ -50,8 +56,8 @@ function ProductInfo({ fileList, onFileDelete, onSetFile }) {
               Seleccionar
             </InputLabel>
             <Select
-              value={values.Seleccionar}
-              onChange={handleChange}
+              value={servicioSeleccionado}
+              onChange={onSeleccionarServicio}
               inputProps={{ name: "Seleccionar", id: "Selectlist" }}
             >
               <MenuItem value={1}>Anillo</MenuItem>
@@ -61,7 +67,7 @@ function ProductInfo({ fileList, onFileDelete, onSetFile }) {
             </Select>
           </FormControl>
           <TextField
-            onInput={props.handlePeso}
+            onInput={handlePeso}
             label="Peso (gr) "
             type="number"
             style={{ width: "170px" }}

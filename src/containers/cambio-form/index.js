@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import DynamicForm from "../../components/dynamic-form";
 
+const productos = {
+  1: "Anillo",
+  2: "Collar",
+  3: "Pulsera",
+  4: "Reloj"
+};
 function CambioForm() {
   //cliente information
   const [nomCliente, setnomCliente] = useState("");
@@ -9,6 +15,7 @@ function CambioForm() {
   const [telefono, settelefono] = useState("");
   const [correo, setcorreo] = useState("");
   //Product information
+  const [values, setValues] = React.useState({ Seleccionar: "" });
   const [precio, setprecio] = useState("");
   //Size information
   const [medidaInicial, setmedidaInicial] = useState("");
@@ -58,7 +65,23 @@ function CambioForm() {
 
   //Product information
 
+  const handleChange = event => {
+    setValues(oldValues => ({
+      ...oldValues,
+      [event.target.name]: event.target.value
+    }));
+  };
+
   function handlePeso(e) {}
+
+  const [productFiles, setProductFiles] = useState([]);
+  function deleteProductFile(index) {
+    return () => {
+      const newLista = [...productFiles];
+      newLista.splice(index, 1);
+      setProductFiles(newLista);
+    };
+  }
 
   //Size information
 
@@ -122,23 +145,18 @@ function CambioForm() {
   };
 
   console.log(data);
-
-  const [productFiles, setProductFiles] = useState([]);
-  function deleteProductFile(index) {
-    return () => {
-      const newLista = [...productFiles];
-      newLista.splice(index, 1);
-      setProductFiles(newLista);
-    };
-  }
-
   console.log(productFiles);
+  console.log(values);
+
+  const [servicioSeleccionado, setServicioSeleccionado] = useState(-1);
+
+  function seleccionarServicio(value) {
+    setServicioSeleccionado(value.target.value);
+  }
+  console.log(servicioSeleccionado, "SERVICIO SELECCIONADO");
 
   return (
     <DynamicForm
-      productFiles={productFiles}
-      onProductFileDelete={deleteProductFile}
-      onSetProductFile={setProductFiles}
       title="Cambio de Tamaño"
       //Campos requeridos en el formulario
       cliente="true"
@@ -155,7 +173,13 @@ function CambioForm() {
       handleTelefono={handleTelefono}
       handleCorreo={handleCorreo}
       //Product information
+      onSeleccionarServicio={seleccionarServicio}
+      servicioSeleccionado={servicioSeleccionado}
+      handleChange={handleChange}
       handlePeso={handlePeso}
+      productFiles={productFiles}
+      onProductFileDelete={deleteProductFile}
+      onSetProductFile={setProductFiles}
       //Size information
       handleMedidaInicial={handleMedidaInicial}
       hadleMedidaFinal={handleMedidaFinal}
