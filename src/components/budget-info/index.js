@@ -30,7 +30,7 @@ function BudgetInfo(props) {
           inputProps={{
             readOnly: true
           }}
-          onInput={props.calcularTotal}
+          value={props.total}
           label="Total"
           type="number"
           style={{ width: "256px", marginTop: "15px" }}

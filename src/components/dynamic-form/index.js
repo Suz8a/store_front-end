@@ -87,6 +87,7 @@ function DynamicForm(props) {
           <div style={{ marginTop: "40px" }}>
             <BudgetInfo
               handleHechura={props.handleHechura}
+              total={props.total}
               calcularTotal={props.calcularTotal}
             />
           </div>

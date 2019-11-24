@@ -16,7 +16,7 @@ function CambioForm() {
   const [correo, setcorreo] = useState("");
   //Product information
   const [values, setValues] = React.useState({ Seleccionar: "" });
-  const [precio, setprecio] = useState("");
+  const [peso, setpeso] = useState("");
   //Size information
   const [medidaInicial, setmedidaInicial] = useState("");
   const [medidaFinal, setmedidaFinal] = useState("");
@@ -33,14 +33,12 @@ function CambioForm() {
   const [plataUsado, setplataUsado] = useState("");
   const [aceroUsado, setaceroUsado] = useState("");
   //Material used price
-  const [oroUsadoPrecio, setoroUsadoPrecio] = useState("");
-  const [bronceUsadoPrecio, setbronceUsadoPrecio] = useState("");
-  const [plataUsadoPrecio, setplataUsadoPrecio] = useState("");
-  const [aceroUsadoPrecio, setaceroUsadoPrecio] = useState("");
+  const [oroUsadoPrecio, setoroUsadoPrecio] = useState(0);
+  const [bronceUsadoPrecio, setbronceUsadoPrecio] = useState(0);
+  const [plataUsadoPrecio, setplataUsadoPrecio] = useState(0);
+  const [aceroUsadoPrecio, setaceroUsadoPrecio] = useState(0);
   //Budget information
-  const [hechura, sethechura] = useState("");
-  //Total
-  const [total, settotal] = useState("");
+  const [hechura, sethechura] = useState(0);
 
   //Client information
   function handleNombre(e) {
@@ -72,7 +70,9 @@ function CambioForm() {
     }));
   };
 
-  function handlePeso(e) {}
+  function handlePeso(e) {
+    setpeso(e.target.value);
+  }
 
   const [productFiles, setProductFiles] = useState([]);
   function deleteProductFile(index) {
@@ -85,50 +85,90 @@ function CambioForm() {
 
   //Size information
 
-  function handleMedidaInicial(e) {}
+  function handleMedidaInicial(e) {
+    setmedidaInicial(e.target.value);
+  }
 
-  function handleMedidaFinal(e) {}
+  function handleMedidaFinal(e) {
+    setmedidaFinal(e.target.value);
+  }
 
   //Description information
 
-  function handleDescripcion(e) {}
+  function handleDescripcion(e) {
+    setdescripcion(e.target.value);
+  }
 
   //Material Attached
-  function handleOro(e) {}
+  function handleOro(e) {
+    setoro(e.target.value);
+  }
 
-  function handleBronce(e) {}
+  function handleBronce(e) {
+    setbronce(e.target.value);
+  }
 
-  function handlePlata(e) {}
+  function handlePlata(e) {
+    setplata(e.target.value);
+  }
 
-  function handleAcero(e) {}
+  function handleAcero(e) {
+    setacero(e.target.value);
+  }
 
   //Material used
 
-  function handleOroUsado(e) {}
+  function handleOroUsado(e) {
+    setoroUsado(e.target.value);
+  }
 
-  function handleBronceUsado(e) {}
+  function handleBronceUsado(e) {
+    setbronceUsado(e.target.value);
+  }
 
-  function handlePlataUsado(e) {}
+  function handlePlataUsado(e) {
+    setplataUsado(e.target.value);
+  }
 
-  function handleAceroUsado(e) {}
+  function handleAceroUsado(e) {
+    setaceroUsado(e.target.value);
+  }
 
   //Material used price
 
-  function handleOroUsadoPrecio(e) {}
+  function handleOroUsadoPrecio(e) {
+    setoroUsadoPrecio(e.target.value);
+  }
 
-  function handleBronceUsadoPrecio(e) {}
+  function handleBronceUsadoPrecio(e) {
+    setbronceUsadoPrecio(e.target.value);
+  }
 
-  function handlePlataUsadoPrecio(e) {}
+  function handlePlataUsadoPrecio(e) {
+    setplataUsadoPrecio(e.target.value);
+  }
 
-  function handleAceroUsadoPrecio(e) {}
+  function handleAceroUsadoPrecio(e) {
+    setaceroUsadoPrecio(e.target.value);
+  }
 
   //Budget information
 
-  function handleHechura(e) {}
+  function handleHechura(e) {
+    sethechura(e.target.value);
+  }
 
   //Total Calculation
 
-  function calcularPrecio(e) {}
+  function calcularTotal(e) {
+    return (
+      parseInt(aceroUsadoPrecio) +
+      parseInt(oroUsadoPrecio) +
+      parseInt(bronceUsadoPrecio) +
+      parseInt(plataUsadoPrecio) +
+      parseInt(hechura)
+    );
+  }
 
   //Buttons functionality
 
@@ -136,7 +176,14 @@ function CambioForm() {
 
   function onClickAceptar() {}
 
-  var data = {
+  const [servicioSeleccionado, setServicioSeleccionado] = useState(-1);
+
+  function seleccionarServicio(value) {
+    setServicioSeleccionado(value.target.value);
+  }
+  console.log(servicioSeleccionado, "SERVICIO SELECCIONADO");
+
+  var dataClient = {
     nombre: nomCliente,
     apellidoPaterno: aPaterno,
     apellidoMaterno: aMaterno,
@@ -144,16 +191,29 @@ function CambioForm() {
     correoCliente: correo
   };
 
-  console.log(data);
-  console.log(productFiles);
+  var dataPedido = {
+    servicio: servicioSeleccionado,
+    peso: peso,
+    url: "",
+    mInicial: medidaInicial,
+    mFinal: medidaFinal,
+    descripcion: descripcion,
+    oro: oro,
+    bronce: bronce,
+    plata: plata,
+    acero: acero,
+    oroUsado: oroUsado,
+    oroUsadoPrecio: oroUsadoPrecio,
+    bronceUsado: bronceUsado,
+    bronceUsadoPrecio: bronceUsadoPrecio,
+    aceroUsado: aceroUsado,
+    aceroUsadoPrecio: aceroUsadoPrecio,
+    total: calcularTotal()
+  };
+  console.log(calcularTotal());
+  console.log(dataClient);
+  console.log(dataPedido);
   console.log(values);
-
-  const [servicioSeleccionado, setServicioSeleccionado] = useState(-1);
-
-  function seleccionarServicio(value) {
-    setServicioSeleccionado(value.target.value);
-  }
-  console.log(servicioSeleccionado, "SERVICIO SELECCIONADO");
 
   return (
     <DynamicForm
@@ -182,7 +242,7 @@ function CambioForm() {
       onSetProductFile={setProductFiles}
       //Size information
       handleMedidaInicial={handleMedidaInicial}
-      hadleMedidaFinal={handleMedidaFinal}
+      handleMedidaFinal={handleMedidaFinal}
       //Description information
       handleDescripcion={handleDescripcion}
       //Material Attached
@@ -200,6 +260,9 @@ function CambioForm() {
       handleBronceUsadoPrecio={handleBronceUsadoPrecio}
       handlePlataUsadoPrecio={handlePlataUsadoPrecio}
       handleAceroUsadoPrecio={handleAceroUsadoPrecio}
+      //Budget information
+      handleHechura={handleHechura}
+      total={calcularTotal()}
       //Buttons functionality
       onClickCancelar={onClickCancelar}
       onClickAceptar={onClickAceptar}
