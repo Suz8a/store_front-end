@@ -247,9 +247,9 @@ function CambioForm() {
       "Any",
       {
         nombre_joya: productos[servicioSeleccionado],
-        peso_joya: peso,
-        medida_inicial: medidaInicial,
-        medida_final: medidaFinal
+        peso_joya: parseInt(peso),
+        medida_inicial: parseInt(medidaInicial),
+        medida_final: parseInt(medidaFinal)
       },
       [
         { nombre_material: "oro", gramos: parseInt(oro) },
