@@ -41,7 +41,7 @@ function Recepcionista() {
             height: "fit-content"
           }}
         >
-          <ReparacionForm/>
+          <CambioForm />
         </div>
       </div>
     </div>

@@ -17,7 +17,6 @@ export async function createPedido(
   material_utilizar,
   presupuesto
 ) {
-  debugger;
   return await troquelApi.post("pedido", {
     servicio: servicio,
     descripcion: descripcion,
@@ -114,6 +113,5 @@ export async function uploadImage(image) {
       "content-type": "multipart/form-data"
     }
   };
-  debugger;
   return await troquelApi.post("image", formData, config);
 }

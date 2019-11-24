@@ -52,7 +52,7 @@ function App() {
   return (
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <CambioForm />
+        <Recepcionista />
       </MuiThemeProvider>
     </StylesProvider>
   );

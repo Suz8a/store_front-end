@@ -11,6 +11,7 @@ import {
   updatePedido,
   uploadImage
 } from "../../api";
+import { CircularProgress, Paper } from "@material-ui/core";
 
 const productos = {
   1: "Anillo",
@@ -51,6 +52,8 @@ function CambioForm() {
   const [aceroUsadoPrecio, setaceroUsadoPrecio] = useState(0);
   //Budget information
   const [hechura, sethechura] = useState(0);
+  //Loading state
+  const [isLoading, setisLoading] = useState(false);
 
   //Client information
   function handleNombre(e) {
@@ -226,6 +229,7 @@ function CambioForm() {
   function onClickCancelar() {}
 
   async function onClickAceptar() {
+    setisLoading(true);
     var { data: client } = await createClient(
       nomCliente,
       aMaterno,
@@ -236,7 +240,6 @@ function CambioForm() {
     var {
       data: { imageUrl: link_imagen }
     } = await uploadImage(productFiles);
-    debugger;
     createPedido(
       "cambio_tamano",
       descripcion,
@@ -284,7 +287,24 @@ function CambioForm() {
         total: calcularTotal()
       }
     );
+    setisLoading(false);
   }
+
+  if (isLoading)
+    return (
+      <Paper
+        style={{
+          margin: "auto",
+          width: "100%",
+          height: "100%",
+          textAlign: "center",
+          paddingTop: "150px",
+          paddingBottom: "1314px"
+        }}
+      >
+        <CircularProgress />
+      </Paper>
+    );
 
   return (
     <DynamicForm
