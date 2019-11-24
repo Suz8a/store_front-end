@@ -35,7 +35,7 @@ function DynamicForm(props) {
               fileList={props.productFiles}
               onFileDelete={props.onProductFileDelete}
               onSetFile={props.onSetProductFile}
-              handlePrecio={props.handlePrecio}
+              handlePeso={props.handlePeso}
               onSeleccionarServicio={props.onSeleccionarServicio}
               servicioSeleccionado={props.servicioSeleccionado}
             />
@@ -73,7 +73,7 @@ function DynamicForm(props) {
             <MaterialUsado
               handleOroUsado={props.handleOroUsado}
               handleOroUsadoPrecio={props.handleOroUsadoPrecio}
-              handleBronceUsado={props.handleBronce}
+              handleBronceUsado={props.handleBronceUsado}
               handleBronceUsadoPrecio={props.handleBronceUsadoPrecio}
               handlePlataUsado={props.handlePlataUsado}
               handlePlataUsadoPrecio={props.handlePlataUsadoPrecio}

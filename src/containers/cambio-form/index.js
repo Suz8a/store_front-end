@@ -1,5 +1,16 @@
 import React, { useState } from "react";
 import DynamicForm from "../../components/dynamic-form";
+import {
+  createClient,
+  createPedido,
+  getAllClients,
+  getAllPedidos,
+  getClientById,
+  getPedidoByFolio,
+  getPedidoById,
+  updatePedido,
+  uploadImage
+} from "../../api";
 
 const productos = {
   1: "Anillo",
@@ -7,6 +18,7 @@ const productos = {
   3: "Pulsera",
   4: "Reloj"
 };
+
 function CambioForm() {
   //cliente information
   const [nomCliente, setnomCliente] = useState("");
@@ -170,12 +182,6 @@ function CambioForm() {
     );
   }
 
-  //Buttons functionality
-
-  function onClickCancelar() {}
-
-  function onClickAceptar() {}
-
   const [servicioSeleccionado, setServicioSeleccionado] = useState(-1);
 
   function seleccionarServicio(value) {
@@ -215,6 +221,71 @@ function CambioForm() {
   console.log(dataPedido);
   console.log(values);
 
+  //Buttons functionality
+
+  function onClickCancelar() {}
+
+  async function onClickAceptar() {
+    var { data: client } = await createClient(
+      nomCliente,
+      aMaterno,
+      aPaterno,
+      correo,
+      telefono
+    );
+    var {
+      data: { imageUrl: link_imagen }
+    } = await uploadImage(productFiles);
+    debugger;
+    createPedido(
+      "cambio_tamano",
+      descripcion,
+      "En proceso",
+      link_imagen,
+      client.id,
+      "something",
+      "Any",
+      {
+        nombre_joya: productos[servicioSeleccionado],
+        peso_joya: peso,
+        medida_inicial: medidaInicial,
+        medida_final: medidaFinal
+      },
+      [
+        { nombre_material: "oro", gramos: parseInt(oro) },
+        { nombre_material: "bronce", gramos: parseInt(bronce) },
+        { nombre_material: "plata", gramos: parseInt(plata) },
+        { nombre_material: "acero", gramos: parseInt(acero) }
+      ],
+      [
+        {
+          nombre_material: "oro",
+          gramos: parseInt(oroUsado),
+          precio: parseInt(oroUsadoPrecio)
+        },
+        {
+          nombre_material: "bronce",
+          gramos: parseInt(bronceUsado),
+          precio: parseInt(bronceUsadoPrecio)
+        },
+        {
+          nombre_material: "plata",
+          gramos: parseInt(plataUsado),
+          precio: parseInt(plataUsadoPrecio)
+        },
+        {
+          nombre_material: "acero",
+          gramos: parseInt(aceroUsado),
+          precio: parseInt(aceroUsadoPrecio)
+        }
+      ],
+      {
+        hechura: hechura,
+        total: calcularTotal()
+      }
+    );
+  }
+
   return (
     <DynamicForm
       title="Cambio de Tamaño"
@@ -253,7 +324,7 @@ function CambioForm() {
       //Material used
       handleOroUsado={handleOroUsado}
       handleBronceUsado={handleBronceUsado}
-      handlePlataUsado={handleBronceUsado}
+      handlePlataUsado={handlePlataUsado}
       handleAceroUsado={handleAceroUsado}
       //Material used price
       handleOroUsadoPrecio={handleOroUsadoPrecio}
