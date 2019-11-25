@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import DynamicForm from "../../components/dynamic-form";
 import {
   createClient,
@@ -36,15 +37,15 @@ function CambioForm() {
   //Description information
   const [descripcion, setdescripcion] = useState("");
   //Material attached
-  const [oro, setoro] = useState("");
-  const [bronce, setbronce] = useState("");
-  const [plata, setplata] = useState("");
-  const [acero, setacero] = useState("");
+  const [oro, setoro] = useState(0);
+  const [bronce, setbronce] = useState(0);
+  const [plata, setplata] = useState(0);
+  const [acero, setacero] = useState(0);
   //Material used
-  const [oroUsado, setoroUsado] = useState("");
-  const [bronceUsado, setbronceUsado] = useState("");
-  const [plataUsado, setplataUsado] = useState("");
-  const [aceroUsado, setaceroUsado] = useState("");
+  const [oroUsado, setoroUsado] = useState(0);
+  const [bronceUsado, setbronceUsado] = useState(0);
+  const [plataUsado, setplataUsado] = useState(0);
+  const [aceroUsado, setaceroUsado] = useState(0);
   //Material used price
   const [oroUsadoPrecio, setoroUsadoPrecio] = useState(0);
   const [bronceUsadoPrecio, setbronceUsadoPrecio] = useState(0);

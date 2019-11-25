@@ -1,5 +1,6 @@
 import React from "react";
 import SideBarWorkShop from "../../components/side-bar-workshop";
+import TopLayout from "../../components/top-layout";
 
 function Taller() {
   return (

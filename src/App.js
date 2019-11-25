@@ -1,15 +1,33 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import * as History from "history";
+import { createBrowserHistory } from "history";
 import "./App.css";
 import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
 import theme from "./theme";
 import Build from "@material-ui/icons/Build";
 import Recepcionista from "./layout/recepcionista";
-import GenerateReport from "./components/generate-report";
-import DynamicForm from "./components/dynamic-form";
-import CambioForm from "./containers/cambio-form";
+import Taller from "./layout/taller";
 
-const data = [
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <StylesProvider injectFirst={true}>
+          <MuiThemeProvider theme={theme}>
+            <Route path="/recepcionist" component={Recepcionista} />
+            <Route path="/workshop" component={Taller} />
+          </MuiThemeProvider>
+        </StylesProvider>
+      </Switch>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+/*const data = [
   {
     folio: "12345",
     cliente: "Suzclem Adriana Ochoa Casillas",
@@ -24,8 +42,7 @@ const data = [
   }
 ];
 
-function App() {
-  const tableData = data.map(({ folio, cliente, servicio, estado }) => {
+const tableData = data.map(({ folio, cliente, servicio, estado }) => {
     let status = "";
     if (estado === "En Taller") {
       status = (
@@ -48,14 +65,4 @@ function App() {
       Servicio: servicio,
       Estado: status
     };
-  });
-  return (
-    <StylesProvider injectFirst={true}>
-      <MuiThemeProvider theme={theme}>
-        <Recepcionista />
-      </MuiThemeProvider>
-    </StylesProvider>
-  );
-}
-
-export default App;
+  });*/
