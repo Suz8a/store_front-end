@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import * as History from "history";
-import { createBrowserHistory } from "history";
 import "./App.css";
 import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";

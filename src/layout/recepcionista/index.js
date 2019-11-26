@@ -2,14 +2,12 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import SideBarStore from "../../components/side-bar-store";
 import TopLayout from "../../components/top-layout";
-import DynamicForm from "../../components/dynamic-form";
-import DynamicTable from "../../components/dynamic-table";
 import CambioForm from "../../containers/cambio-form";
 import LimpiezaForm from "../../containers/limpieza-form";
 import GrabadoForm from "../../containers/grabado-form";
-import { Grid } from "@material-ui/core";
 import PulidoForm from "../../containers/pulido-form";
 import ReparacionForm from "../../containers/reparacion-form";
+import Pedidos from "../../containers/pedidos";
 
 function Recepcionista() {
   return (
@@ -44,6 +42,7 @@ function Recepcionista() {
         >
           <BrowserRouter>
             <Switch>
+              <Route path="/recepcionist/pedidos" component={Pedidos} />
               <Route path="/recepcionist/cambio-form" component={CambioForm} />
               <Route
                 path="/recepcionist/limpieza-form"
