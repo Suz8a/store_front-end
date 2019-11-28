@@ -8,6 +8,38 @@ import GrabadoForm from "../../containers/grabado-form";
 import PulidoForm from "../../containers/pulido-form";
 import ReparacionForm from "../../containers/reparacion-form";
 import Pedidos from "../../containers/pedidos";
+import {
+  createClient,
+  createPedido,
+  getAllClients,
+  getAllPedidos,
+  getClientById,
+  getPedidoByFolio,
+  getPedidoById,
+  updatePedido,
+  uploadImage
+} from "../../api";
+
+const data = [
+  {
+    folio: "12345",
+    cliente: "Suzclem Adriana Ochoa Casillas",
+    servicio: "Reparación",
+    estado: "Procesando"
+  },
+  {
+    folio: "22222",
+    cliente: "Jesus Abraham Zavala Quintero",
+    servicio: "Pulido",
+    estado: "En taller"
+  },
+  {
+    folio: "22222",
+    cliente: "Jesus Abraham Zavala Quintero",
+    servicio: "Pulido",
+    estado: "En tienda"
+  }
+];
 
 function Recepcionista() {
   return (
@@ -42,7 +74,10 @@ function Recepcionista() {
         >
           <BrowserRouter>
             <Switch>
-              <Route path="/recepcionist/pedidos" component={Pedidos} />
+              <Route
+                path="/recepcionist/pedidos"
+                component={() => <Pedidos data={data} />}
+              />
               <Route path="/recepcionist/cambio-form" component={CambioForm} />
               <Route
                 path="/recepcionist/limpieza-form"
