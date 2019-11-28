@@ -4,6 +4,7 @@ import PedidosTopBar from "./../../components/pedidos-top-bar";
 import Build from "@material-ui/icons/Build";
 import watch from "../../assets/watch.svg";
 import tienda from "../../assets/tienda.svg";
+import CheckCircle from "@material-ui/icons/CheckCircle";
 
 export default function Pedidos({ data }) {
   const tableData = data.map(({ folio, cliente, servicio, estado }) => {
@@ -35,6 +36,13 @@ export default function Pedidos({ data }) {
           <div style={{ display: "inline-block", marginLeft: "5px" }}>
             En tienda
           </div>
+        </div>
+      );
+    }
+    if (estado === "Terminado") {
+      status = (
+        <div>
+          <CheckCircle style={{ color: "#6BB323", marginLeft: "15px" }} />
         </div>
       );
     }

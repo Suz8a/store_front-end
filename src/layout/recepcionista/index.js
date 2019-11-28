@@ -38,6 +38,12 @@ const data = [
     cliente: "Jesus Abraham Zavala Quintero",
     servicio: "Pulido",
     estado: "En tienda"
+  },
+  {
+    folio: "22222",
+    cliente: "Jesus Abraham Zavala Quintero",
+    servicio: "Pulido",
+    estado: "Terminado"
   }
 ];
 
