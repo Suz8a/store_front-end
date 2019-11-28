@@ -50,7 +50,7 @@ function Recepcionista() {
       <div
         style={{
           width: "100%",
-          height: "fit-content",
+          height: "1507px",
           backgroundColor: "#F4F6F8"
         }}
       >
