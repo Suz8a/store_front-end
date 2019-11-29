@@ -62,22 +62,22 @@ function Recepcionista() {
     setclientes(result.data);
   }, []);
 
-  if (pedidos === undefined)
+  if (pedidos === undefined || clientes === undefined)
     return (
       <div>
         <LinearProgress color="secondary" />
       </div>
     );
-  if (clientes === undefined)
+  /*if (clientes === undefined)
     return (
       <div>
         <LinearProgress color="secondary" />
       </div>
-    );
+    );*/
 
   var data = pedidos.map(pedido => {
-    var cliente = clientes.filter(x => x.id === pedido.cliente_id);
-
+    var cliente = clientes.filter(client => client.id == pedido.cliente_id);
+    debugger;
     return {
       folio: pedido.folio,
       cliente: `${cliente.nombre} ${cliente.apellido_paterno} ${cliente.apellido_materno}`,

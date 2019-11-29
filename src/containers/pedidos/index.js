@@ -19,7 +19,7 @@ export default function Pedidos({ data }) {
         </div>
       );
     }
-    if (estado === "Procesando") {
+    if (estado === "En proceso") {
       status = (
         <div>
           <img src={watch} />
