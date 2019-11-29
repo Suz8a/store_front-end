@@ -68,16 +68,10 @@ function Recepcionista() {
         <LinearProgress color="secondary" />
       </div>
     );
-  /*if (clientes === undefined)
-    return (
-      <div>
-        <LinearProgress color="secondary" />
-      </div>
-    );*/
 
   var data = pedidos.map(pedido => {
-    var cliente = clientes.filter(client => client.id == pedido.cliente_id);
-    debugger;
+    var cliente = clientes.filter(client => client.id === pedido.cliente_id);
+
     return {
       folio: pedido.folio,
       cliente: `${cliente.nombre} ${cliente.apellido_paterno} ${cliente.apellido_materno}`,
