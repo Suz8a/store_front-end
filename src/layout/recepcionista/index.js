@@ -20,7 +20,7 @@ import {
   uploadImage
 } from "../../api";
 
-const data = [
+const data22 = [
   {
     folio: "12345",
     cliente: "Suzclem Adriana Ochoa Casillas",
@@ -48,6 +48,11 @@ const data = [
 ];
 
 function Recepcionista() {
+  var { data: pedidos } = getAllPedidos();
+  var { data: clientes } = getAllClients();
+
+  var data;
+
   return (
     <div>
       <div>

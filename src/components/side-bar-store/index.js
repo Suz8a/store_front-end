@@ -14,9 +14,6 @@ import EnProceso from "../../assets/tools-cross.svg";
 import Terminados from "../../assets/Check.svg";
 import { CardEffects, Titles, Circles, StoreIcon } from "./styled";
 import Store from "@material-ui/icons/StoreMallDirectory";
-import { callExpression } from "@babel/types";
-//Componente para el menú lateral izquierdo
-//Por alguna razón no logro hacer que se vea lo que hago, tendré que seguir investigando...
 
 function SideBarStore() {
   return (
