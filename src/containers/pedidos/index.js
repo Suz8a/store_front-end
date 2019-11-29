@@ -46,6 +46,10 @@ export default function Pedidos({ data }) {
         </div>
       );
     }
+    if (servicio === "cambio_tamano") servicio = "Cambio de tamaño";
+    if (servicio === "pulido") servicio = "Pulido";
+    if (servicio === "limpieza") servicio = "Limpieza";
+    if (servicio === "reparacion") servicio = "Reparación";
 
     return {
       Folio: folio,

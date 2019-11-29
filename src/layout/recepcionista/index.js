@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import SideBarStore from "../../components/side-bar-store";
 import TopLayout from "../../components/top-layout";
@@ -19,6 +19,7 @@ import {
   updatePedido,
   uploadImage
 } from "../../api";
+import { CircularProgress, LinearProgress } from "@material-ui/core";
 
 const data22 = [
   {
@@ -48,10 +49,45 @@ const data22 = [
 ];
 
 function Recepcionista() {
-  var { data: pedidos } = getAllPedidos();
-  var { data: clientes } = getAllClients();
+  const [pedidos, setpedidos] = useState(undefined);
+  const [clientes, setclientes] = useState(undefined);
 
-  var data;
+  useEffect(async () => {
+    const result = await getAllPedidos();
+    setpedidos(result.data);
+  }, []);
+
+  useEffect(async () => {
+    const result = await getAllClients();
+    setclientes(result.data);
+  }, []);
+
+  if (pedidos === undefined)
+    return (
+      <div>
+        <LinearProgress color="secondary" />
+      </div>
+    );
+  if (clientes === undefined)
+    return (
+      <div>
+        <LinearProgress color="secondary" />
+      </div>
+    );
+
+  var data = pedidos.map(pedido => {
+    var cliente = clientes.filter(x => x.id === pedido.cliente_id);
+
+    return {
+      folio: pedido.folio,
+      cliente: `${cliente.nombre} ${cliente.apellido_paterno} ${cliente.apellido_materno}`,
+      servicio: pedido.servicio,
+      estado: pedido.estado
+    };
+  });
+  console.log(pedidos);
+  console.log(clientes);
+  console.log(data);
 
   return (
     <div>
