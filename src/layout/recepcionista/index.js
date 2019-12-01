@@ -70,7 +70,7 @@ function Recepcionista() {
     );
 
   var data = pedidos.map(pedido => {
-    var cliente = clientes.filter(client => client.id === pedido.cliente_id);
+    var cliente = clientes.find(client => client.id === pedido.cliente_id);
 
     return {
       folio: pedido.folio,
