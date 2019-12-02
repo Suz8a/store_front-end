@@ -12,6 +12,7 @@ import {
 import PulidoForm from "../../containers/pulido-form";
 import ReparacionForm from "../../containers/reparacion-form";
 import DetalleServicio from "../../containers/detalle-servicio";
+import DetallePedido from "../../containers/detalle-pedido";
 
 function Recepcionista() {
   return ( <div >
