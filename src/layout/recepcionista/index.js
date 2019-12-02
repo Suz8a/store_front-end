@@ -79,6 +79,7 @@ function Recepcionista() {
       estado: pedido.estado
     };
   });
+
   console.log(pedidos);
   console.log(clientes);
   console.log(data);
@@ -117,7 +118,19 @@ function Recepcionista() {
             <Switch>
               <Route
                 path="/recepcionist/pedidos"
-                component={() => <Pedidos data={data} />}
+                component={() => (
+                  <Pedidos
+                    data={data.filter(pedido => pedido.estado !== "Terminado")}
+                  />
+                )}
+              />
+              <Route
+                path="/recepcionist/pedidos-terminados"
+                component={() => (
+                  <Pedidos
+                    data={data.filter(pedido => pedido.estado === "Terminado")}
+                  />
+                )}
               />
               <Route path="/recepcionist/cambio-form" component={CambioForm} />
               <Route

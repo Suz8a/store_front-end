@@ -242,7 +242,7 @@ function CambioForm() {
       data: { imageUrl: link_imagen }
     } = await uploadImage(productFiles);
 
-    createPedido(
+    var pedido = createPedido(
       "cambio_tamano",
       descripcion,
       "En proceso",
