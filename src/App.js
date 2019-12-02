@@ -7,7 +7,7 @@ import Build from "@material-ui/icons/Build";
 import Recepcionista from "./layout/recepcionista";
 import GenerateReport from "./components/generate-report";
 import Login from "./components/login";
-
+import DetailsTitle from "./components/details-title";
 const data = [
   {
     folio: "12345",
@@ -51,7 +51,7 @@ function App() {
     
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-               <Login/>
+               <Recepcionista/>
       </MuiThemeProvider>
     </StylesProvider>
   );

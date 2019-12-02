@@ -16,7 +16,7 @@ function DetailsTitle(props) {
           component="h2"
           style={{ width: "253px", height: "33px" }}
         >
-          Detalles del Pedido{" "}
+          {props.servicio}{" "}
         </Typography>
         <Typography variant="subtitle1" style={{ width: "130px" }}>
           {" "}

@@ -11,25 +11,20 @@ import {
 } from "@material-ui/core";
 import PulidoForm from "../../containers/pulido-form";
 import ReparacionForm from "../../containers/reparacion-form";
+import DetalleServicio from "../../containers/detalle-servicio";
 
 function Recepcionista() {
-  return ( <
-    div >
-    <
-    div >
-    <
-    TopLayout / >
-    <
-    /div> <
-    div style = {
+  return ( <div >
+    <div >
+    <TopLayout/>
+    </div> 
+    <div style = {
       {
         width: "100%",
         height: "fit-content",
         backgroundColor: "#F4F6F8"
-      }
-    } >
-    <
-    div style = {
+      }}>
+    <div style = {
       {
         display: "inline-block",
         width: "fit-content",
@@ -37,22 +32,17 @@ function Recepcionista() {
         float: "left",
         position: "relative"
       }
-    } >
-    <
-    SideBarStore / >
-    <
-    /div> <div style = { {
+    }>
+    <SideBarStore/>
+    </div> 
+    <div style = { {
     display: "inline-block",
     width: "calc(100vw - 304px)",
     height: "fit-content"
-  }
-} >
-<
-ReparacionForm / >
-  <
-  /div> </div >
-  <
-  /div>
+  }}>
+  <DetalleServicio/>
+  </div> </div >
+  </div>
 );
 }
 

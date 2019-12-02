@@ -17,7 +17,7 @@ function DynamicTable(props) {
     return keys.map((key, index) => {
       return (
         <TableCell key={key}>
-          <span style={{ color: "#546E7ADE" }}>{key}</span>
+          <span>{key}</span>
         </TableCell>
       );
     });
