@@ -1,8 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 export const CardLogIn = styled.div`
-  margin-top: 105px;
-  margin-left: 164px;
+  margin: 100px auto 20px auto;
   width: 954px;
   height: 591px;
   background: #ffffff 0% 0% no-repeat padding-box;

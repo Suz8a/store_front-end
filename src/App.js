@@ -8,6 +8,7 @@ import Build from "@material-ui/icons/Build";
 import Recepcionista from "./layout/recepcionista";
 import Taller from "./layout/taller";
 import Admin from "./layout/admin";
+import MainLogin from "./layout/main-login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/recepcionist" component={Recepcionista} />
             <Route path="/workshop" component={Taller} />
             <Route path="/admin" component={Admin} />
+            <Route path="/login" component={MainLogin} />
           </MuiThemeProvider>
         </StylesProvider>
       </Switch>

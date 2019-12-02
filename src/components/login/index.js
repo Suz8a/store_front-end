@@ -57,13 +57,13 @@ export default function Login() {
           </div>
         </CardDark>
         <div
-          style={{ marginLeft: "38%", marginTop: "24%", position: "absolute" }}
+          style={{ marginLeft: "42%", marginTop: "26%", position: "absolute" }}
         >
           <ThemedButton
             buttonSize="283px"
             variantType="contained"
             colorTheme="primary"
-            nombre="Entrar"
+            text="Entrar"
           />
         </div>
       </CardLogIn>

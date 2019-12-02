@@ -14,8 +14,24 @@ import EnProceso from "../../assets/tools-cross.svg";
 import Terminados from "../../assets/Check.svg";
 import { CardEffects, Titles, Circles, StoreIcon } from "./styled";
 import Store from "@material-ui/icons/StoreMallDirectory";
+import { withRouter } from "react-router-dom";
 
-function SideBarStore() {
+const paths = [
+  "/recepcionist/reparacion-form",
+  "/recepcionist/cambio-form",
+  "/recepcionist/grabado-form",
+  "/recepcionist/pulido-form",
+  "/recepcionist/limpieza-form"
+];
+
+console.log(paths[1]);
+
+var pathPointer = -1;
+
+function SideBarStore({ router }) {
+  function go() {
+    router.push("/recepcionist/cambio-form");
+  }
   return (
     <CardEffects>
       <div
@@ -43,7 +59,14 @@ function SideBarStore() {
               "Pulido",
               "Limpieza"
             ].map((text, index) => (
-              <ListItem button key={text} style={{ paddingLeft: "25px" }}>
+              <ListItem
+                onClick={() => {
+                  go();
+                }}
+                button
+                key={text}
+                style={{ paddingLeft: "25px" }}
+              >
                 <ListItemIcon style={{ minWidth: "33px" }}>
                   {index === 0 && <img src={Reparacion} />}
                   {index === 1 && <img src={cambioTamaño} />}
@@ -72,4 +95,4 @@ function SideBarStore() {
     </CardEffects>
   );
 }
-export default SideBarStore;
+export default withRouter(SideBarStore);
