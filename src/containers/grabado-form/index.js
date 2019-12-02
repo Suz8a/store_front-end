@@ -2,14 +2,13 @@ import React from "react";
 import DynamicForm from "../../components/dynamic-form";
 
 function GrabadoForm() {
-  return (
-    <DynamicForm
-      title="Grabado"
-      cliente="true"
-      producto="true"
-      descripcion="true"
-      presupuesto="true"
-    />
+  return ( <
+    DynamicForm title = "Grabado"
+    cliente = "true"
+    producto = "true"
+    descripcion = "true"
+    presupuesto = "true" /
+    >
   );
 }
 

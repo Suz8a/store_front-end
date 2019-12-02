@@ -6,6 +6,7 @@ import theme from "./theme";
 import Build from "@material-ui/icons/Build";
 import Recepcionista from "./layout/recepcionista";
 import GenerateReport from "./components/generate-report";
+import Login from "./components/login";
 
 const data = [
   {
@@ -47,9 +48,10 @@ function App() {
     };
   });
   return (
+    
     <StylesProvider injectFirst={true}>
       <MuiThemeProvider theme={theme}>
-        <GenerateReport/>
+               <Login/>
       </MuiThemeProvider>
     </StylesProvider>
   );

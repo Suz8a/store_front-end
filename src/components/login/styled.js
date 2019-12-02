@@ -22,6 +22,9 @@ export const Text = styled.h3`
   position: absolute;
   opacity: 1;
 `;
+
+
+
 export const CardDark = styled.div`
   width: 500px;
   height: 591px;

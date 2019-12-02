@@ -1,5 +1,5 @@
 import React from "react";
-import { CardLogIn, InputData, Text, CardDark } from "./styled";
+import { CardLogIn, InputData, Text, CardDark, backg } from "./styled";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import EmailIcon from "@material-ui/icons/Email";
@@ -12,14 +12,14 @@ import ThemedButton from "./../button";
 
 export default function Login() {
   return (
-    <div>
+    <div style={{background: "#00000010", position: "absolute", width: "694px"}}>
       <CardLogIn>
         <Text
           style={{
             fontFamily: "Roboto",
             letterSpacing: "1.34px",
             fontStyle: "Medium",
-            fontSize: "15px/20px"
+            fontSize: "15px/20px",
           }}
         >
           Inicio de sesión
@@ -67,6 +67,7 @@ export default function Login() {
           />
         </div>
       </CardLogIn>
-    </div>
+      </div>
+ 
   );
 }
