@@ -7,7 +7,7 @@ export const CardEffects = styled(Card)`
   margin-top: 75;
   margin-left: -2;
   width: 304px;
-  height: 1507px;
+  height: 726px;
   background: #ffffff;
   box-shadow: 0px 16px 10px #00000033;
   border-radius: 4px;
@@ -19,6 +19,7 @@ export const Titles = styled(Typography)`
   letter-spacing: 0.12px;
   color: #546e7a99;
   opacity: 1;
+  margin-left: 23px;
   width: 90px;
   height: 24px;
 `;

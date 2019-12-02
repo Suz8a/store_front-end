@@ -27,24 +27,6 @@ const data22 = [
     cliente: "Suzclem Adriana Ochoa Casillas",
     servicio: "Reparación",
     estado: "Procesando"
-  },
-  {
-    folio: "22222",
-    cliente: "Jesus Abraham Zavala Quintero",
-    servicio: "Pulido",
-    estado: "En taller"
-  },
-  {
-    folio: "22222",
-    cliente: "Jesus Abraham Zavala Quintero",
-    servicio: "Pulido",
-    estado: "En tienda"
-  },
-  {
-    folio: "22222",
-    cliente: "Jesus Abraham Zavala Quintero",
-    servicio: "Pulido",
-    estado: "Terminado"
   }
 ];
 

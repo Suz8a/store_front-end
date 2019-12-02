@@ -7,6 +7,7 @@ import theme from "./theme";
 import Build from "@material-ui/icons/Build";
 import Recepcionista from "./layout/recepcionista";
 import Taller from "./layout/taller";
+import Admin from "./layout/admin";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <MuiThemeProvider theme={theme}>
             <Route path="/recepcionist" component={Recepcionista} />
             <Route path="/workshop" component={Taller} />
+            <Route path="/admin" component={Admin} />
           </MuiThemeProvider>
         </StylesProvider>
       </Switch>
