@@ -289,6 +289,7 @@ function CambioForm() {
         total: calcularTotal()
       }
     );
+    alert(pedido.data.folio);
     setisLoading(false);
   }
 

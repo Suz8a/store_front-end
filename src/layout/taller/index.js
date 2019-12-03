@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import SideBarWorkshop from "../../components/side-bar-workshop";
 import TopLayout from "../../components/top-layout";
 import Pedidos from "../../containers/pedidos";
@@ -87,26 +87,24 @@ function Taller() {
             height: "fit-content"
           }}
         >
-          <BrowserRouter>
-            <Switch>
-              <Route
-                path="/workshop/pedidos"
-                component={() => (
-                  <Pedidos
-                    data={data.filter(pedido => pedido.estado === "En taller")}
-                  />
-                )}
-              />
-              <Route
-                path="/workshop/pedidos-terminados"
-                component={() => (
-                  <Pedidos
-                    data={data.filter(pedido => pedido.estado === "Terminado")}
-                  />
-                )}
-              />
-            </Switch>
-          </BrowserRouter>
+          <Switch>
+            <Route
+              path="/workshop/pedidos"
+              component={() => (
+                <Pedidos
+                  data={data.filter(pedido => pedido.estado === "En taller")}
+                />
+              )}
+            />
+            <Route
+              path="/workshop/pedidos-terminados"
+              component={() => (
+                <Pedidos
+                  data={data.filter(pedido => pedido.estado === "Terminado")}
+                />
+              )}
+            />
+          </Switch>
         </div>
       </div>
     </div>

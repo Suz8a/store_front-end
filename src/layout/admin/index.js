@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import TopLayout from "../../components/top-layout";
 import {
   createClient,
@@ -55,11 +55,9 @@ function Admin() {
             height: "fit-content"
           }}
         >
-          <BrowserRouter>
-            <Switch>
-              <Route path="/admin/usuarios" component={() => <EditTable />} />
-            </Switch>
-          </BrowserRouter>
+          <Switch>
+            <Route path="/admin/usuarios" component={() => <EditTable />} />
+          </Switch>
         </div>
       </div>
     </div>

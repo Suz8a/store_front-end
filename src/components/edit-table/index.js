@@ -17,7 +17,7 @@ function EditTable() {
     <MaterialTable
       style={{
         width: "772px",
-        height: "481px",
+
         margin: "105px auto 20px auto"
       }}
       title="Usuarios"

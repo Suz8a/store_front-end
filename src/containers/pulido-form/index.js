@@ -1,5 +1,11 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 import DynamicForm from "../../components/dynamic-form";
+import { withRouter } from "react-router-dom";
 import {
   createClient,
   createPedido,
@@ -11,7 +17,6 @@ import {
   updatePedido,
   uploadImage
 } from "../../api";
-import { CircularProgress, Paper } from "@material-ui/core";
 
 const productos = {
   1: "Anillo",
@@ -20,7 +25,13 @@ const productos = {
   4: "Reloj"
 };
 
-function PulidoForm() {
+const useStyles = makeStyles(theme => ({
+  close: {
+    padding: theme.spacing(0.5)
+  }
+}));
+
+function PulidoForm(props) {
   //cliente information
   const [nomCliente, setnomCliente] = useState("");
   const [aPaterno, setaPaterno] = useState("");
@@ -54,6 +65,45 @@ function PulidoForm() {
   const [hechura, sethechura] = useState(0);
   //Loading state
   const [isLoading, setisLoading] = useState(false);
+  //SnackBar state
+  const queueRef = React.useRef([]);
+  const [open, setOpen] = React.useState(false);
+  const [messageInfo, setMessageInfo] = React.useState(undefined);
+
+  function processQueue() {
+    if (queueRef.current.length > 0) {
+      setMessageInfo(queueRef.current.shift());
+      setOpen(true);
+    }
+  }
+
+  function showMessage(message) {
+    queueRef.current.push({
+      message,
+      key: new Date().getTime()
+    });
+
+    if (open) {
+      // immediately begin dismissing current message
+      // to start showing new one
+      setOpen(false);
+    } else {
+      processQueue();
+    }
+  }
+
+  function handleClose(event, reason) {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  }
+
+  function handleExited() {
+    processQueue();
+  }
+
+  const classes = useStyles();
 
   //Client information
   function handleNombre(e) {
@@ -229,132 +279,156 @@ function PulidoForm() {
   function onClickCancelar() {}
 
   async function onClickAceptar() {
-    setisLoading(true);
-    var { data: client } = await createClient(
-      nomCliente,
-      aMaterno,
-      aPaterno,
-      correo,
-      telefono
-    );
-    var {
-      data: { imageUrl: link_imagen }
-    } = await uploadImage(productFiles);
-    createPedido(
-      "pulido",
-      descripcion,
-      "En proceso",
-      link_imagen,
-      client.id,
-      "something",
-      "Any",
-      {
-        nombre_joya: productos[servicioSeleccionado],
-        peso_joya: parseInt(peso),
-        medida_inicial: parseInt(medidaInicial),
-        medida_final: parseInt(medidaFinal)
-      },
-      [
-        { nombre_material: "oro", gramos: parseInt(oro) },
-        { nombre_material: "bronce", gramos: parseInt(bronce) },
-        { nombre_material: "plata", gramos: parseInt(plata) },
-        { nombre_material: "acero", gramos: parseInt(acero) }
-      ],
-      [
+    try {
+      setisLoading(true);
+      var { data: client } = await createClient(
+        nomCliente,
+        aMaterno,
+        aPaterno,
+        correo,
+        telefono
+      );
+      var {
+        data: { imageUrl: link_imagen }
+      } = await uploadImage(productFiles);
+      var pedido = await createPedido(
+        "pulido",
+        descripcion,
+        "En proceso",
+        link_imagen,
+        client.id,
+        "something",
+        "Any",
         {
-          nombre_material: "oro",
-          gramos: parseInt(oroUsado),
-          precio: parseInt(oroUsadoPrecio)
+          nombre_joya: productos[servicioSeleccionado],
+          peso_joya: parseInt(peso),
+          medida_inicial: parseInt(medidaInicial),
+          medida_final: parseInt(medidaFinal)
         },
+        [
+          { nombre_material: "oro", gramos: parseInt(oro) },
+          { nombre_material: "bronce", gramos: parseInt(bronce) },
+          { nombre_material: "plata", gramos: parseInt(plata) },
+          { nombre_material: "acero", gramos: parseInt(acero) }
+        ],
+        [
+          {
+            nombre_material: "oro",
+            gramos: parseInt(oroUsado),
+            precio: parseInt(oroUsadoPrecio)
+          },
+          {
+            nombre_material: "bronce",
+            gramos: parseInt(bronceUsado),
+            precio: parseInt(bronceUsadoPrecio)
+          },
+          {
+            nombre_material: "plata",
+            gramos: parseInt(plataUsado),
+            precio: parseInt(plataUsadoPrecio)
+          },
+          {
+            nombre_material: "acero",
+            gramos: parseInt(aceroUsado),
+            precio: parseInt(aceroUsadoPrecio)
+          }
+        ],
         {
-          nombre_material: "bronce",
-          gramos: parseInt(bronceUsado),
-          precio: parseInt(bronceUsadoPrecio)
-        },
-        {
-          nombre_material: "plata",
-          gramos: parseInt(plataUsado),
-          precio: parseInt(plataUsadoPrecio)
-        },
-        {
-          nombre_material: "acero",
-          gramos: parseInt(aceroUsado),
-          precio: parseInt(aceroUsadoPrecio)
+          hechura: hechura,
+          total: calcularTotal()
         }
-      ],
-      {
-        hechura: hechura,
-        total: calcularTotal()
-      }
-    );
+      );
+      props.history.push("/recepcionist/pedidos");
+      alert("El pedido se ha guardado exitosamente");
+    } catch (e) {
+      props.history.push("/recepcionist/pedidos");
+      alert("Hubo un error al guardar pedido");
+    }
     setisLoading(false);
   }
 
-  if (isLoading)
-    return (
-      <Paper
-        style={{
-          margin: "auto",
-          width: "100%",
-          height: "100%",
-          textAlign: "center",
-          paddingTop: "150px",
-          paddingBottom: "1314px"
-        }}
-      >
-        <CircularProgress />
-      </Paper>
-    );
   return (
-    <DynamicForm
-      title="Pulido"
-      //Campos requeridos en el formulario
-      cliente="true"
-      producto="true"
-      descripcion="true"
-      presupuesto="true"
-      //Client information
-      handleNombre={handleNombre}
-      handleAPaterno={handleAPaterno}
-      handleAMaterno={handleAMaterno}
-      handleTelefono={handleTelefono}
-      handleCorreo={handleCorreo}
-      //Product information
-      onSeleccionarServicio={seleccionarServicio}
-      servicioSeleccionado={servicioSeleccionado}
-      handleChange={handleChange}
-      handlePeso={handlePeso}
-      productFiles={productFiles}
-      onProductFileDelete={deleteProductFile}
-      onSetProductFile={setProductFiles}
-      //Size information
-      handleMedidaInicial={handleMedidaInicial}
-      handleMedidaFinal={handleMedidaFinal}
-      //Description information
-      handleDescripcion={handleDescripcion}
-      //Material Attached
-      handleOro={handleOro}
-      handleBronce={handleBronce}
-      handlePlata={handlePlata}
-      handleAcero={handleAcero}
-      //Material used
-      handleOroUsado={handleOroUsado}
-      handleBronceUsado={handleBronceUsado}
-      handlePlataUsado={handlePlataUsado}
-      handleAceroUsado={handleAceroUsado}
-      //Material used price
-      handleOroUsadoPrecio={handleOroUsadoPrecio}
-      handleBronceUsadoPrecio={handleBronceUsadoPrecio}
-      handlePlataUsadoPrecio={handlePlataUsadoPrecio}
-      handleAceroUsadoPrecio={handleAceroUsadoPrecio}
-      //Budget information
-      handleHechura={handleHechura}
-      total={calcularTotal()}
-      //Buttons functionality
-      onClickCancelar={onClickCancelar}
-      onClickAceptar={onClickAceptar}
-    />
+    <div>
+      <DynamicForm
+        title="Pulido"
+        //Campos requeridos en el formulario
+        cliente="true"
+        producto="true"
+        descripcion="true"
+        presupuesto="true"
+        //Client information
+        handleNombre={handleNombre}
+        handleAPaterno={handleAPaterno}
+        handleAMaterno={handleAMaterno}
+        handleTelefono={handleTelefono}
+        handleCorreo={handleCorreo}
+        //Product information
+        onSeleccionarServicio={seleccionarServicio}
+        servicioSeleccionado={servicioSeleccionado}
+        handleChange={handleChange}
+        handlePeso={handlePeso}
+        productFiles={productFiles}
+        onProductFileDelete={deleteProductFile}
+        onSetProductFile={setProductFiles}
+        //Size information
+        handleMedidaInicial={handleMedidaInicial}
+        handleMedidaFinal={handleMedidaFinal}
+        //Description information
+        handleDescripcion={handleDescripcion}
+        //Material Attached
+        handleOro={handleOro}
+        handleBronce={handleBronce}
+        handlePlata={handlePlata}
+        handleAcero={handleAcero}
+        //Material used
+        handleOroUsado={handleOroUsado}
+        handleBronceUsado={handleBronceUsado}
+        handlePlataUsado={handlePlataUsado}
+        handleAceroUsado={handleAceroUsado}
+        //Material used price
+        handleOroUsadoPrecio={handleOroUsadoPrecio}
+        handleBronceUsadoPrecio={handleBronceUsadoPrecio}
+        handlePlataUsadoPrecio={handlePlataUsadoPrecio}
+        handleAceroUsadoPrecio={handleAceroUsadoPrecio}
+        //Budget information
+        handleHechura={handleHechura}
+        total={calcularTotal()}
+        //Buttons functionality
+        onClickCancelar={onClickCancelar}
+        onClickAceptar={onClickAceptar}
+      />
+      <Snackbar
+        key={messageInfo ? messageInfo.key : undefined}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left"
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        onExited={handleExited}
+        ContentProps={{
+          "aria-describedby": "message-id"
+        }}
+        message={
+          <span id="message-id">
+            {messageInfo ? messageInfo.message : undefined}
+          </span>
+        }
+        action={[
+          <IconButton
+            key="close"
+            aria-label="close"
+            color="inherit"
+            className={classes.close}
+            onClick={handleClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        ]}
+      />
+    </div>
   );
 }
 
-export default PulidoForm;
+export default withRouter(PulidoForm);

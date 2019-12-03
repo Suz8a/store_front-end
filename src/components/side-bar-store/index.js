@@ -16,21 +16,21 @@ import { CardEffects, Titles, Circles, StoreIcon } from "./styled";
 import Store from "@material-ui/icons/StoreMallDirectory";
 import { withRouter } from "react-router-dom";
 
-const paths = [
-  "/recepcionist/reparacion-form",
-  "/recepcionist/cambio-form",
-  "/recepcionist/grabado-form",
-  "/recepcionist/pulido-form",
-  "/recepcionist/limpieza-form"
-];
+const paths = {
+  Reparación: "/recepcionist/reparacion-form",
+  "Cambio de Tamaño": "/recepcionist/cambio-form",
+  Grabado: "/recepcionist/grabado-form",
+  Pulido: "/recepcionist/pulido-form",
+  Limpieza: "/recepcionist/limpieza-form",
+  "En proceso": "/recepcionist/pedidos",
+  Terminados: "/recepcionist/pedidos-terminados"
+};
 
-console.log(paths[1]);
+console.log(paths.Reparación);
 
-var pathPointer = -1;
-
-function SideBarStore({ router }) {
-  function go() {
-    router.push("/recepcionist/cambio-form");
+function SideBarStore(props) {
+  function go(text) {
+    props.history.push(paths[text]);
   }
   return (
     <CardEffects>
@@ -61,7 +61,7 @@ function SideBarStore({ router }) {
             ].map((text, index) => (
               <ListItem
                 onClick={() => {
-                  go();
+                  go(text);
                 }}
                 button
                 key={text}
@@ -81,7 +81,14 @@ function SideBarStore({ router }) {
           <Titles>PEDIDOS</Titles>
           <List>
             {["En proceso", "Terminados"].map((text, index) => (
-              <ListItem button key={text} style={{ paddingLeft: "25px" }}>
+              <ListItem
+                onClick={() => {
+                  go(text);
+                }}
+                button
+                key={text}
+                style={{ paddingLeft: "25px" }}
+              >
                 <ListItemIcon style={{ minWidth: "33px" }}>
                   {index === 0 && <img src={EnProceso} />}
                   {index === 1 && <img src={Terminados} />}

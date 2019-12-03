@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import SideBarStore from "../../components/side-bar-store";
 import TopLayout from "../../components/top-layout";
 import CambioForm from "../../containers/cambio-form";
@@ -96,40 +96,35 @@ function Recepcionista() {
             height: "fit-content"
           }}
         >
-          <BrowserRouter>
-            <Switch>
-              <Route
-                path="/recepcionist/pedidos"
-                component={() => (
-                  <Pedidos
-                    data={data.filter(pedido => pedido.estado !== "Terminado")}
-                  />
-                )}
-              />
-              <Route
-                path="/recepcionist/pedidos-terminados"
-                component={() => (
-                  <Pedidos
-                    data={data.filter(pedido => pedido.estado === "Terminado")}
-                  />
-                )}
-              />
-              <Route path="/recepcionist/cambio-form" component={CambioForm} />
-              <Route
-                path="/recepcionist/limpieza-form"
-                component={LimpiezaForm}
-              />
-              <Route
-                path="/recepcionist/grabado-form"
-                component={GrabadoForm}
-              />
-              <Route path="/recepcionist/pulido-form" component={PulidoForm} />
-              <Route
-                path="/recepcionist/reparacion-form"
-                component={ReparacionForm}
-              />
-            </Switch>
-          </BrowserRouter>
+          <Switch>
+            <Route
+              path="/recepcionist/pedidos"
+              component={() => (
+                <Pedidos
+                  data={data.filter(pedido => pedido.estado !== "Terminado")}
+                />
+              )}
+            />
+            <Route
+              path="/recepcionist/pedidos-terminados"
+              component={() => (
+                <Pedidos
+                  data={data.filter(pedido => pedido.estado === "Terminado")}
+                />
+              )}
+            />
+            <Route path="/recepcionist/cambio-form" component={CambioForm} />
+            <Route
+              path="/recepcionist/limpieza-form"
+              component={LimpiezaForm}
+            />
+            <Route path="/recepcionist/grabado-form" component={GrabadoForm} />
+            <Route path="/recepcionist/pulido-form" component={PulidoForm} />
+            <Route
+              path="/recepcionist/reparacion-form"
+              component={ReparacionForm}
+            />
+          </Switch>
         </div>
       </div>
     </div>
