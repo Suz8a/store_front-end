@@ -36,7 +36,7 @@ function DetalleServicio() {
                 <div style={{ marginTop: "45px", marginBottom: "50px" }}>
                     <ThemedButton
                         marginR="30px"
-                        buttonSize="120px"
+                        buttonSize="188px"
                         variantType="outlined"
                         text="Reportar Problema"
                         colorTheme="secondary"/>
