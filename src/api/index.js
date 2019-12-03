@@ -4,6 +4,13 @@ const troquelApi = axios.create({
   baseURL: "/api"
 });
 
+export async function authenticate(correo, contrasena) {
+  return await troquelApi.post("/usuario/authenticate", {
+    correo: correo,
+    contrasena: contrasena
+  });
+}
+
 export async function createPedido(
   servicio,
   descripcion,

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import DynamicForm from "../../components/dynamic-form";
+import { withRouter } from "react-router-dom";
 import {
   createClient,
   createPedido,
@@ -21,7 +22,7 @@ const productos = {
   4: "Reloj"
 };
 
-function CambioForm() {
+function CambioForm(props) {
   //cliente information
   const [nomCliente, setnomCliente] = useState("");
   const [aPaterno, setaPaterno] = useState("");
@@ -227,7 +228,9 @@ function CambioForm() {
 
   //Buttons functionality
 
-  function onClickCancelar() {}
+  function onClickCancelar() {
+    props.history.push("/recepcionist/pedidos");
+  }
 
   async function onClickAceptar() {
     setisLoading(true);
@@ -364,4 +367,4 @@ function CambioForm() {
   );
 }
 
-export default CambioForm;
+export default withRouter(CambioForm);

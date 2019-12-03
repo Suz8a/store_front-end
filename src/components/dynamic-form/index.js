@@ -105,7 +105,6 @@ function DynamicForm(props) {
             colorTheme="secondary"
           />
           <ThemedButton
-            href="#top"
             onClick={props.onClickAceptar}
             buttonSize="168px"
             variantType="contained"

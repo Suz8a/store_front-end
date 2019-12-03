@@ -10,7 +10,11 @@ import { StylesProvider } from "@material-ui/styles";
 import theme from "./../../theme";
 import ThemedButton from "./../button";
 
-export default function Login() {
+export default function Login({
+  handleCorreo,
+  handleContrasena,
+  onClickEntrar
+}) {
   return (
     <div>
       <CardLogIn>
@@ -34,6 +38,7 @@ export default function Login() {
                 style={{ width: "266px" }}
                 id="input-with-icon-grid"
                 label="Correo"
+                onInput={handleCorreo}
               />
             </Grid>
           </Grid>
@@ -47,6 +52,7 @@ export default function Login() {
                 id="input-with-icon-grid"
                 label="Constraseña"
                 type="Password"
+                onInput={handleContrasena}
               />
             </Grid>
           </Grid>
@@ -60,6 +66,7 @@ export default function Login() {
           style={{ marginLeft: "42%", marginTop: "26%", position: "absolute" }}
         >
           <ThemedButton
+            onClick={onClickEntrar}
             buttonSize="283px"
             variantType="contained"
             colorTheme="primary"

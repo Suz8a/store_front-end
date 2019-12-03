@@ -59,6 +59,10 @@ export default function Pedidos({ data }) {
     };
   });
 
+  function onRowClick(pedido) {
+    console.log(pedido.Folio);
+  }
+
   return (
     <div
       style={{
@@ -71,7 +75,7 @@ export default function Pedidos({ data }) {
     >
       <PedidosTopBar />
       <div style={{ height: "360px", overflow: "scroll" }}>
-        <DynamicTable data={tableData} />
+        <DynamicTable onRowClick={onRowClick} data={tableData} />
       </div>
     </div>
   );

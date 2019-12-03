@@ -8,17 +8,7 @@ import GrabadoForm from "../../containers/grabado-form";
 import PulidoForm from "../../containers/pulido-form";
 import ReparacionForm from "../../containers/reparacion-form";
 import Pedidos from "../../containers/pedidos";
-import {
-  createClient,
-  createPedido,
-  getAllClients,
-  getAllPedidos,
-  getClientById,
-  getPedidoByFolio,
-  getPedidoById,
-  updatePedido,
-  uploadImage
-} from "../../api";
+import { getAllClients, getAllPedidos } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 
 const data22 = [
