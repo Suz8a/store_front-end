@@ -6,36 +6,39 @@ import ClientDetails from "../../components/client-details";
 import ServiceDetails from "../../components/service-details";
 import Description from "../../components/description";
 import ThemedButton from "../../components/button";
+import { withRouter } from "react-router-dom";
 
-function DetallePedido() {
+function DetallePedido(props) {
+  function onClickVolver() {
+    props.history.push("/recepcionist/pedidos");
+  }
+  function onClickEstado() {}
+
   return (
     <Form>
       <div style={{ padding: "50px 100px" }}>
         <div style={{ marginTop: "40px" }}>
-          <DetailsTitle servicio="Reparacion" folio="278112" />
+          <DetailsTitle folio={props.folio} />
         </div>
         <div
           style={{ float: "right", marginTop: "20px", marginBottom: "50px" }}
-        >
-          <ThemedButton
-            buttonSize="168px"
-            variantType="contained"
-            text="No se que"
-            colorTheme="primary"
-          />
-        </div>
+        ></div>
         <div style={{ marginTop: "40px" }}>
           <ClientDetails
-            name="Suzclem Adriana Ochoa"
-            tel="6673829390"
-            email="suzclem@gmail.com"
+            name={props.name}
+            tel={props.tel}
+            email={props.email}
           />
         </div>
         <div style={{ marginTop: "40px" }}>
-          <ServiceDetails serv="Reparacion" product="Reloj" weight="89" />
+          <ServiceDetails
+            serv={props.serv}
+            product={props.product}
+            weight={props.weight}
+          />
         </div>
         <div style={{ marginTop: "40px" }}>
-          <Description />
+          <Description descripcion={props.descripcion} disabled={true} />
         </div>
         <div style={{ marginTop: "40px" }}>
           <ExpancionPanel cantidad="500" />
@@ -44,16 +47,18 @@ function DetallePedido() {
           style={{ float: "right", marginTop: "45px", marginBottom: "50px" }}
         >
           <ThemedButton
+            onClick={onClickVolver}
             marginR="30px"
             buttonSize="120px"
             variantType="outlined"
-            text="Cancelar"
+            text="Volver"
             colorTheme="secondary"
           />
           <ThemedButton
+            onClick={onClickEstado}
             buttonSize="168px"
             variantType="contained"
-            text="Guardar"
+            text="Estado"
             colorTheme="primary"
           />
         </div>
@@ -62,4 +67,4 @@ function DetallePedido() {
   );
 }
 
-export default DetallePedido;
+export default withRouter(DetallePedido);

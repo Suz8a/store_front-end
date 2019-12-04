@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
 import DynamicTable from "../dynamic-table";
-import { PresupuestoDetails } from "./styled"
+import { PresupuestoDetails } from "./styled";
 
 const useStyles = makeStyles(theme => ({
   root: { width: "20%" },
@@ -17,9 +17,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const data=[{
-  Motivo: "10gr de Oro", Costo: "$1000"
-},{Motivo: "10gr de Plata", Costo: "$800"}];
+const data = [
+  {
+    Motivo: "10gr de Oro",
+    Costo: "$1000"
+  },
+  { Motivo: "10gr de Plata", Costo: "$800" }
+];
 
 function ExpancionPanel(props) {
   const classes = useStyles();
@@ -30,7 +34,8 @@ function ExpancionPanel(props) {
 
   return (
     <div className={classes.root}>
-      <PresupuestoDetails style={{ width: "256px"}}
+      <PresupuestoDetails
+        style={{ width: "256px" }}
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
       >
@@ -43,14 +48,14 @@ function ExpancionPanel(props) {
             $ {props.cantidad}{" "}
           </Typography>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails style={{ width: "676px"}}>
+        <ExpansionPanelDetails style={{ width: "539px" }}>
           <Grid
             container
             direction="row"
             justify="space-between"
             alignItems="center"
           >
-              <DynamicTable data={data}/>
+            <DynamicTable data={data} />
           </Grid>
         </ExpansionPanelDetails>
       </PresupuestoDetails>

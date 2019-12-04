@@ -13,10 +13,9 @@ function ClientDetails(props) {
       >
         <Typography variant="subtitle1" component="h1">
           {" "}
-          Cliente:
+          <span style={{ color: "#546E7A" }}>Cliente:</span>
           <div
             style={{
-              color: "gray",
               display: "inline-block",
               margin: "0px 5px 0px 5px",
               width: "307px"
@@ -37,10 +36,9 @@ function ClientDetails(props) {
             style={{ width: "fit-content" }}
           >
             {" "}
-            Telefono:
+            <span style={{ color: "#546E7A" }}>Telefono:</span>
             <div
               style={{
-                color: "gray",
                 display: "inline-block",
                 margin: "0px 5px 0px 5px",
                 width: "117px"
@@ -51,10 +49,9 @@ function ClientDetails(props) {
           </Typography>
           <Typography variant="subtitle1" component="h2">
             {" "}
-            Correo:
+            <span style={{ color: "#546E7A" }}>Correo:</span>
             <div
               style={{
-                color: "gray",
                 display: "inline-block",
                 margin: "0px 5px 0px 5px",
                 width: "207px"

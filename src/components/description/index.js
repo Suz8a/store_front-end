@@ -11,7 +11,9 @@ export default function Description(props) {
         type="text"
         cols="40"
         rows="5"
-      ></TextBox>
+        value={props.descripcion}
+        disabled={props.disabled}
+      />
     </div>
   );
 }

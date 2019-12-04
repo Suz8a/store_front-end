@@ -1,18 +1,7 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import DynamicForm from "../../components/dynamic-form";
 import { withRouter } from "react-router-dom";
-import {
-  createClient,
-  createPedido,
-  getAllClients,
-  getAllPedidos,
-  getClientById,
-  getPedidoByFolio,
-  getPedidoById,
-  updatePedido,
-  uploadImage
-} from "../../api";
+import { createClient, createPedido, uploadImage } from "../../api";
 import { CircularProgress, Paper } from "@material-ui/core";
 
 const productos = {

@@ -5,9 +5,10 @@ import Build from "@material-ui/icons/Build";
 import watch from "../../assets/watch.svg";
 import tienda from "../../assets/tienda.svg";
 import CheckCircle from "@material-ui/icons/CheckCircle";
+import { withRouter } from "react-router-dom";
 
-export default function Pedidos({ data }) {
-  const tableData = data.map(({ folio, cliente, servicio, estado }) => {
+function Pedidos(props) {
+  const tableData = props.data.map(({ folio, cliente, servicio, estado }) => {
     let status = "";
     if (estado === "En taller") {
       status = (
@@ -59,8 +60,8 @@ export default function Pedidos({ data }) {
     };
   });
 
-  function onRowClick(pedido) {
-    console.log(pedido.Folio);
+  function getRow(pedido) {
+    props.onRowClick(pedido);
   }
 
   return (
@@ -75,8 +76,10 @@ export default function Pedidos({ data }) {
     >
       <PedidosTopBar />
       <div style={{ height: "360px", overflow: "scroll" }}>
-        <DynamicTable onRowClick={onRowClick} data={tableData} />
+        <DynamicTable onRowClick={getRow} data={tableData} />
       </div>
     </div>
   );
 }
+
+export default withRouter(Pedidos);

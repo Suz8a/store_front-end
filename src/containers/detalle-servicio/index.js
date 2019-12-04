@@ -16,7 +16,7 @@ const data1 = [
   { MaterialAUtilizar: "Oro", Peso: "95gr" }
 ];
 
-function DetalleServicio() {
+function DetalleServicio({ folio }) {
   return (
     <Form>
       <div style={{ padding: "50px 100px" }}>

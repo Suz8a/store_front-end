@@ -13,10 +13,9 @@ function ServiceDetails(props) {
       >
         <Typography variant="subtitle1" component="h1">
           {" "}
-          Servicio:
+          <span style={{ color: "#546E7A" }}>Servicio:</span>
           <div
             style={{
-              color: "gray",
               display: "inline-block",
               margin: "0px 5px 0px 5px",
               width: "307px"
@@ -37,10 +36,9 @@ function ServiceDetails(props) {
             style={{ width: "fit-content" }}
           >
             {" "}
-            Producto:
+            <span style={{ color: "#546E7A" }}>Producto:</span>
             <div
               style={{
-                color: "gray",
                 display: "inline-block",
                 margin: "0px 5px 0px 5px",
                 width: "117px"
@@ -51,10 +49,9 @@ function ServiceDetails(props) {
           </Typography>
           <Typography variant="subtitle1" component="h2">
             {" "}
-            Peso:
+            <span style={{ color: "#546E7A" }}> Peso:</span>
             <div
               style={{
-                color: "gray",
                 display: "inline-block",
                 margin: "0px 5px 0px 5px",
                 width: "207px"

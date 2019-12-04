@@ -20,7 +20,7 @@ function DetailsTitle(props) {
         </Typography>
         <Typography variant="subtitle1" style={{ width: "130px" }}>
           {" "}
-          Folio: {props.folio}{" "}
+          <span style={{ color: "#546E7A" }}>Folio: {props.folio} </span>
         </Typography>
       </Grid>
     </div>
