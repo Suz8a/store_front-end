@@ -9,62 +9,25 @@ import Recepcionista from "./layout/recepcionista";
 import Taller from "./layout/taller";
 import Admin from "./layout/admin";
 import MainLogin from "./layout/main-login";
+import { NotificationProvider } from "./components/notification.provider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <StylesProvider injectFirst={true}>
-          <MuiThemeProvider theme={theme}>
-            <Route path="/recepcionist" component={Recepcionista} />
-            <Route path="/workshop" component={Taller} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/login" component={MainLogin} />
-          </MuiThemeProvider>
-        </StylesProvider>
-      </Switch>
-    </BrowserRouter>
+    <StylesProvider injectFirst={true}>
+      <MuiThemeProvider theme={theme}>
+        <NotificationProvider>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/recepcionist" component={Recepcionista} />
+              <Route path="/workshop" component={Taller} />
+              <Route path="/admin" component={Admin} />
+              <Route path="/login" component={MainLogin} />
+            </Switch>
+          </BrowserRouter>
+        </NotificationProvider>
+      </MuiThemeProvider>
+    </StylesProvider>
   );
 }
 
 export default App;
-
-/*const data = [
-  {
-    folio: "12345",
-    cliente: "Suzclem Adriana Ochoa Casillas",
-    servicio: "Reparación",
-    estado: "Procesando"
-  },
-  {
-    folio: "22222",
-    cliente: "Jesus Abraham Zavala Quintero",
-    servicio: "Pulido",
-    estado: "En Taller"
-  }
-];
-
-const tableData = data.map(({ folio, cliente, servicio, estado }) => {
-    let status = "";
-    if (estado === "En Taller") {
-      status = (
-        <div style={{ color: "blue" }}>
-          <Build></Build> En taller{" "}
-        </div>
-      );
-    }
-    if (estado === "Procesando") {
-      status = (
-        <div style={{ color: "gray" }}>
-          <Build></Build> Procesando{" "}
-        </div>
-      );
-    }
-
-    return {
-      Folio: folio,
-      Cliente: cliente,
-      Servicio: servicio,
-      Estado: status
-    };
-  });*/

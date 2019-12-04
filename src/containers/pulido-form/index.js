@@ -1,22 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
 import DynamicForm from "../../components/dynamic-form";
 import { withRouter } from "react-router-dom";
-import {
-  createClient,
-  createPedido,
-  getAllClients,
-  getAllPedidos,
-  getClientById,
-  getPedidoByFolio,
-  getPedidoById,
-  updatePedido,
-  uploadImage
-} from "../../api";
+import { useNotificationProvider } from "../../components/notification.provider";
+import { createClient, createPedido, uploadImage } from "../../api";
 
 const productos = {
   1: "Anillo",
@@ -32,6 +19,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function PulidoForm(props) {
+  const { notify } = useNotificationProvider();
   //cliente information
   const [nomCliente, setnomCliente] = useState("");
   const [aPaterno, setaPaterno] = useState("");
@@ -242,41 +230,11 @@ function PulidoForm(props) {
   }
   console.log(servicioSeleccionado, "SERVICIO SELECCIONADO");
 
-  var dataClient = {
-    nombre: nomCliente,
-    apellidoPaterno: aPaterno,
-    apellidoMaterno: aMaterno,
-    telefonoCliente: telefono,
-    correoCliente: correo
-  };
-
-  var dataPedido = {
-    servicio: servicioSeleccionado,
-    peso: peso,
-    url: "",
-    mInicial: medidaInicial,
-    mFinal: medidaFinal,
-    descripcion: descripcion,
-    oro: oro,
-    bronce: bronce,
-    plata: plata,
-    acero: acero,
-    oroUsado: oroUsado,
-    oroUsadoPrecio: oroUsadoPrecio,
-    bronceUsado: bronceUsado,
-    bronceUsadoPrecio: bronceUsadoPrecio,
-    aceroUsado: aceroUsado,
-    aceroUsadoPrecio: aceroUsadoPrecio,
-    total: calcularTotal()
-  };
-  console.log(calcularTotal());
-  console.log(dataClient);
-  console.log(dataPedido);
-  console.log(values);
-
   //Buttons functionality
 
-  function onClickCancelar() {}
+  function onClickCancelar() {
+    props.history.push("/recepcionist/pedidos");
+  }
 
   async function onClickAceptar() {
     try {
@@ -339,95 +297,63 @@ function PulidoForm(props) {
         }
       );
       props.history.push("/recepcionist/pedidos");
-      alert("El pedido se ha guardado exitosamente");
+      notify("El pedido se ha guardado exitosamente");
     } catch (e) {
       props.history.push("/recepcionist/pedidos");
-      alert("Hubo un error al guardar pedido");
+      notify("Error en guardar el pedido");
     }
     setisLoading(false);
   }
 
   return (
-    <div>
-      <DynamicForm
-        title="Pulido"
-        //Campos requeridos en el formulario
-        cliente="true"
-        producto="true"
-        descripcion="true"
-        presupuesto="true"
-        //Client information
-        handleNombre={handleNombre}
-        handleAPaterno={handleAPaterno}
-        handleAMaterno={handleAMaterno}
-        handleTelefono={handleTelefono}
-        handleCorreo={handleCorreo}
-        //Product information
-        onSeleccionarServicio={seleccionarServicio}
-        servicioSeleccionado={servicioSeleccionado}
-        handleChange={handleChange}
-        handlePeso={handlePeso}
-        productFiles={productFiles}
-        onProductFileDelete={deleteProductFile}
-        onSetProductFile={setProductFiles}
-        //Size information
-        handleMedidaInicial={handleMedidaInicial}
-        handleMedidaFinal={handleMedidaFinal}
-        //Description information
-        handleDescripcion={handleDescripcion}
-        //Material Attached
-        handleOro={handleOro}
-        handleBronce={handleBronce}
-        handlePlata={handlePlata}
-        handleAcero={handleAcero}
-        //Material used
-        handleOroUsado={handleOroUsado}
-        handleBronceUsado={handleBronceUsado}
-        handlePlataUsado={handlePlataUsado}
-        handleAceroUsado={handleAceroUsado}
-        //Material used price
-        handleOroUsadoPrecio={handleOroUsadoPrecio}
-        handleBronceUsadoPrecio={handleBronceUsadoPrecio}
-        handlePlataUsadoPrecio={handlePlataUsadoPrecio}
-        handleAceroUsadoPrecio={handleAceroUsadoPrecio}
-        //Budget information
-        handleHechura={handleHechura}
-        total={calcularTotal()}
-        //Buttons functionality
-        onClickCancelar={onClickCancelar}
-        onClickAceptar={onClickAceptar}
-      />
-      <Snackbar
-        key={messageInfo ? messageInfo.key : undefined}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left"
-        }}
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        onExited={handleExited}
-        ContentProps={{
-          "aria-describedby": "message-id"
-        }}
-        message={
-          <span id="message-id">
-            {messageInfo ? messageInfo.message : undefined}
-          </span>
-        }
-        action={[
-          <IconButton
-            key="close"
-            aria-label="close"
-            color="inherit"
-            className={classes.close}
-            onClick={handleClose}
-          >
-            <CloseIcon />
-          </IconButton>
-        ]}
-      />
-    </div>
+    <DynamicForm
+      title="Pulido"
+      //Campos requeridos en el formulario
+      cliente="true"
+      producto="true"
+      descripcion="true"
+      presupuesto="true"
+      //Client information
+      handleNombre={handleNombre}
+      handleAPaterno={handleAPaterno}
+      handleAMaterno={handleAMaterno}
+      handleTelefono={handleTelefono}
+      handleCorreo={handleCorreo}
+      //Product information
+      onSeleccionarServicio={seleccionarServicio}
+      servicioSeleccionado={servicioSeleccionado}
+      handleChange={handleChange}
+      handlePeso={handlePeso}
+      productFiles={productFiles}
+      onProductFileDelete={deleteProductFile}
+      onSetProductFile={setProductFiles}
+      //Size information
+      handleMedidaInicial={handleMedidaInicial}
+      handleMedidaFinal={handleMedidaFinal}
+      //Description information
+      handleDescripcion={handleDescripcion}
+      //Material Attached
+      handleOro={handleOro}
+      handleBronce={handleBronce}
+      handlePlata={handlePlata}
+      handleAcero={handleAcero}
+      //Material used
+      handleOroUsado={handleOroUsado}
+      handleBronceUsado={handleBronceUsado}
+      handlePlataUsado={handlePlataUsado}
+      handleAceroUsado={handleAceroUsado}
+      //Material used price
+      handleOroUsadoPrecio={handleOroUsadoPrecio}
+      handleBronceUsadoPrecio={handleBronceUsadoPrecio}
+      handlePlataUsadoPrecio={handlePlataUsadoPrecio}
+      handleAceroUsadoPrecio={handleAceroUsadoPrecio}
+      //Budget information
+      handleHechura={handleHechura}
+      total={calcularTotal()}
+      //Buttons functionality
+      onClickCancelar={onClickCancelar}
+      onClickAceptar={onClickAceptar}
+    />
   );
 }
 

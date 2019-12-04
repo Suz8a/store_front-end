@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import DynamicForm from "../../components/dynamic-form";
-import {
-  createClient,
-  createPedido,
-  getAllClients,
-  getAllPedidos,
-  getClientById,
-  getPedidoByFolio,
-  getPedidoById,
-  updatePedido,
-  uploadImage
-} from "../../api";
+import { useNotificationProvider } from "../../components/notification.provider";
+import { createClient, createPedido, uploadImage } from "../../api";
 import { CircularProgress, Paper } from "@material-ui/core";
 
 const productos = {
@@ -20,7 +11,9 @@ const productos = {
   4: "Reloj"
 };
 
-function GrabadoForm() {
+function GrabadoForm(props) {
+  const { notify } = useNotificationProvider();
+  //Client information
   const [nomCliente, setnomCliente] = useState("");
   const [aPaterno, setaPaterno] = useState("");
   const [aMaterno, setaMaterno] = useState("");
@@ -191,101 +184,78 @@ function GrabadoForm() {
   }
   console.log(servicioSeleccionado, "SERVICIO SELECCIONADO");
 
-  var dataClient = {
-    nombre: nomCliente,
-    apellidoPaterno: aPaterno,
-    apellidoMaterno: aMaterno,
-    telefonoCliente: telefono,
-    correoCliente: correo
-  };
-
-  var dataPedido = {
-    servicio: servicioSeleccionado,
-    peso: peso,
-    url: "",
-    mInicial: medidaInicial,
-    mFinal: medidaFinal,
-    descripcion: descripcion,
-    oro: oro,
-    bronce: bronce,
-    plata: plata,
-    acero: acero,
-    oroUsado: oroUsado,
-    oroUsadoPrecio: oroUsadoPrecio,
-    bronceUsado: bronceUsado,
-    bronceUsadoPrecio: bronceUsadoPrecio,
-    aceroUsado: aceroUsado,
-    aceroUsadoPrecio: aceroUsadoPrecio,
-    total: calcularTotal()
-  };
-  console.log(calcularTotal());
-  console.log(dataClient);
-  console.log(dataPedido);
-  console.log(values);
-
   //Buttons functionality
 
-  function onClickCancelar() {}
+  function onClickCancelar() {
+    props.history.push("/recepcionist/pedidos");
+  }
 
   async function onClickAceptar() {
-    setisLoading(true);
-    var { data: client } = await createClient(
-      nomCliente,
-      aMaterno,
-      aPaterno,
-      correo,
-      telefono
-    );
-    var {
-      data: { imageUrl: link_imagen }
-    } = await uploadImage(productFiles);
-    createPedido(
-      "grabado",
-      descripcion,
-      "En proceso",
-      link_imagen,
-      client.id,
-      "something",
-      "Any",
-      {
-        nombre_joya: productos[servicioSeleccionado],
-        peso_joya: parseInt(peso),
-        medida_inicial: parseInt(medidaInicial),
-        medida_final: parseInt(medidaFinal)
-      },
-      [
-        { nombre_material: "oro", gramos: parseInt(oro) },
-        { nombre_material: "bronce", gramos: parseInt(bronce) },
-        { nombre_material: "plata", gramos: parseInt(plata) },
-        { nombre_material: "acero", gramos: parseInt(acero) }
-      ],
-      [
+    try {
+      setisLoading(true);
+      var { data: client } = await createClient(
+        nomCliente,
+        aMaterno,
+        aPaterno,
+        correo,
+        telefono
+      );
+      var {
+        data: { imageUrl: link_imagen }
+      } = await uploadImage(productFiles);
+      var pedido = await createPedido(
+        "grabado",
+        descripcion,
+        "En proceso",
+        link_imagen,
+        client.id,
+        "something",
+        "Any",
         {
-          nombre_material: "oro",
-          gramos: parseInt(oroUsado),
-          precio: parseInt(oroUsadoPrecio)
+          nombre_joya: productos[servicioSeleccionado],
+          peso_joya: parseInt(peso),
+          medida_inicial: parseInt(medidaInicial),
+          medida_final: parseInt(medidaFinal)
         },
+        [
+          { nombre_material: "oro", gramos: parseInt(oro) },
+          { nombre_material: "bronce", gramos: parseInt(bronce) },
+          { nombre_material: "plata", gramos: parseInt(plata) },
+          { nombre_material: "acero", gramos: parseInt(acero) }
+        ],
+        [
+          {
+            nombre_material: "oro",
+            gramos: parseInt(oroUsado),
+            precio: parseInt(oroUsadoPrecio)
+          },
+          {
+            nombre_material: "bronce",
+            gramos: parseInt(bronceUsado),
+            precio: parseInt(bronceUsadoPrecio)
+          },
+          {
+            nombre_material: "plata",
+            gramos: parseInt(plataUsado),
+            precio: parseInt(plataUsadoPrecio)
+          },
+          {
+            nombre_material: "acero",
+            gramos: parseInt(aceroUsado),
+            precio: parseInt(aceroUsadoPrecio)
+          }
+        ],
         {
-          nombre_material: "bronce",
-          gramos: parseInt(bronceUsado),
-          precio: parseInt(bronceUsadoPrecio)
-        },
-        {
-          nombre_material: "plata",
-          gramos: parseInt(plataUsado),
-          precio: parseInt(plataUsadoPrecio)
-        },
-        {
-          nombre_material: "acero",
-          gramos: parseInt(aceroUsado),
-          precio: parseInt(aceroUsadoPrecio)
+          hechura: hechura,
+          total: calcularTotal()
         }
-      ],
-      {
-        hechura: hechura,
-        total: calcularTotal()
-      }
-    );
+      );
+      props.history.push("/recepcionist/pedidos");
+      notify("El pedido se ha guardado exitosamente");
+    } catch (e) {
+      props.history.push("/recepcionist/pedidos");
+      notify("Error en guardar el pedido");
+    }
     setisLoading(false);
   }
 
