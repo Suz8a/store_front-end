@@ -10,8 +10,6 @@ function DynamicTable(props) {
     return Object.keys(props.data[0]);
   };
 
-  console.log(getKeys());
-
   const getHeader = function() {
     const keys = getKeys();
     return keys.map((key, index) => {

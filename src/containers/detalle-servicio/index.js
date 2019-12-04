@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "../../components/dynamic-form/styled";
 import DynamicTable from "../../components/dynamic-table";
 import ClientService from "../../components/client-service";
@@ -16,7 +16,17 @@ const data1 = [
   { MaterialAUtilizar: "Oro", Peso: "95gr" }
 ];
 
-function DetalleServicio({ folio }) {
+function DetalleServicio(props) {
+  const [productFiles, setProductFiles] = useState([]);
+
+  function deleteProductFile(index) {
+    return () => {
+      const newLista = [...productFiles];
+      newLista.splice(index, 1);
+      setProductFiles(newLista);
+    };
+  }
+
   return (
     <Form>
       <div style={{ padding: "50px 100px" }}>
@@ -40,7 +50,13 @@ function DetalleServicio({ folio }) {
           <Description />
         </div>
         <div style={{ marginTop: "40px" }}>
-          <FileUploader width="560px" />
+          <FileUploader
+            width="560px"
+            fileExtensions={[".jpg", ".png"]}
+            lista={productFiles}
+            onDelete={deleteProductFile}
+            onSetLista={setProductFiles}
+          />
         </div>
         <div style={{ marginTop: "45px", marginBottom: "50px" }}>
           <ThemedButton

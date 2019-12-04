@@ -4,7 +4,7 @@ import SideBarWorkshop from "../../components/side-bar-workshop";
 import TopLayout from "../../components/top-layout";
 import Pedidos from "../../containers/pedidos";
 import { withRouter } from "react-router-dom";
-import DetallePedido from "../../containers/detalle-pedido";
+import DetalleServicio from "../../containers/detalle-servicio";
 import {
   createClient,
   createPedido,
@@ -83,7 +83,7 @@ function Taller(props) {
       email: clientInfo.correo
     });
 
-    props.history.push("/workshop/detalle-pedido");
+    props.history.push("/workshop/detalle-servicio");
   }
 
   function onClickVolver() {
@@ -124,9 +124,9 @@ function Taller(props) {
         >
           <Switch>
             <Route
-              path="/workshop/detalle-pedido"
+              path="/workshop/detalle-servicio"
               component={() => (
-                <DetallePedido
+                <DetalleServicio
                   onClickVolver={onClickVolver}
                   onClickEstado={onClickEstado}
                   folio={pedidoInfo.folio}

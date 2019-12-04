@@ -182,7 +182,6 @@ function ReparacionForm(props) {
   function seleccionarServicio(value) {
     setServicioSeleccionado(value.target.value);
   }
-  console.log(servicioSeleccionado, "SERVICIO SELECCIONADO");
 
   //Buttons functionality
 
