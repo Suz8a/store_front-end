@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import SideBarWorkshop from "../../components/side-bar-workshop";
 import TopLayout from "../../components/top-layout";
 import Pedidos from "../../containers/pedidos";
+import { withRouter } from "react-router-dom";
+import DetallePedido from "../../containers/detalle-pedido";
 import {
   createClient,
   createPedido,
@@ -25,9 +27,11 @@ const data22 = [
   }
 ];
 
-function Taller() {
+function Taller(props) {
   const [pedidos, setpedidos] = useState(undefined);
   const [clientes, setclientes] = useState(undefined);
+  const [pedidoInfo, setpedidoInfo] = useState("");
+  const [clientInfo, setclientInfo] = useState("");
 
   useEffect(async () => {
     const result = await getAllPedidos();
@@ -57,6 +61,37 @@ function Taller() {
     };
   });
 
+  async function onRowClick(pedido) {
+    console.log(pedido.Folio);
+    const pedidoInfo = pedidos.find(p => p.folio == pedido.Folio);
+    const clientInfo = clientes.find(
+      cliente => cliente.id == pedidoInfo.cliente_id
+    );
+    setpedidoInfo({
+      folio: pedidoInfo.folio,
+      serv: pedidoInfo.servicio,
+      product: pedidoInfo.joya.nombre_joya,
+      weight: pedidoInfo.joya.peso_joya,
+      descripcion: pedidoInfo.descripcion,
+      cantidad: pedidoInfo.presupuesto.total,
+      hechura: pedidoInfo.presupuesto.hechura,
+      material_utilizar: pedidoInfo.material_utilizar
+    });
+    setclientInfo({
+      name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
+      tel: clientInfo.telefono,
+      email: clientInfo.correo
+    });
+
+    props.history.push("/workshop/detalle-pedido");
+  }
+
+  function onClickVolver() {
+    props.history.push("/workshop/pedidos");
+  }
+
+  function onClickEstado() {}
+
   return (
     <div>
       <div>
@@ -65,7 +100,7 @@ function Taller() {
       <div
         style={{
           width: "100%",
-          height: "fit-content",
+          height: "1000px",
           backgroundColor: "#F4F6F8"
         }}
       >
@@ -89,9 +124,30 @@ function Taller() {
         >
           <Switch>
             <Route
+              path="/workshop/detalle-pedido"
+              component={() => (
+                <DetallePedido
+                  onClickVolver={onClickVolver}
+                  onClickEstado={onClickEstado}
+                  folio={pedidoInfo.folio}
+                  name={clientInfo.name}
+                  tel={clientInfo.tel}
+                  email={clientInfo.email}
+                  serv={pedidoInfo.serv}
+                  product={pedidoInfo.product}
+                  weight={pedidoInfo.weight}
+                  descripcion={pedidoInfo.descripcion}
+                  cantidad={pedidoInfo.cantidad}
+                  hechura={pedidoInfo.hechura}
+                  material_utilizar={pedidoInfo.material_utilizar}
+                />
+              )}
+            />
+            <Route
               path="/workshop/pedidos"
               component={() => (
                 <Pedidos
+                  onRowClick={onRowClick}
                   data={data.filter(pedido => pedido.estado === "En taller")}
                 />
               )}
@@ -100,6 +156,7 @@ function Taller() {
               path="/workshop/pedidos-terminados"
               component={() => (
                 <Pedidos
+                  onRowClick={onRowClick}
                   data={data.filter(pedido => pedido.estado === "Terminado")}
                 />
               )}
@@ -111,4 +168,4 @@ function Taller() {
   );
 }
 
-export default Taller;
+export default withRouter(Taller);

@@ -9,10 +9,8 @@ import ThemedButton from "../../components/button";
 import { withRouter } from "react-router-dom";
 
 function DetallePedido(props) {
-  function onClickVolver() {
-    props.history.push("/recepcionist/pedidos");
-  }
-  function onClickEstado() {}
+  var servicio = props.serv;
+  if (servicio == "cambio_tamano") servicio = "cambio de tamaño";
 
   return (
     <Form>
@@ -32,7 +30,7 @@ function DetallePedido(props) {
         </div>
         <div style={{ marginTop: "40px" }}>
           <ServiceDetails
-            serv={props.serv}
+            serv={servicio}
             product={props.product}
             weight={props.weight}
           />
@@ -41,13 +39,17 @@ function DetallePedido(props) {
           <Description descripcion={props.descripcion} disabled={true} />
         </div>
         <div style={{ marginTop: "40px" }}>
-          <ExpancionPanel cantidad="500" />
+          <ExpancionPanel
+            cantidad={props.cantidad}
+            hechura={props.hechura}
+            material_utilizar={props.material_utilizar}
+          />
         </div>
         <div
           style={{ float: "right", marginTop: "45px", marginBottom: "50px" }}
         >
           <ThemedButton
-            onClick={onClickVolver}
+            onClick={props.onClickVolver}
             marginR="30px"
             buttonSize="120px"
             variantType="outlined"
@@ -55,7 +57,7 @@ function DetallePedido(props) {
             colorTheme="secondary"
           />
           <ThemedButton
-            onClick={onClickEstado}
+            onClick={props.onClickEstado}
             buttonSize="168px"
             variantType="contained"
             text="Estado"

@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const data = [
+const data22 = [
   {
     Motivo: "10gr de Oro",
     Costo: "$1000"
@@ -31,6 +31,23 @@ function ExpancionPanel(props) {
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  const materiales = props.material_utilizar;
+  const hechura = props.hechura;
+  const data = [];
+
+  function onRowClick() {}
+
+  materiales.map(material => {
+    if (material.gramos != 0)
+      data.push({
+        Motivo: `${material.gramos}gr de ${material.nombre_material}`,
+        Costo: `$ ${material.precio}`
+      });
+  });
+  data.push({ Motivo: "Hechura", Costo: `$ ${hechura}` });
+
+  console.log(data);
 
   return (
     <div className={classes.root}>
@@ -55,7 +72,7 @@ function ExpancionPanel(props) {
             justify="space-between"
             alignItems="center"
           >
-            <DynamicTable data={data} />
+            <DynamicTable data={data} onRowClick={onRowClick} />
           </Grid>
         </ExpansionPanelDetails>
       </PresupuestoDetails>

@@ -66,7 +66,10 @@ function Recepcionista(props) {
       serv: pedidoInfo.servicio,
       product: pedidoInfo.joya.nombre_joya,
       weight: pedidoInfo.joya.peso_joya,
-      descripcion: pedidoInfo.descripcion
+      descripcion: pedidoInfo.descripcion,
+      cantidad: pedidoInfo.presupuesto.total,
+      hechura: pedidoInfo.presupuesto.hechura,
+      material_utilizar: pedidoInfo.material_utilizar
     });
     setclientInfo({
       name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
@@ -76,6 +79,12 @@ function Recepcionista(props) {
 
     props.history.push("/recepcionist/detalle-pedido");
   }
+
+  function onClickVolver() {
+    props.history.push("/recepcionist/pedidos");
+  }
+
+  function onClickEstado() {}
 
   return (
     <div>
@@ -112,6 +121,8 @@ function Recepcionista(props) {
               path="/recepcionist/detalle-pedido"
               component={() => (
                 <DetallePedido
+                  onClickVolver={onClickVolver}
+                  onClickEstado={onClickEstado}
                   folio={pedidoInfo.folio}
                   name={clientInfo.name}
                   tel={clientInfo.tel}
@@ -120,6 +131,9 @@ function Recepcionista(props) {
                   product={pedidoInfo.product}
                   weight={pedidoInfo.weight}
                   descripcion={pedidoInfo.descripcion}
+                  cantidad={pedidoInfo.cantidad}
+                  hechura={pedidoInfo.hechura}
+                  material_utilizar={pedidoInfo.material_utilizar}
                 />
               )}
             />

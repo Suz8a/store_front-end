@@ -35,7 +35,6 @@ function SideBarWorkShop(props) {
       <div
         style={{
           height: "100%",
-          widht: "302px",
           padding: "19px 23px 0px 23px"
         }}
       >
