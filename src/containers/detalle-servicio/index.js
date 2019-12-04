@@ -17,14 +17,16 @@ const data1 = [
 ];
 
 function DetalleServicio(props) {
-  const [productFiles, setProductFiles] = useState([]);
+  const [fileList, setFileList] = useState([]);
 
-  function deleteProductFile(index) {
-    return () => {
-      const newLista = [...productFiles];
-      newLista.splice(index, 1);
-      setProductFiles(newLista);
-    };
+  function addFile(file) {
+    setFileList([...fileList, ...file]);
+  }
+
+  function deleteFile(fileIndex) {
+    const newFileList = [...fileList];
+    newFileList.splice(fileIndex, 1);
+    setFileList(newFileList);
   }
 
   return (
@@ -51,11 +53,11 @@ function DetalleServicio(props) {
         </div>
         <div style={{ marginTop: "40px" }}>
           <FileUploader
-            width="560px"
+            onDelete={deleteFile}
             fileExtensions={[".jpg", ".png"]}
-            lista={productFiles}
-            onDelete={deleteProductFile}
-            onSetLista={setProductFiles}
+            onSetLista={addFile}
+            lista={fileList}
+            width="560px"
           />
         </div>
         <div style={{ marginTop: "45px", marginBottom: "50px" }}>

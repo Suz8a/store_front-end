@@ -75,7 +75,11 @@ function FileUploader({ width, lista, onSetLista, onDelete, fileExtensions }) {
                 {lista.map((file, index) => (
                   <Item key={index}>
                     {file.path}
-                    <CancelIconContainer onClick={onDelete(index)}>
+                    <CancelIconContainer
+                      onClick={() => {
+                        onDelete(index);
+                      }}
+                    >
                       <CancelIcon />
                     </CancelIconContainer>
                   </Item>

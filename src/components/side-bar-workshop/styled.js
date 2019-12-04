@@ -7,7 +7,7 @@ export const CardEffects = styled(Card)`
   margin-top: 75;
   margin-left: -2;
   width: 304px;
-  height: 1000px;
+  height: 1260px;
   background: #ffffff;
   box-shadow: 0px 16px 10px #00000033;
   border-radius: 4px;

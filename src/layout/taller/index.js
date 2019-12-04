@@ -100,7 +100,7 @@ function Taller(props) {
       <div
         style={{
           width: "100%",
-          height: "1000px",
+          height: "1260px",
           backgroundColor: "#F4F6F8"
         }}
       >
