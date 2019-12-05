@@ -7,17 +7,38 @@ import ThemedButton from "../../components/button";
 import FileUploader from "../../components/file-uploader";
 import DetailsTitle from "../../components/details-title";
 
-const data = [
+const data11 = [
   { MaterialAdjunto: "Plata", Peso: "80gr" },
   { MaterialAdjunto: "Oro", Peso: "95gr" }
 ];
-const data1 = [
+const data22 = [
   { MaterialAUtilizar: "Plata", Peso: "80gr" },
   { MaterialAUtilizar: "Oro", Peso: "95gr" }
 ];
 
 function DetalleServicio(props) {
   const [fileList, setFileList] = useState([]);
+
+  const materialesUtilizar = props.material_utilizar;
+  const materialesAdjunto = props.material_adjunto;
+  const data = [];
+  const data1 = [];
+
+  materialesAdjunto.map(material => {
+    if (material.gramos != 0)
+      data.push({
+        "Material adjunto": material.nombre_material,
+        "Peso (gr)": material.gramos
+      });
+  });
+
+  materialesUtilizar.map(material => {
+    if (material.gramos != 0)
+      data1.push({
+        "Material a utilizar": material.nombre_material,
+        "Peso (gr)": material.gramos
+      });
+  });
 
   function addFile(file) {
     setFileList([...fileList, ...file]);
@@ -33,13 +54,13 @@ function DetalleServicio(props) {
     <Form>
       <div style={{ padding: "50px 100px" }}>
         <div style={{ marginTop: "40px" }}>
-          <DetailsTitle servicio="Reparacion" folio="278112" />
+          <DetailsTitle servicio="Reparacion" folio={props.folio} />
         </div>
         <div style={{ marginTop: "40px" }}>
           <ClientService
-            name="Suzclem Adriana Ochoa"
-            product="Pulsera"
-            weight="90"
+            name={props.name}
+            product={props.product}
+            weight={props.weight}
           />
         </div>
         <div style={{ marginTop: "40px" }}>
@@ -49,7 +70,7 @@ function DetalleServicio(props) {
           <DynamicTable data={data1} />
         </div>
         <div style={{ marginTop: "40px" }}>
-          <Description />
+          <Description descripcion={props.descripcion} disabled={true} />
         </div>
         <div style={{ marginTop: "40px" }}>
           <FileUploader
@@ -61,18 +82,18 @@ function DetalleServicio(props) {
           />
         </div>
         <div style={{ marginTop: "45px", marginBottom: "50px" }}>
-          <ThemedButton
-            marginR="30px"
-            buttonSize="188px"
-            variantType="outlined"
-            text="Reportar Problema"
-            colorTheme="secondary"
-          />
           <div
             style={{ float: "right", marginTop: "45px", marginBottom: "50px" }}
           >
             <ThemedButton
-              marginR="30px"
+              marginR="64px"
+              buttonSize="188px"
+              variantType="outlined"
+              text="Reportar Problema"
+              colorTheme="secondary"
+            />
+            <ThemedButton
+              marginR="20px"
               buttonSize="120px"
               variantType="outlined"
               text="Cancelar"
@@ -81,7 +102,7 @@ function DetalleServicio(props) {
             <ThemedButton
               buttonSize="168px"
               variantType="contained"
-              text="Guardar"
+              text="Estado"
               colorTheme="primary"
             />
           </div>

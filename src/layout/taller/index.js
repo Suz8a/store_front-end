@@ -69,13 +69,11 @@ function Taller(props) {
     );
     setpedidoInfo({
       folio: pedidoInfo.folio,
-      serv: pedidoInfo.servicio,
       product: pedidoInfo.joya.nombre_joya,
       weight: pedidoInfo.joya.peso_joya,
       descripcion: pedidoInfo.descripcion,
-      cantidad: pedidoInfo.presupuesto.total,
-      hechura: pedidoInfo.presupuesto.hechura,
-      material_utilizar: pedidoInfo.material_utilizar
+      material_utilizar: pedidoInfo.material_utilizar,
+      material_adjunto: pedidoInfo.material_adjunto
     });
     setclientInfo({
       name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
@@ -131,15 +129,13 @@ function Taller(props) {
                   onClickEstado={onClickEstado}
                   folio={pedidoInfo.folio}
                   name={clientInfo.name}
-                  tel={clientInfo.tel}
-                  email={clientInfo.email}
-                  serv={pedidoInfo.serv}
                   product={pedidoInfo.product}
                   weight={pedidoInfo.weight}
                   descripcion={pedidoInfo.descripcion}
                   cantidad={pedidoInfo.cantidad}
                   hechura={pedidoInfo.hechura}
                   material_utilizar={pedidoInfo.material_utilizar}
+                  material_adjunto={pedidoInfo.material_adjunto}
                 />
               )}
             />
