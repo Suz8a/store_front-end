@@ -93,7 +93,7 @@ function DetalleServicio(props) {
             <ThemedButton
               buttonSize="168px"
               variantType="contained"
-              text="Estado"
+              text={props.estado_taller}
               colorTheme="primary"
             />
           </div>

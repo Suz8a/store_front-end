@@ -4,17 +4,23 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import { createBrowserHistory } from "history";
 
 function DynamicTable(props) {
   var tableData = props.data[0];
+  const history = createBrowserHistory();
 
   if (
-    tableData === undefined ||
-    tableData === "" ||
-    tableData === [] ||
-    tableData === 0
+    history.location.pathname === "/recepcionist/pedidos" &&
+    tableData === undefined
   )
     tableData = { Folio: "", Cliente: "", Servicio: "", Estado: "" };
+
+  if (
+    history.location.pathname === "/workshop/detalle-servicio" &&
+    tableData === undefined
+  )
+    return null;
 
   const getKeys = function() {
     return Object.keys(tableData);

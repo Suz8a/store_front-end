@@ -9,6 +9,7 @@ function ThemedButton(props) {
       style={{ width: props.buttonSize, marginRight: props.marginR }}
       variant={props.variantType}
       color={props.colorTheme}
+      disabled={props.disabled}
     >
       {props.text}
     </Button>

@@ -15,6 +15,8 @@ export async function createPedido(
   servicio,
   descripcion,
   estado,
+  estado_tienda,
+  estado_taller,
   link_imagen,
   cliente_id,
   usuario_id,
@@ -28,6 +30,8 @@ export async function createPedido(
     servicio: servicio,
     descripcion: descripcion,
     estado: estado,
+    estado_tienda: estado_tienda,
+    estado_taller: estado_taller,
     link_imagen: link_imagen,
     cliente_id: cliente_id,
     usuario_id: usuario_id,
@@ -37,6 +41,10 @@ export async function createPedido(
     material_utilizar: material_utilizar,
     presupuesto: presupuesto
   });
+}
+
+export async function updatePedido(id, pedido) {
+  return await troquelApi.put("pedido/" + id, pedido);
 }
 
 export async function getAllPedidos() {
@@ -52,35 +60,6 @@ export async function getPedidoByFolio(folio) {
     params: {
       folio: folio
     }
-  });
-}
-
-export async function updatePedido(
-  id,
-  servicio,
-  descripcion,
-  estado,
-  link_imagen,
-  cliente_id,
-  usuario_id,
-  ticket_id,
-  joya,
-  material_adjunto,
-  material_utilizar,
-  presupuesto
-) {
-  return await troquelApi.put("pedido/" + id, {
-    servicio: servicio,
-    descripcion: descripcion,
-    estado: estado,
-    link_imagen: link_imagen,
-    cliente_id: cliente_id,
-    usuario_id: usuario_id,
-    ticket_id: ticket_id,
-    joya: joya,
-    material_adjunto: material_adjunto,
-    material_utilizar: material_utilizar,
-    presupuesto: presupuesto
   });
 }
 

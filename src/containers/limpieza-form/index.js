@@ -207,6 +207,8 @@ function LimpiezaForm(props) {
         "limpieza",
         descripcion,
         "En proceso",
+        "Enviar joya",
+        "Recibir joya",
         link_imagen,
         client.id,
         "something",

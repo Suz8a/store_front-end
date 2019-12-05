@@ -206,6 +206,8 @@ function ReparacionForm(props) {
         "reparacion",
         descripcion,
         "En proceso",
+        "Enviar joya",
+        "Recibir joya",
         link_imagen,
         client.id,
         "something",

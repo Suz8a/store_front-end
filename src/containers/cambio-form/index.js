@@ -207,6 +207,8 @@ function CambioForm(props) {
         "cambio_tamano",
         descripcion,
         "En proceso",
+        "Enviar joya",
+        "Recibir joya",
         link_imagen,
         client.id,
         "something",

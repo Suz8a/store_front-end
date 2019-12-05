@@ -252,6 +252,8 @@ function PulidoForm(props) {
         "pulido",
         descripcion,
         "En proceso",
+        "Enviar joya",
+        "Recibir joya",
         link_imagen,
         client.id,
         "something",

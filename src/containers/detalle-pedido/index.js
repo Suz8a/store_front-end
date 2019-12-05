@@ -10,7 +10,16 @@ import { withRouter } from "react-router-dom";
 
 function DetallePedido(props) {
   var servicio = props.serv;
-  if (servicio == "cambio_tamano") servicio = "cambio de tamaño";
+  if (servicio === "cambio_tamano") servicio = "cambio de tamaño";
+
+  // Deshabilita o habilita el boton segun el proceso en el que se encuentre el pedido
+  var disabled;
+  if (
+    props.estado_taller !== "Terminado" &&
+    props.estado_tienda === "Recibir joya"
+  )
+    disabled = "true";
+  else disabled = "false";
 
   return (
     <Form>
@@ -60,8 +69,9 @@ function DetallePedido(props) {
             onClick={props.onClickEstado}
             buttonSize="168px"
             variantType="contained"
-            text="Estado"
+            text={props.estado_tienda}
             colorTheme="primary"
+            disabled={disabled}
           />
         </div>
       </div>

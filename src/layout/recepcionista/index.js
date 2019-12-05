@@ -8,7 +8,7 @@ import GrabadoForm from "../../containers/grabado-form";
 import PulidoForm from "../../containers/pulido-form";
 import ReparacionForm from "../../containers/reparacion-form";
 import Pedidos from "../../containers/pedidos";
-import { getAllClients, getAllPedidos } from "../../api";
+import { getAllClients, getAllPedidos, updatePedido } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import DetallePedido from "../../containers/detalle-pedido";
 
@@ -26,6 +26,7 @@ function Recepcionista(props) {
   const [clientes, setclientes] = useState(undefined);
   const [pedidoInfo, setpedidoInfo] = useState("");
   const [clientInfo, setclientInfo] = useState("");
+  const [pedidoUpdated, setpedidoUpdated] = useState("");
 
   useEffect(async () => {
     const result = await getAllPedidos();
@@ -61,7 +62,10 @@ function Recepcionista(props) {
     const clientInfo = clientes.find(
       cliente => cliente.id == pedidoInfo.cliente_id
     );
+    setpedidoUpdated(pedidoInfo);
+
     setpedidoInfo({
+      id: pedidoInfo.id,
       folio: pedidoInfo.folio,
       serv: pedidoInfo.servicio,
       product: pedidoInfo.joya.nombre_joya,
@@ -69,7 +73,9 @@ function Recepcionista(props) {
       descripcion: pedidoInfo.descripcion,
       cantidad: pedidoInfo.presupuesto.total,
       hechura: pedidoInfo.presupuesto.hechura,
-      material_utilizar: pedidoInfo.material_utilizar
+      material_utilizar: pedidoInfo.material_utilizar,
+      estado_tienda: pedidoInfo.estado_tienda,
+      estado_taller: pedidoInfo.estado_taller
     });
     setclientInfo({
       name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
@@ -84,7 +90,18 @@ function Recepcionista(props) {
     props.history.push("/recepcionist/pedidos");
   }
 
-  function onClickEstado() {}
+  async function onClickEstado() {
+    if (pedidoUpdated.estado_tienda === "Enviar joya") {
+      pedidoUpdated.estado_tienda = "Recibir joya";
+      pedidoUpdated.estado = "En taller";
+    }
+
+    if (pedidoInfo.estado_tienda === "Recibir joya")
+      pedidoUpdated.estado_tienda = "Terminado";
+
+    await updatePedido(pedidoUpdated.id, pedidoUpdated);
+    props.history.push("/recepcionist/pedidos");
+  }
 
   return (
     <div>
@@ -134,6 +151,8 @@ function Recepcionista(props) {
                   cantidad={pedidoInfo.cantidad}
                   hechura={pedidoInfo.hechura}
                   material_utilizar={pedidoInfo.material_utilizar}
+                  estado_tienda={pedidoInfo.estado_tienda}
+                  estado_taller={pedidoInfo.estado_taller}
                 />
               )}
             />

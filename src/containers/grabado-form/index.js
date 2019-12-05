@@ -206,6 +206,8 @@ function GrabadoForm(props) {
         "grabado",
         descripcion,
         "En proceso",
+        "Enviar joya",
+        "Recibir joya",
         link_imagen,
         client.id,
         "something",
