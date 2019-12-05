@@ -6,6 +6,7 @@ import Description from "../../components/description";
 import ThemedButton from "../../components/button";
 import FileUploader from "../../components/file-uploader";
 import DetailsTitle from "../../components/details-title";
+import Medidas from "../../components/medidas";
 
 function DetalleServicio(props) {
   const [fileList, setFileList] = useState([]);
@@ -55,6 +56,13 @@ function DetalleServicio(props) {
             weight={props.weight}
           />
         </div>
+
+        {props.servicio === "Cambio de tamaño" ? (
+          <div style={{ marginTop: "30px" }}>
+            <Medidas inicial={props.inicial} final={props.final} />
+          </div>
+        ) : null}
+
         <div style={{ marginTop: "40px" }}>
           <DynamicTable data={data} />
         </div>

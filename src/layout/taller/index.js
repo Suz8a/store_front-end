@@ -76,7 +76,9 @@ function Taller(props) {
       material_utilizar: pedidoInfo.material_utilizar,
       material_adjunto: pedidoInfo.material_adjunto,
       estado_taller: pedidoInfo.estado_taller,
-      servicio: pedido.Servicio
+      servicio: pedido.Servicio,
+      inicial: pedidoInfo.joya.medida_inicial,
+      final: pedidoInfo.joya.medida_final
     });
     setclientInfo({
       name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
@@ -141,6 +143,8 @@ function Taller(props) {
                   material_adjunto={pedidoInfo.material_adjunto}
                   estado_taller={pedidoInfo.estado_taller}
                   servicio={pedidoInfo.servicio}
+                  inicial={pedidoInfo.inicial}
+                  final={pedidoInfo.final}
                 />
               )}
             />
