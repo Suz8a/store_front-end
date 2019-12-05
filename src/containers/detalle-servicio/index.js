@@ -7,15 +7,6 @@ import ThemedButton from "../../components/button";
 import FileUploader from "../../components/file-uploader";
 import DetailsTitle from "../../components/details-title";
 
-const data11 = [
-  { MaterialAdjunto: "Plata", Peso: "80gr" },
-  { MaterialAdjunto: "Oro", Peso: "95gr" }
-];
-const data22 = [
-  { MaterialAUtilizar: "Plata", Peso: "80gr" },
-  { MaterialAUtilizar: "Oro", Peso: "95gr" }
-];
-
 function DetalleServicio(props) {
   const [fileList, setFileList] = useState([]);
 
