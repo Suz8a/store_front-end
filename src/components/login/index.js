@@ -5,8 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import EmailIcon from "@material-ui/icons/Email";
 import LockIcon from "@material-ui/icons/Lock";
 import Logo from "./../../assets/logo.png";
-import { MuiThemeProvider } from "@material-ui/core";
-import { StylesProvider } from "@material-ui/styles";
 import theme from "./../../theme";
 import ThemedButton from "./../button";
 

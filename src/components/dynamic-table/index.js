@@ -6,8 +6,18 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 function DynamicTable(props) {
+  var tableData = props.data[0];
+
+  if (
+    tableData === undefined ||
+    tableData === "" ||
+    tableData === [] ||
+    tableData === 0
+  )
+    tableData = { Folio: "", Cliente: "", Servicio: "", Estado: "" };
+
   const getKeys = function() {
-    return Object.keys(props.data[0]);
+    return Object.keys(tableData);
   };
 
   const getHeader = function() {
