@@ -14,6 +14,7 @@ function DetalleServicio(props) {
   const materialesAdjunto = props.material_adjunto;
   const data = [];
   const data1 = [];
+  var disabled;
 
   materialesAdjunto.map(material => {
     if (material.gramos != 0)
@@ -45,7 +46,7 @@ function DetalleServicio(props) {
     <Form>
       <div style={{ padding: "50px 100px" }}>
         <div style={{ marginTop: "40px" }}>
-          <DetailsTitle servicio="Reparacion" folio={props.folio} />
+          <DetailsTitle title={props.servicio} folio={props.folio} />
         </div>
         <div style={{ marginTop: "40px" }}>
           <ClientService

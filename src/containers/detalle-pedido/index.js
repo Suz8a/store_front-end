@@ -19,13 +19,18 @@ function DetallePedido(props) {
     props.estado_tienda === "Recibir joya"
   )
     disabled = "true";
-  else disabled = "false";
+
+  if (
+    props.estado_taller === "Terminado" &&
+    props.estado_tienda === "Recibir joya"
+  )
+    disabled = "false";
 
   return (
     <Form>
       <div style={{ padding: "50px 100px" }}>
         <div style={{ marginTop: "40px" }}>
-          <DetailsTitle folio={props.folio} />
+          <DetailsTitle title={props.servicio} folio={props.folio} />
         </div>
         <div
           style={{ float: "right", marginTop: "20px", marginBottom: "50px" }}

@@ -75,7 +75,8 @@ function Recepcionista(props) {
       hechura: pedidoInfo.presupuesto.hechura,
       material_utilizar: pedidoInfo.material_utilizar,
       estado_tienda: pedidoInfo.estado_tienda,
-      estado_taller: pedidoInfo.estado_taller
+      estado_taller: pedidoInfo.estado_taller,
+      servicio: pedido.Servicio
     });
     setclientInfo({
       name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
@@ -153,6 +154,7 @@ function Recepcionista(props) {
                   material_utilizar={pedidoInfo.material_utilizar}
                   estado_tienda={pedidoInfo.estado_tienda}
                   estado_taller={pedidoInfo.estado_taller}
+                  servicio={pedidoInfo.servicio}
                 />
               )}
             />

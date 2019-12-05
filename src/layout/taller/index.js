@@ -63,6 +63,7 @@ function Taller(props) {
 
   async function onRowClick(pedido) {
     console.log(pedido.Folio);
+    console.log(pedido.Servicio);
     const pedidoInfo = pedidos.find(p => p.folio == pedido.Folio);
     const clientInfo = clientes.find(
       cliente => cliente.id == pedidoInfo.cliente_id
@@ -74,7 +75,8 @@ function Taller(props) {
       descripcion: pedidoInfo.descripcion,
       material_utilizar: pedidoInfo.material_utilizar,
       material_adjunto: pedidoInfo.material_adjunto,
-      estado_taller: pedidoInfo.estado_taller
+      estado_taller: pedidoInfo.estado_taller,
+      servicio: pedido.Servicio
     });
     setclientInfo({
       name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
@@ -138,6 +140,7 @@ function Taller(props) {
                   material_utilizar={pedidoInfo.material_utilizar}
                   material_adjunto={pedidoInfo.material_adjunto}
                   estado_taller={pedidoInfo.estado_taller}
+                  servicio={pedidoInfo.servicio}
                 />
               )}
             />

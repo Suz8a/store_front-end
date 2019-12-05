@@ -15,6 +15,21 @@ function DynamicTable(props) {
     tableData === undefined
   )
     tableData = { Folio: "", Cliente: "", Servicio: "", Estado: "" };
+  if (
+    history.location.pathname === "/recepcionist/pedidos-terminados" &&
+    tableData === undefined
+  )
+    tableData = { Folio: "", Cliente: "", Servicio: "", Estado: "" };
+  if (
+    history.location.pathname === "/workshop/pedidos" &&
+    tableData === undefined
+  )
+    tableData = { Folio: "", Cliente: "", Servicio: "", Estado: "" };
+  if (
+    history.location.pathname === "/workshop/pedidos-terminados" &&
+    tableData === undefined
+  )
+    tableData = { Folio: "", Cliente: "", Servicio: "", Estado: "" };
 
   if (
     history.location.pathname === "/workshop/detalle-servicio" &&
