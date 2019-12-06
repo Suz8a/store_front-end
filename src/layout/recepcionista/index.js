@@ -98,7 +98,12 @@ function Recepcionista(props) {
     }
 
     if (pedidoInfo.estado_tienda === "Recibir joya")
+      pedidoUpdated.estado_tienda = "Entregar joya";
+
+    if (pedidoInfo.estado_tienda === "Entregar joya") {
       pedidoUpdated.estado_tienda = "Terminado";
+      pedidoUpdated.estado = "Terminado";
+    }
 
     await updatePedido(pedidoUpdated.id, pedidoUpdated);
     props.history.push("/recepcionist/pedidos");

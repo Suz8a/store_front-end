@@ -19,23 +19,25 @@ function DetalleServicio(props) {
 
   // Deshabilita o habilita el boton segun el proceso en el que se encuentre el pedido
   var disabled;
-  if (props.estado_taller === "Terminado") disabled = "true";
+  if (props.estado_taller === "Terminado") disabled = true;
   if (
     props.estado_taller !== "Terminado" &&
     props.estado_tienda === "Enviar joya"
   )
-    disabled = "true";
+    disabled = true;
   if (
     props.estado_taller !== "Terminado" &&
     props.estado_tienda === "Recibir joya"
   )
-    materialesAdjunto.map(material => {
-      if (material.gramos != 0)
-        data.push({
-          "Material adjunto": material.nombre_material,
-          "Peso (gr)": material.gramos
-        });
-    });
+    disabled = false;
+
+  materialesAdjunto.map(material => {
+    if (material.gramos != 0)
+      data.push({
+        "Material adjunto": material.nombre_material,
+        "Peso (gr)": material.gramos
+      });
+  });
 
   materialesUtilizar.map(material => {
     if (material.gramos != 0)
@@ -109,7 +111,7 @@ function DetalleServicio(props) {
               marginR="20px"
               buttonSize="120px"
               variantType="outlined"
-              text="Cancelar"
+              text="Volver"
               colorTheme="secondary"
             />
             <ThemedButton

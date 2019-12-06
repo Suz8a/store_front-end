@@ -170,7 +170,11 @@ function Taller(props) {
               component={() => (
                 <Pedidos
                   onRowClick={onRowClick}
-                  data={data.filter(pedido => pedido.estado === "En tienda")}
+                  data={data.filter(
+                    pedido =>
+                      pedido.estado === "En tienda" ||
+                      pedido.estado === "Terminado"
+                  )}
                 />
               )}
             />

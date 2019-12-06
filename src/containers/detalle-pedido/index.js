@@ -12,19 +12,23 @@ function DetallePedido(props) {
   var servicio = props.serv;
   if (servicio === "cambio_tamano") servicio = "cambio de tamaño";
 
+  alert(
+    `estado tienda: ${props.estado_tienda} \n estado taller: ${props.estado_taller}`
+  );
+
   // Deshabilita o habilita el boton segun el proceso en el que se encuentre el pedido
   var disabled;
   if (
     props.estado_taller !== "Terminado" &&
     props.estado_tienda === "Recibir joya"
   )
-    disabled = "true";
+    disabled = true;
 
-  if (
-    props.estado_taller === "Terminado" &&
-    props.estado_tienda === "Recibir joya"
-  )
-    disabled = "false";
+  if (props.estado_taller === "Terminado") disabled = false;
+
+  if (props.estado_tienda === "Terminado") disabled = true;
+
+  alert(disabled);
 
   return (
     <Form>
