@@ -4,12 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import ThemedButton from "../button";
 import { Paper } from "@material-ui/core";
 
-function GenerateReport({
-  onClickEnviar,
-  onClickCancelar,
-  handleDescripcion,
-  descripcion
-}) {
+function GenerateReport({ onClickEnviar, onClickCancelar, handleDescripcion }) {
   return (
     <Paper
       style={{

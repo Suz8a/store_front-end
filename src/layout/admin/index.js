@@ -1,29 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import TopLayout from "../../components/top-layout";
-import {
-  createClient,
-  createPedido,
-  getAllClients,
-  getAllPedidos,
-  getClientById,
-  getPedidoByFolio,
-  getPedidoById,
-  updatePedido,
-  uploadImage
-} from "../../api";
+import { getAllUsers } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import SideBarAdmin from "../../components/side-bar-admin";
 import EditTable from "../../components/edit-table";
 
 function Admin() {
-  const [pedidos, setpedidos] = useState(undefined);
-  const [clientes, setclientes] = useState(undefined);
+  const [usuarios, setusuarios] = useState(undefined);
 
   useEffect(async () => {
-    const result = await getAllPedidos();
-    setpedidos(result.data);
+    const result = await getAllUsers();
+    setusuarios(result.data);
   }, []);
+
+  if (usuarios === undefined)
+    return (
+      <div>
+        <LinearProgress color="secondary" />
+      </div>
+    );
+
+  debugger;
 
   return (
     <div>
@@ -56,7 +54,10 @@ function Admin() {
           }}
         >
           <Switch>
-            <Route path="/admin/usuarios" component={() => <EditTable />} />
+            <Route
+              path="/admin/usuarios"
+              component={() => <EditTable usuarios={usuarios} />}
+            />
           </Switch>
         </div>
       </div>

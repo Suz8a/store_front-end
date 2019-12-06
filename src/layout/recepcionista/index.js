@@ -11,6 +11,7 @@ import Pedidos from "../../containers/pedidos";
 import { getAllClients, getAllPedidos, updatePedido } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import DetallePedido from "../../containers/detalle-pedido";
+import { useNotificationProvider } from "../../components/notification.provider";
 
 const data22 = [
   {
@@ -22,6 +23,7 @@ const data22 = [
 ];
 
 function Recepcionista(props) {
+  const { notify } = useNotificationProvider();
   const [pedidos, setpedidos] = useState(undefined);
   const [clientes, setclientes] = useState(undefined);
   const [pedidoInfo, setpedidoInfo] = useState("");
@@ -95,14 +97,18 @@ function Recepcionista(props) {
     if (pedidoUpdated.estado_tienda === "Enviar joya") {
       pedidoUpdated.estado_tienda = "Recibir joya";
       pedidoUpdated.estado = "En taller";
+      notify("La joya ha sido enviada a taller");
     }
 
-    if (pedidoInfo.estado_tienda === "Recibir joya")
+    if (pedidoInfo.estado_tienda === "Recibir joya") {
       pedidoUpdated.estado_tienda = "Entregar joya";
+      notify("La joya ha sido recibida");
+    }
 
     if (pedidoInfo.estado_tienda === "Entregar joya") {
       pedidoUpdated.estado_tienda = "Terminado";
       pedidoUpdated.estado = "Terminado";
+      notify("La joya ha sido entregada al cliente");
     }
 
     await updatePedido(pedidoUpdated.id, pedidoUpdated);

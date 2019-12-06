@@ -5,6 +5,7 @@ import TopLayout from "../../components/top-layout";
 import Pedidos from "../../containers/pedidos";
 import { withRouter } from "react-router-dom";
 import DetalleServicio from "../../containers/detalle-servicio";
+import { useNotificationProvider } from "../../components/notification.provider";
 import {
   getAllClients,
   getAllPedidos,
@@ -15,22 +16,14 @@ import {
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import GenerateReport from "../../components/generate-report";
 
-const data22 = [
-  {
-    folio: "12345",
-    cliente: "Suzclem Adriana Ochoa Casillas",
-    servicio: "Reparación",
-    estado: "Procesando"
-  }
-];
-
 function Taller(props) {
+  const { notify } = useNotificationProvider();
   const [pedidos, setpedidos] = useState(undefined);
   const [clientes, setclientes] = useState(undefined);
   const [pedidoInfo, setpedidoInfo] = useState("");
   const [clientInfo, setclientInfo] = useState("");
   const [pedidoUpdated, setpedidoUpdated] = useState("");
-  const [descripcion, setdescripcion] = useState("");
+  const [text, settext] = useState("");
 
   useEffect(async () => {
     const result = await getAllPedidos();
@@ -102,6 +95,7 @@ function Taller(props) {
       pedidoUpdated.estado_taller = "Enviar joya";
       await updatePedido(pedidoUpdated.id, pedidoUpdated);
       props.history.push("/workshop/pedidos");
+      notify("La joya ha sido recibida");
     }
 
     if (pedidoInfo.estado_taller === "Enviar joya" && fileList.length === 0)
@@ -118,21 +112,21 @@ function Taller(props) {
 
       await updatePedido(pedidoUpdated.id, pedidoUpdated);
       props.history.push("/workshop/pedidos");
+      notify("La joya ha sido enviada a tienda");
     }
   }
 
   function handleDescripcion(e) {
-    setdescripcion(e.target.value);
-    console.log(descripcion);
+    settext(e.target.value);
   }
 
   async function onClickEnviar() {
-    if (descripcion === "") alert("Favor de agregar una descripción");
+    if (text === "") alert("Favor de agregar una descripción");
 
-    if (descripcion !== "") {
+    if (text !== "") {
       await createTicket(clientInfo.email, {
         pedido_id: pedidoUpdated.id,
-        descripcion: descripcion,
+        descripcion: text,
         estado: "abierto"
       });
     }

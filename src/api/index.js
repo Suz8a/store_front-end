@@ -8,6 +8,24 @@ export async function createTicket(dest, ticket) {
   return await troquelApi.post("ticket/" + dest, ticket);
 }
 
+//CRUD usuarios
+
+export async function getAllUsers() {
+  return await troquelApi.get("usuario");
+}
+
+export async function createUser(usuario) {
+  return await troquelApi.post("usuario", usuario);
+}
+
+export async function deleteUser(id) {
+  return await troquelApi.delete("usuario/" + id);
+}
+
+export async function updateUser(id, usuarioIn) {
+  return await troquelApi.put("usuario/" + id, usuarioIn);
+}
+
 export async function authenticate(correo, contrasena) {
   return await troquelApi.post("/usuario/authenticate", {
     correo: correo,

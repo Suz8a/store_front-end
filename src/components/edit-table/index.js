@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
 
-function EditTable() {
+function EditTable(props) {
+  var usuarios = props.usuarios;
+
+  var dataTable = usuarios.map(usuario => {
+    return {
+      usuario: usuario.correo,
+      rol: usuario.rol,
+      contrasena: "**********"
+    };
+  });
+
   const [state, setState] = useState({
     columns: [
       { title: "Usuario", field: "usuario" },
-      { title: "Rol", field: "rol" }
+      { title: "Rol", field: "rol" },
+      { title: "Contraseña", field: "contrasena" }
     ],
-    data: [
-      { usuario: "Adriana", rol: "Recepcionista" },
-      { usuario: "Abraham", rol: "Jefe de taller" }
-    ]
+    data: dataTable
   });
 
   return (
