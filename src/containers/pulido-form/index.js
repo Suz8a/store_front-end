@@ -4,6 +4,7 @@ import DynamicForm from "../../components/dynamic-form";
 import { withRouter } from "react-router-dom";
 import { useNotificationProvider } from "../../components/notification.provider";
 import { createClient, createPedido, uploadImage } from "../../api";
+import { CircularProgress, Paper } from "@material-ui/core";
 
 const productos = {
   1: "Anillo",
@@ -53,45 +54,6 @@ function PulidoForm(props) {
   const [hechura, sethechura] = useState(0);
   //Loading state
   const [isLoading, setisLoading] = useState(false);
-  //SnackBar state
-  const queueRef = React.useRef([]);
-  const [open, setOpen] = React.useState(false);
-  const [messageInfo, setMessageInfo] = React.useState(undefined);
-
-  function processQueue() {
-    if (queueRef.current.length > 0) {
-      setMessageInfo(queueRef.current.shift());
-      setOpen(true);
-    }
-  }
-
-  function showMessage(message) {
-    queueRef.current.push({
-      message,
-      key: new Date().getTime()
-    });
-
-    if (open) {
-      // immediately begin dismissing current message
-      // to start showing new one
-      setOpen(false);
-    } else {
-      processQueue();
-    }
-  }
-
-  function handleClose(event, reason) {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  }
-
-  function handleExited() {
-    processQueue();
-  }
-
-  const classes = useStyles();
 
   //Client information
   function handleNombre(e) {
@@ -305,6 +267,22 @@ function PulidoForm(props) {
     }
     setisLoading(false);
   }
+
+  if (isLoading)
+    return (
+      <Paper
+        style={{
+          margin: "auto",
+          width: "100%",
+          height: "100%",
+          textAlign: "center",
+          paddingTop: "150px",
+          paddingBottom: "1314px"
+        }}
+      >
+        <CircularProgress />
+      </Paper>
+    );
 
   return (
     <DynamicForm

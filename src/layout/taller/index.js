@@ -5,7 +5,12 @@ import TopLayout from "../../components/top-layout";
 import Pedidos from "../../containers/pedidos";
 import { withRouter } from "react-router-dom";
 import DetalleServicio from "../../containers/detalle-servicio";
-import { getAllClients, getAllPedidos, updatePedido } from "../../api";
+import {
+  getAllClients,
+  getAllPedidos,
+  updatePedido,
+  uploadImage
+} from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 
 const data22 = [
@@ -88,18 +93,25 @@ function Taller(props) {
     props.history.push("/workshop/pedidos");
   }
 
-  async function onClickEstado() {
+  async function onClickEstado(fileList) {
     if (pedidoUpdated.estado_taller === "Recibir joya") {
       pedidoUpdated.estado_taller = "Enviar joya";
+      await updatePedido(pedidoUpdated.id, pedidoUpdated);
+      props.history.push("/workshop/pedidos");
     }
 
     if (pedidoInfo.estado_taller === "Enviar joya") {
+      var {
+        data: { imageUrl: link_imagen_taller }
+      } = await uploadImage(fileList);
+      pedidoUpdated.link_imagen_taller = link_imagen_taller;
+
       pedidoUpdated.estado_taller = "Terminado";
       pedidoUpdated.estado = "En tienda";
-    }
 
-    await updatePedido(pedidoUpdated.id, pedidoUpdated);
-    props.history.push("/workshop/pedidos");
+      await updatePedido(pedidoUpdated.id, pedidoUpdated);
+      props.history.push("/workshop/pedidos");
+    }
   }
 
   return (

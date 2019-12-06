@@ -47,14 +47,18 @@ function DetalleServicio(props) {
       });
   });
 
-  function addFile(file) {
+  /*function addFile(file) {
     setFileList([...fileList, ...file]);
-  }
+  }*/
 
   function deleteFile(fileIndex) {
     const newFileList = [...fileList];
     newFileList.splice(fileIndex, 1);
     setFileList(newFileList);
+  }
+
+  function onClick() {
+    props.onClickEstado(fileList);
   }
 
   return (
@@ -90,7 +94,7 @@ function DetalleServicio(props) {
           <FileUploader
             onDelete={deleteFile}
             fileExtensions={[".jpg", ".png"]}
-            onSetLista={addFile}
+            onSetLista={setFileList}
             lista={fileList}
             width="560px"
           />
@@ -115,7 +119,7 @@ function DetalleServicio(props) {
               colorTheme="secondary"
             />
             <ThemedButton
-              onClick={props.onClickEstado}
+              onClick={onClick}
               buttonSize="168px"
               variantType="contained"
               text={props.estado_taller}
