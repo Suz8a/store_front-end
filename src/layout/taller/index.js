@@ -9,9 +9,11 @@ import {
   getAllClients,
   getAllPedidos,
   updatePedido,
-  uploadImage
+  uploadImage,
+  createTicket
 } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
+import GenerateReport from "../../components/generate-report";
 
 const data22 = [
   {
@@ -28,6 +30,7 @@ function Taller(props) {
   const [pedidoInfo, setpedidoInfo] = useState("");
   const [clientInfo, setclientInfo] = useState("");
   const [pedidoUpdated, setpedidoUpdated] = useState("");
+  const [descripcion, setdescripcion] = useState("");
 
   useEffect(async () => {
     const result = await getAllPedidos();
@@ -101,7 +104,8 @@ function Taller(props) {
       props.history.push("/workshop/pedidos");
     }
 
-    if (fileList.length === 0) alert("Favor de subir imagen de evidencia");
+    if (pedidoInfo.estado_taller === "Enviar joya" && fileList.length === 0)
+      alert("Favor de subir imagen de evidencia");
 
     if (pedidoInfo.estado_taller === "Enviar joya" && fileList.length !== 0) {
       var {
@@ -115,6 +119,27 @@ function Taller(props) {
       await updatePedido(pedidoUpdated.id, pedidoUpdated);
       props.history.push("/workshop/pedidos");
     }
+  }
+
+  function handleDescripcion(e) {
+    setdescripcion(e.target.value);
+    console.log(descripcion);
+  }
+
+  async function onClickEnviar() {
+    if (descripcion === "") alert("Favor de agregar una descripción");
+
+    if (descripcion !== "") {
+      await createTicket(clientInfo.email, {
+        pedido_id: pedidoUpdated.id,
+        descripcion: descripcion,
+        estado: "abierto"
+      });
+    }
+  }
+
+  function onClickCancelar() {
+    props.history.push("/workshop/pedidos");
   }
 
   return (
@@ -168,6 +193,16 @@ function Taller(props) {
                   final={pedidoInfo.final}
                   estado_tienda={pedidoInfo.estado_tienda}
                   estado_taller={pedidoInfo.estado_taller}
+                />
+              )}
+            />
+            <Route
+              path="/workshop/reporte"
+              component={() => (
+                <GenerateReport
+                  handleDescripcion={handleDescripcion}
+                  onClickEnviar={onClickEnviar}
+                  onClickCancelar={onClickCancelar}
                 />
               )}
             />

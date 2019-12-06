@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import { Form } from "../../components/dynamic-form/styled";
 import DynamicTable from "../../components/dynamic-table";
 import ClientService from "../../components/client-service";
@@ -61,6 +62,10 @@ function DetalleServicio(props) {
     props.onClickEstado(fileList);
   }
 
+  function onClickReporte() {
+    props.history.push("/workshop/reporte");
+  }
+
   return (
     <Form>
       <div style={{ padding: "50px 100px" }}>
@@ -104,6 +109,7 @@ function DetalleServicio(props) {
             style={{ float: "right", marginTop: "45px", marginBottom: "50px" }}
           >
             <ThemedButton
+              onClick={onClickReporte}
               marginR="64px"
               buttonSize="188px"
               variantType="outlined"
@@ -133,4 +139,4 @@ function DetalleServicio(props) {
   );
 }
 
-export default DetalleServicio;
+export default withRouter(DetalleServicio);
