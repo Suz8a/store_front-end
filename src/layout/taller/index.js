@@ -5,17 +5,7 @@ import TopLayout from "../../components/top-layout";
 import Pedidos from "../../containers/pedidos";
 import { withRouter } from "react-router-dom";
 import DetalleServicio from "../../containers/detalle-servicio";
-import {
-  createClient,
-  createPedido,
-  getAllClients,
-  getAllPedidos,
-  getClientById,
-  getPedidoByFolio,
-  getPedidoById,
-  updatePedido,
-  uploadImage
-} from "../../api";
+import { getAllClients, getAllPedidos, updatePedido } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 
 const data22 = [
@@ -32,6 +22,7 @@ function Taller(props) {
   const [clientes, setclientes] = useState(undefined);
   const [pedidoInfo, setpedidoInfo] = useState("");
   const [clientInfo, setclientInfo] = useState("");
+  const [pedidoUpdated, setpedidoUpdated] = useState("");
 
   useEffect(async () => {
     const result = await getAllPedidos();
@@ -68,6 +59,8 @@ function Taller(props) {
     const clientInfo = clientes.find(
       cliente => cliente.id == pedidoInfo.cliente_id
     );
+    setpedidoUpdated(pedidoInfo);
+
     setpedidoInfo({
       folio: pedidoInfo.folio,
       product: pedidoInfo.joya.nombre_joya,
@@ -78,7 +71,9 @@ function Taller(props) {
       estado_taller: pedidoInfo.estado_taller,
       servicio: pedido.Servicio,
       inicial: pedidoInfo.joya.medida_inicial,
-      final: pedidoInfo.joya.medida_final
+      final: pedidoInfo.joya.medida_final,
+      estado_tienda: pedidoInfo.estado_tienda,
+      estado_taller: pedidoInfo.estado_taller
     });
     setclientInfo({
       name: `${clientInfo.nombre} ${clientInfo.apellido_paterno} ${clientInfo.apellido_materno}`,
@@ -93,7 +88,19 @@ function Taller(props) {
     props.history.push("/workshop/pedidos");
   }
 
-  function onClickEstado() {}
+  async function onClickEstado() {
+    if (pedidoUpdated.estado_taller === "Recibir joya") {
+      pedidoUpdated.estado_taller = "Enviar joya";
+    }
+
+    if (pedidoInfo.estado_taller === "Enviar joya") {
+      pedidoUpdated.estado_taller = "Terminado";
+      pedidoUpdated.estado = "En tienda";
+    }
+
+    await updatePedido(pedidoUpdated.id, pedidoUpdated);
+    props.history.push("/workshop/pedidos");
+  }
 
   return (
     <div>
@@ -141,10 +148,11 @@ function Taller(props) {
                   hechura={pedidoInfo.hechura}
                   material_utilizar={pedidoInfo.material_utilizar}
                   material_adjunto={pedidoInfo.material_adjunto}
-                  estado_taller={pedidoInfo.estado_taller}
                   servicio={pedidoInfo.servicio}
                   inicial={pedidoInfo.inicial}
                   final={pedidoInfo.final}
+                  estado_tienda={pedidoInfo.estado_tienda}
+                  estado_taller={pedidoInfo.estado_taller}
                 />
               )}
             />
@@ -162,7 +170,7 @@ function Taller(props) {
               component={() => (
                 <Pedidos
                   onRowClick={onRowClick}
-                  data={data.filter(pedido => pedido.estado === "Terminado")}
+                  data={data.filter(pedido => pedido.estado === "En tienda")}
                 />
               )}
             />

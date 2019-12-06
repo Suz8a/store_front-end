@@ -17,13 +17,25 @@ function DetalleServicio(props) {
   const data1 = [];
   var disabled;
 
-  materialesAdjunto.map(material => {
-    if (material.gramos != 0)
-      data.push({
-        "Material adjunto": material.nombre_material,
-        "Peso (gr)": material.gramos
-      });
-  });
+  // Deshabilita o habilita el boton segun el proceso en el que se encuentre el pedido
+  var disabled;
+  if (props.estado_taller === "Terminado") disabled = "true";
+  if (
+    props.estado_taller !== "Terminado" &&
+    props.estado_tienda === "Enviar joya"
+  )
+    disabled = "true";
+  if (
+    props.estado_taller !== "Terminado" &&
+    props.estado_tienda === "Recibir joya"
+  )
+    materialesAdjunto.map(material => {
+      if (material.gramos != 0)
+        data.push({
+          "Material adjunto": material.nombre_material,
+          "Peso (gr)": material.gramos
+        });
+    });
 
   materialesUtilizar.map(material => {
     if (material.gramos != 0)
@@ -93,6 +105,7 @@ function DetalleServicio(props) {
               colorTheme="secondary"
             />
             <ThemedButton
+              onClick={props.onClickVolver}
               marginR="20px"
               buttonSize="120px"
               variantType="outlined"
@@ -100,10 +113,12 @@ function DetalleServicio(props) {
               colorTheme="secondary"
             />
             <ThemedButton
+              onClick={props.onClickEstado}
               buttonSize="168px"
               variantType="contained"
               text={props.estado_taller}
               colorTheme="primary"
+              disabled={disabled}
             />
           </div>
         </div>
