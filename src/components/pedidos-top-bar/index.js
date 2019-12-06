@@ -19,23 +19,24 @@ function PedidosTopBar(props) {
       >
         Pedidos
       </h2>
-      <div style={{ width: "250px", float: "right", marginBottom: "40px" }}>
-        <Input
-          style={{
-            color: "#546E7ADE",
-            marginRight: "20px",
-            marginTop: "25px"
-          }}
-          placeholder="Buscar"
-          id="input-with-icon-adornment"
-          startAdornment={
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          }
-        />
-      </div>
     </div>
   );
 }
 export default PedidosTopBar;
+
+/*<div style={{ width: "250px", float: "right", marginBottom: "40px" }}>
+<Input
+  style={{
+    color: "#546E7ADE",
+    marginRight: "20px",
+    marginTop: "25px"
+  }}
+  placeholder="Buscar"
+  id="input-with-icon-adornment"
+  startAdornment={
+    <InputAdornment position="start">
+      <SearchIcon />
+    </InputAdornment>
+  }
+/>
+</div>*/

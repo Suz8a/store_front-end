@@ -94,13 +94,16 @@ function Taller(props) {
   }
 
   async function onClickEstado(fileList) {
+    console.log(fileList);
     if (pedidoUpdated.estado_taller === "Recibir joya") {
       pedidoUpdated.estado_taller = "Enviar joya";
       await updatePedido(pedidoUpdated.id, pedidoUpdated);
       props.history.push("/workshop/pedidos");
     }
 
-    if (pedidoInfo.estado_taller === "Enviar joya") {
+    if (fileList.length === 0) alert("Favor de subir imagen de evidencia");
+
+    if (pedidoInfo.estado_taller === "Enviar joya" && fileList.length !== 0) {
       var {
         data: { imageUrl: link_imagen_taller }
       } = await uploadImage(fileList);
