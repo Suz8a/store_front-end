@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
 import { createUser, deleteUser, updateUser } from "../../api";
+import { useNotificationProvider } from "../../components/notification.provider";
 
 function EditTable(props) {
   var usuarios = props.usuarios;
+  const { notify } = useNotificationProvider();
 
   var dataTable = usuarios.map(usuario => {
     return {
@@ -48,12 +50,22 @@ function EditTable(props) {
                 data.push(newData);
                 return { ...prevState, data };
               });
-            }, 600);
+            }, 1000);
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
             setTimeout(() => {
               resolve();
+              var userToUpdate = usuarios.find(
+                user => user.correo === newData.usuario
+              );
+              userToUpdate.correo = newData.usuario;
+              userToUpdate.rol = newData.rol;
+              userToUpdate.contrasena = newData.contrasena;
+
+              updateUser(userToUpdate.id, userToUpdate);
+              newData.contrasena = "**********";
+
               if (oldData) {
                 setState(prevState => {
                   const data = [...prevState.data];
@@ -61,7 +73,7 @@ function EditTable(props) {
                   return { ...prevState, data };
                 });
               }
-            }, 600);
+            }, 1000);
           }),
         onRowDelete: oldData =>
           new Promise(resolve => {
@@ -76,7 +88,7 @@ function EditTable(props) {
                 data.splice(data.indexOf(oldData), 1);
                 return { ...prevState, data };
               });
-            }, 600);
+            }, 1000);
           })
       }}
     />
