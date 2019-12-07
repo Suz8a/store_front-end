@@ -5,6 +5,7 @@ import { getAllUsers } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import SideBarAdmin from "../../components/side-bar-admin";
 import EditTable from "../../components/edit-table";
+import { createUser, deleteUser, updateUser } from "../../api";
 
 function Admin(props) {
   const [usuarios, setusuarios] = useState(undefined);
