@@ -194,16 +194,13 @@ function Taller(props) {
                 />
               )}
             />
-            <Route
-              path="/workshop/reporte"
-              component={() => (
-                <GenerateReport
-                  handleDescripcion={handleDescripcion}
-                  onClickEnviar={onClickEnviar}
-                  onClickCancelar={onClickCancelar}
-                />
-              )}
-            />
+            <Route path="/workshop/reporte">
+              <GenerateReport
+                handleDescripcion={handleDescripcion}
+                onClickEnviar={onClickEnviar}
+                onClickCancelar={onClickCancelar}
+              />
+            </Route>
             <Route
               path="/workshop/pedidos"
               component={() => (
