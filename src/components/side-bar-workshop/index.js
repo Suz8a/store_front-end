@@ -4,17 +4,12 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
-import Limpieza from "../../assets/floor-brush.svg";
-import cambioTamaño from "../../assets/scissors.svg";
-import Reparacion from "../../assets/heal.svg";
-import Grabado from "../../assets/spell.svg";
-import Pulido from "../../assets/clean.svg";
 import EnProceso from "../../assets/tools-cross.svg";
 import Terminados from "../../assets/Check.svg";
 import { CardEffects, Titles, Circles, StoreIcon } from "./styled";
 import Store from "@material-ui/icons/StoreMallDirectory";
 import { withRouter } from "react-router-dom";
+import WorkIcon from "@material-ui/icons/Work";
 
 const paths = {
   Reparación: "/workshop/reparacion-form",
@@ -39,7 +34,7 @@ function SideBarWorkShop(props) {
         }}
       >
         <Circles>
-          <Store style={{ width: "85px", height: "75px" }} />
+          <WorkIcon style={{ width: "85px", height: "75px" }} />
         </Circles>
 
         <div>

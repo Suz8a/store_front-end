@@ -9,6 +9,7 @@ import { CardEffects, Titles, Circles, StoreIcon } from "./styled";
 import Store from "@material-ui/icons/StoreMallDirectory";
 import People from "@material-ui/icons/People";
 import { withRouter } from "react-router-dom";
+import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 
 const paths = {
   Todos: "/admin/usuarios"
@@ -28,7 +29,7 @@ function SideBarAdmin(props) {
         }}
       >
         <Circles>
-          <Store style={{ width: "85px", height: "75px" }} />
+          <VerifiedUserIcon style={{ width: "85px", height: "75px" }} />
         </Circles>
 
         <div>
