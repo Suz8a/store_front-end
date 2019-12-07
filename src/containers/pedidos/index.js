@@ -51,6 +51,7 @@ function Pedidos(props) {
     if (servicio === "pulido") servicio = "Pulido";
     if (servicio === "limpieza") servicio = "Limpieza";
     if (servicio === "reparacion") servicio = "Reparación";
+    if (servicio === "grabado") servicio = "Grabado";
 
     return {
       Folio: folio,
