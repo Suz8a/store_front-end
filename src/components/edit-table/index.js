@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
+import { createUser, deleteUser, updateUser } from "../../api";
 
 function EditTable(props) {
   var usuarios = props.usuarios;
@@ -36,6 +37,12 @@ function EditTable(props) {
           new Promise(resolve => {
             setTimeout(() => {
               resolve();
+              createUser({
+                rol: newData.rol,
+                correo: newData.usuario,
+                contrasena: newData.contrasena
+              });
+              newData.contrasena = "**********";
               setState(prevState => {
                 const data = [...prevState.data];
                 data.push(newData);
@@ -60,6 +67,10 @@ function EditTable(props) {
           new Promise(resolve => {
             setTimeout(() => {
               resolve();
+              var userToDelete = usuarios.find(
+                user => user.correo === oldData.usuario
+              );
+              deleteUser(userToDelete.id);
               setState(prevState => {
                 const data = [...prevState.data];
                 data.splice(data.indexOf(oldData), 1);
