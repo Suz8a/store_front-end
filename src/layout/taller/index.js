@@ -13,7 +13,7 @@ import {
   uploadImage,
   createTicket
 } from "../../api";
-import { CircularProgress, LinearProgress } from "@material-ui/core";
+import { CircularProgress, LinearProgress, Paper } from "@material-ui/core";
 import GenerateReport from "../../components/generate-report";
 
 function Taller(props) {
@@ -24,8 +24,9 @@ function Taller(props) {
   const [clientInfo, setclientInfo] = useState("");
   const [pedidoUpdated, setpedidoUpdated] = useState("");
   const [text, settext] = useState("");
+  const [isLoading, setisLoading] = useState(false);
 
-  useEffect(async () => {
+  var getPedidos = useEffect(async () => {
     const result = await getAllPedidos();
     setpedidos(result.data);
   }, []);
@@ -102,17 +103,24 @@ function Taller(props) {
       alert("Favor de subir imagen de evidencia");
 
     if (pedidoInfo.estado_taller === "Enviar joya" && fileList.length !== 0) {
-      var {
-        data: { imageUrl: link_imagen_taller }
-      } = await uploadImage(fileList);
-      pedidoUpdated.link_imagen_taller = link_imagen_taller;
+      try {
+        setisLoading(true);
+        var {
+          data: { imageUrl: link_imagen_taller }
+        } = await uploadImage(fileList);
+        pedidoUpdated.link_imagen_taller = link_imagen_taller;
 
-      pedidoUpdated.estado_taller = "Terminado";
-      pedidoUpdated.estado = "En tienda";
+        pedidoUpdated.estado_taller = "Terminado";
+        pedidoUpdated.estado = "En tienda";
 
-      await updatePedido(pedidoUpdated.id, pedidoUpdated);
-      props.history.push("/workshop/pedidos");
-      notify("La joya ha sido enviada a tienda");
+        await updatePedido(pedidoUpdated.id, pedidoUpdated);
+        props.history.push("/workshop/pedidos");
+        setisLoading(false);
+        window.location.reload(false);
+        notify("La joya ha sido enviada a tienda");
+      } catch {
+        notify("Error en actualizar estado de la joya");
+      }
     }
   }
 
@@ -124,11 +132,17 @@ function Taller(props) {
     if (text === "") alert("Favor de agregar una descripción");
 
     if (text !== "") {
-      await createTicket(clientInfo.email, {
-        pedido_id: pedidoUpdated.id,
-        descripcion: text,
-        estado: "abierto"
-      });
+      try {
+        await createTicket(clientInfo.email, {
+          pedido_id: pedidoUpdated.id,
+          descripcion: text,
+          estado: "abierto"
+        });
+        props.history.push("/workshop/pedidos");
+        notify("El reporte se ha enviado exitosamente");
+      } catch {
+        notify("Hubo un problema al enviar el reporte");
+      }
     }
   }
 
@@ -139,6 +153,13 @@ function Taller(props) {
   function onClickSalir() {
     props.history.push("/login");
   }
+
+  if (isLoading)
+    return (
+      <div>
+        <LinearProgress color="secondary" />
+      </div>
+    );
 
   return (
     <div>

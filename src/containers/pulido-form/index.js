@@ -260,6 +260,7 @@ function PulidoForm(props) {
         }
       );
       props.history.push("/recepcionist/pedidos");
+      window.location.reload(false);
       notify("El pedido se ha guardado exitosamente");
     } catch (e) {
       props.history.push("/recepcionist/pedidos");
