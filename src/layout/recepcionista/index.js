@@ -115,10 +115,14 @@ function Recepcionista(props) {
     props.history.push("/recepcionist/pedidos");
   }
 
+  function onClickSalir() {
+    props.history.push("/login");
+  }
+
   return (
     <div>
       <div>
-        <TopLayout />
+        <TopLayout onClickSalir={onClickSalir} />
       </div>
       <div
         style={{

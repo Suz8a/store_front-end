@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import TopLayout from "../../components/top-layout";
 import { getAllUsers } from "../../api";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import SideBarAdmin from "../../components/side-bar-admin";
 import EditTable from "../../components/edit-table";
 
-function Admin() {
+function Admin(props) {
   const [usuarios, setusuarios] = useState(undefined);
 
   useEffect(async () => {
@@ -21,12 +21,14 @@ function Admin() {
       </div>
     );
 
-  debugger;
+  function onClickSalir() {
+    props.history.push("/login");
+  }
 
   return (
     <div>
       <div>
-        <TopLayout />
+        <TopLayout onClickSalir={onClickSalir} />
       </div>
       <div
         style={{
@@ -65,4 +67,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default withRouter(Admin);

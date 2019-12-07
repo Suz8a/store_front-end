@@ -18,10 +18,10 @@ function App() {
         <NotificationProvider>
           <BrowserRouter>
             <Switch>
-              <Route path="/recepcionist" component={Recepcionista} />
-              <Route path="/workshop" component={Taller} />
-              <Route path="/admin" component={Admin} />
               <Route path="/login" component={MainLogin} />
+              <Route path="/recepcionist" component={Recepcionista} />
+              <Route path="/admin" component={Admin} />
+              <Route path="/workshop" component={Taller} />
             </Switch>
           </BrowserRouter>
         </NotificationProvider>

@@ -16,5 +16,4 @@ export default function Description(props) {
       />
     </div>
   );
-  debugger;
 }

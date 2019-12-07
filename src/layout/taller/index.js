@@ -136,10 +136,14 @@ function Taller(props) {
     props.history.push("/workshop/pedidos");
   }
 
+  function onClickSalir() {
+    props.history.push("/login");
+  }
+
   return (
     <div>
       <div>
-        <TopLayout />
+        <TopLayout onClickSalir={onClickSalir} />
       </div>
       <div
         style={{

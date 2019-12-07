@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function TopLayout() {
+function TopLayout(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -31,7 +31,11 @@ function TopLayout() {
             <img src={Logo} width="229px" />
           </Button>
           <Grid container justify="flex-end">
-            <Button color="inherit" style={{ textTransform: "none" }}>
+            <Button
+              onClick={props.onClickSalir}
+              color="inherit"
+              style={{ textTransform: "none" }}
+            >
               <Exiticon style={{ width: "36px", height: "32px" }} />
               <Typography style={{ fontSize: "22px" }}>Salir</Typography>
             </Button>
