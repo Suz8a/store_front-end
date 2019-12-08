@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import { MuiThemeProvider } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/styles";
@@ -22,6 +22,9 @@ function App() {
               <Route path="/recepcionist" component={Recepcionista} />
               <Route path="/admin" component={Admin} />
               <Route path="/workshop" component={Taller} />
+              <Route path="/">
+                <Redirect to="/login" />
+              </Route>
             </Switch>
           </BrowserRouter>
         </NotificationProvider>
